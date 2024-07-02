@@ -6,13 +6,17 @@
 @tailwind utilities;
 
 .menu-item {
-  @apply text-primary font-medium text-xs md:text-base md:px-4 font-inter hover:opacity-70 cursor-pointer;
+  @apply text-primary font-medium text-xs lg:text-base lg:px-4 font-inter hover:opacity-80 cursor-pointer;
 }
 
 .menu-icon {
-  @apply w-6 md:w-8 hover:opacity-70 cursor-pointer;
+  @apply w-6 md:w-8 hover:opacity-90 cursor-pointer;
 }
 
 .hamburger-menu {
   @apply lg:hidden pr-1 w-[35px];
+}
+
+.btn-primary {
+  @apply bg-brown py-[10px] px-[20px] text-buttonColor hover:opacity-80 flex items-center text-base lg:text-lg;
 }

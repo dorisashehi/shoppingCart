@@ -12,7 +12,7 @@ const Navigation = () => {
 
   return (
     <nav className="bg-white fixed w-full">
-      <div className="max-w-screen-xl flex flex-wrap mx-auto p-4">
+      <div className="max-w-screen-xl flex flex-wrap mx-auto p-5">
         <Link href="/" className="flex items-center  w-3/5 lg:w-1/5">
           <svg
             onClick={toggleMenu}
@@ -100,7 +100,7 @@ const Navigation = () => {
           }`}
           id="navbar-sticky"
         >
-          <li cl>
+          <li>
             <Link href="#" className="menu-item" aria-current="page">
               Home
             </Link>
