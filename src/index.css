@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu-item {
+  @apply text-primary font-bold text-xs md:text-base md:px-4 font-inter font-normal hover:opacity-70 cursor-pointer;
+}
+
+.menu-icon {
+  @apply w-6 md:w-8 hover:opacity-70 cursor-pointer;
+}
+
+.hamburger-menu {
+  @apply w-8 md:w-8;
+}
