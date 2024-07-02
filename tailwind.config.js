@@ -4,13 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#171A1FFF",
-        secondary: "#9095A1FF",
-        brown: "#3D1700FF",
-        buttonColor: "#f8f6f5",
-        yellow: "#f4bd62",
-        gray: "#ebebeb",
-        sectionColor: "#F5F5F5FF",
+        primary: "var(--primary-color)",
+        secondary: "var(--secondary-color)",
+        brown: "var(--brown-color)",
+        buttonColor: "var(--button-color)",
+        yellow: "var(--yellow-color)",
+        gray: "var(--gray-color)",
+        sectionColor: "var(--section-bg-color)",
+        category: "var(--category-color)",
       },
       fontFamily: {
         epilogue: ["Epilogue"],

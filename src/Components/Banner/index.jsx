@@ -4,7 +4,7 @@ import Button from "../Elements/buttons";
 const Banner = () => {
   return (
     <div className="mt-[82px] md:min-h-[420px] lg:min-h-[500px] bg-sectionColor w-full">
-      <div className="max-w-screen-xl content justify-center flex flex-col md:flex-row mx-auto px-5 gap-[30px] md:gap-3">
+      <div className="max-w-screen-xl justify-center flex flex-col md:flex-row mx-auto px-5 gap-[30px] md:gap-3">
         <div className="flex-1 md:w-1/2 flex items-center justify-center md:justify-start">
           <div className="pt-[60px] lg:pt-0 w-[300px] lg:w-[590px] text-center md:text-left">
             <h1 className="font-epilogue font-medium text-[25px] lg:text-[41px] leading-[37px] lg:leading-[58px]">

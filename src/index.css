@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #171a1fff;
+  --secondary-color: #9095a1ff;
+  --brown-color: #3d1700ff;
+  --button-color: #f8f6f5;
+  --yellow-color: #f4bd62;
+  --gray-color: #ebebeb;
+  --section-bg-color: #f5f5f5ff;
+  --category-color: #bdc1caff;
+}
 .menu-item {
   @apply text-primary font-medium text-xs lg:text-base lg:px-4 font-inter hover:opacity-80 cursor-pointer;
 }
@@ -13,6 +23,9 @@
   @apply w-6 md:w-8 hover:opacity-90 cursor-pointer;
 }
 
+.slider-icon {
+  @apply w-[35px] hover:opacity-90 cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
+}
 .hamburger-menu {
   @apply lg:hidden pr-1 w-[35px];
 }
