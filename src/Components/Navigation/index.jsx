@@ -13,10 +13,10 @@ const Navigation = () => {
   return (
     <nav className="bg-white fixed w-full">
       <div className="max-w-screen-xl flex flex-wrap mx-auto p-4">
-        <Link href="/" className="flex items-center  w-2/5 md:w-1/5">
+        <Link href="/" className="flex items-center  w-3/5 lg:w-1/5">
           <svg
             onClick={toggleMenu}
-            className="md:hidden pr-2"
+            className="hamburger-menu"
             data-slot="icon"
             fill="none"
             strokeWidth="1.5"
@@ -32,10 +32,10 @@ const Navigation = () => {
             ></path>
           </svg>
 
-          <img src={logoTop} className="w-[7rem] md:w-36" />
+          <img src={logoTop} className="w-[7rem] lg:w-36" />
         </Link>
 
-        <div className="flex justify-end items-center md:order-2 w-3/5 md:w-1/5">
+        <div className="flex justify-end items-center lg:order-2 w-2/5 lg:w-1/5">
           <ul className="flex">
             <li>
               <svg
@@ -95,12 +95,12 @@ const Navigation = () => {
         </div>
 
         <ul
-          className={`flex-col md:flex-row md:flex w-full md:items-center justify-start md:w-3/5 ${
+          className={`flex-col lg:flex-row lg:flex w-full lg:items-center justify-start lg:w-3/5 mt-xs border-t-2 border-b-4 px-3 lg:px-0 border-b-yellow border-x-2 border-x-gray lg:border-t-0 lg:border-b-0 lg:border-x-0 border-t-gray lg:border-none  pt-4 lg:pt-0 mt-3 lg:mt-0 ${
             !toggle ? "hidden" : ""
           }`}
           id="navbar-sticky"
         >
-          <li>
+          <li cl>
             <Link href="#" className="menu-item" aria-current="page">
               Home
             </Link>

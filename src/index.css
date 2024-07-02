@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 .menu-item {
-  @apply text-primary font-bold text-xs md:text-base md:px-4 font-inter font-normal hover:opacity-70 cursor-pointer;
+  @apply text-primary font-medium text-xs md:text-base md:px-4 font-inter hover:opacity-70 cursor-pointer;
 }
 
 .menu-icon {
@@ -14,5 +14,5 @@
 }
 
 .hamburger-menu {
-  @apply w-8 md:w-8;
+  @apply lg:hidden pr-1 w-[35px];
 }
