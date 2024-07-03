@@ -1,4 +1,5 @@
 import Banner from "../Banner";
+import CostumCheckbox from "../Elements/CostumCheckbox";
 const Collections = () => {
   return (
     <>
@@ -14,7 +15,9 @@ const Collections = () => {
               <div className="filter-section">
                 <h1 className="filter-header">Category</h1>
                 <ul className="filter-content">
-                  <li>Men</li>
+                  <li>
+                    <CostumCheckbox label="Man" />
+                  </li>
                   <li>Women</li>
                 </ul>
               </div>

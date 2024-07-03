@@ -15,6 +15,7 @@
   --section-bg-color: #f5f5f5ff;
   --category-color: #bdc1caff;
   --paragraph-color: #7e6454ff;
+  --border-color: #eaeaea;
 }
 .menu-item {
   @apply text-primary font-medium text-xs lg:text-base lg:px-4 font-inter hover:opacity-80 cursor-pointer;
@@ -92,4 +93,8 @@
 
 .slick-dots.button__bar li button:before {
   font-size: 10px;
+}
+
+#check-box-1:checked ~ .check-1 {
+  @apply opacity-100;
 }

@@ -13,6 +13,7 @@ export default {
         sectionColor: "var(--section-bg-color)",
         category: "var(--category-color)",
         paragraph: "var(--paragraph-color)",
+        border: "var(--border-color)",
       },
       fontFamily: {
         epilogue: ["Epilogue"],
