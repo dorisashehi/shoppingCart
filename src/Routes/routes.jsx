@@ -1,6 +1,6 @@
 import Home from "../Components/Home";
 import Layout from "../Components/Layout";
-import Products from "../Components/Products";
+import Collections from "../Components/Collections";
 const routes = [
   {
     path: "/",
@@ -8,8 +8,8 @@ const routes = [
     children: [
       { index: true, element: <Home /> },
       {
-        path: "/products",
-        element: <Products />,
+        path: "/collections",
+        element: <Collections />,
       },
     ],
   },

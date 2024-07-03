@@ -105,13 +105,8 @@ const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link href="#" className="menu-item">
-              Women
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="menu-item">
-              Men
+            <Link href="/collections" className="menu-item">
+              Collections
             </Link>
           </li>
           <li>
