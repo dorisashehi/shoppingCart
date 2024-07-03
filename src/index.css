@@ -33,3 +33,39 @@
 .btn-primary {
   @apply bg-brown py-[10px] px-[20px] text-buttonColor hover:opacity-80 flex items-center text-base lg:text-lg;
 }
+
+/* .slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  opacity: 1 !important;
+}
+.slick-prev:before {
+  color: #171a1fff !important;
+  background: #f4bd62;
+  padding: 12px !important;
+  content: "<" !important;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Epilogue" !important;
+  font-weight: 500 !important;
+  font-size: 30px !important;
+}
+.slick-prev {
+  left: -58px !important;
+}
+
+.slider-container:hover button {
+  display: none !important;
+}
+
+.slider-container:hover button {
+  display: block !important;
+} */
+
+.slick-dots.button__bar li.slick-active button:before {
+  color: #f4bd62;
+}
+
+.slick-dots.button__bar li button:before {
+  font-size: 10px;
+}

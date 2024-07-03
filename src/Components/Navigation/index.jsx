@@ -11,7 +11,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-white fixed w-full">
+    <nav className="bg-white fixed w-full z-10">
       <div className="max-w-screen-xl flex flex-wrap mx-auto p-5">
         <Link href="/" className="flex items-center  w-3/5 lg:w-1/5">
           <svg
