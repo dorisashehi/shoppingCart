@@ -1,10 +1,10 @@
-import Banner from "../Banner";
+import Hero from "../Hero";
 import ProductsSlider from "../ProductsSlider";
 
 const Home = () => {
   return (
     <>
-      <Banner />
+      <Hero />
       <ProductsSlider />
     </>
   );

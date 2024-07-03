@@ -46,6 +46,18 @@
 .social-media-icons {
   @apply p-[7px] outline outline-8 outline-[#573621] w-[27px];
 }
+
+.filter-section {
+  @apply py-4 border-b-2 border-[#eaeaea];
+}
+
+.filter-header {
+  @apply font-epilogue text-base font-semibold;
+}
+
+.filter-content {
+  @apply font-epilogue text-[#484848];
+}
 /* .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before {
   opacity: 1 !important;
