@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import logoTop from "../../assets/images/navigation/logoTop.png";
 import { useState } from "react";
+import logoTop from "../../assets/images/navigation/logoTop.png";
+import Logo from "../Elements/Logo";
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
@@ -12,8 +13,8 @@ const Navigation = () => {
 
   return (
     <nav className="bg-white fixed w-full z-10">
-      <div className="max-w-screen-xl flex flex-wrap mx-auto p-5">
-        <Link href="/" className="flex items-center  w-3/5 lg:w-1/5">
+      <div className="content p-5 flex flex-wrap">
+        <Logo logoImg={logoTop} className="w-3/5 lg:w-1/5">
           <svg
             onClick={toggleMenu}
             className="hamburger-menu"
@@ -31,9 +32,7 @@ const Navigation = () => {
               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
             ></path>
           </svg>
-
-          <img src={logoTop} className="w-[7rem] lg:w-36" />
-        </Link>
+        </Logo>
 
         <div className="flex justify-end items-center lg:order-2 w-2/5 lg:w-1/5">
           <ul className="flex">
