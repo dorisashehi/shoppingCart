@@ -36,7 +36,7 @@ const ProductsSlider = () => {
   return (
     <div className="w-full py-20">
       <div className="max-w-screen-xl mx-auto px-5">
-        <div className="pb-10">
+        <div className="pb-10 text-center md:text-left">
           <h3 className="font-epilogue text-[19px] font-normal">
             Our Products
           </h3>
