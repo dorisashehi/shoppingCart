@@ -12,6 +12,7 @@ export default {
         gray: "var(--gray-color)",
         sectionColor: "var(--section-bg-color)",
         category: "var(--category-color)",
+        paragraph: "var(--paragraph-color)",
       },
       fontFamily: {
         epilogue: ["Epilogue"],
