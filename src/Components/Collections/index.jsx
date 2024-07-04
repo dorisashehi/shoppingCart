@@ -1,5 +1,5 @@
 import Banner from "../Banner";
-import CostumCheckbox from "../Elements/CostumCheckbox";
+import FilterComponent from "./FilterComponent";
 const Collections = () => {
   return (
     <>
@@ -8,43 +8,9 @@ const Collections = () => {
         <div className="content">
           <div className="flex">
             <div className="w-[300px]">
-              <div className="filter-section">
-                <h1 className="filter-header">Filter Options</h1>
-              </div>
-
-              <div className="filter-section">
-                <h1 className="filter-header">Category</h1>
-                <ul className="filter-content">
-                  <li>
-                    <CostumCheckbox label="Man" />
-                  </li>
-                  <li>
-                    <CostumCheckbox label="Women" />
-                  </li>
-                </ul>
-              </div>
-              <div className="filter-section">
-                <h1 className="filter-header">Price</h1>
-                <div className="filter-content">price range</div>
-              </div>
-              <div className="filter-section">
-                <h1 className="filter-header">Size</h1>
-                <ul className="filter-content">
-                  <li>
-                    <CostumCheckbox label="S" />
-                  </li>
-                  <li>
-                    <CostumCheckbox label="M" />
-                  </li>
-                  <li>
-                    <CostumCheckbox label="L" />
-                  </li>
-                  <li>
-                    <CostumCheckbox label="XL" />
-                  </li>
-                </ul>
-              </div>
+              <FilterComponent />
             </div>
+
             <div className="flex-1">right</div>
           </div>
         </div>
