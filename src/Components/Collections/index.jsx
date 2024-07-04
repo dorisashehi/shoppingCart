@@ -1,5 +1,7 @@
 import Banner from "../Banner";
 import FilterComponent from "./FilterComponent";
+import ImageCard from "../Elements/ImageCard";
+import exampleImg from "../../assets/images/cart/example-cloth.png";
 const Collections = () => {
   return (
     <>
@@ -16,7 +18,7 @@ const Collections = () => {
                 <div className="text-primary">Showing 1-12 of 240 results</div>
                 <div className="text-primary">Sort by</div>
               </div>
-              <div className="flex gap-5 items-center">
+              <div className="flex gap-5 items-center mb-10">
                 <h1 className="text-primary">Active Filters</h1>
                 <div className="flex gap-5 items-center">
                   <div className="selected-filter">
@@ -59,6 +61,56 @@ const Collections = () => {
                   </div>
                   <div className="underline cursor-pointer">Clear All</div>
                 </div>
+              </div>
+              <div className="flex flex-wrap justify-between gap-y-10">
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
+                <ImageCard
+                  imgSrc={exampleImg}
+                  category="Couts"
+                  proName="Trendy brown Coust"
+                  lowPrice="34"
+                  price="56"
+                  classN="w-[31%]"
+                />
               </div>
             </div>
           </div>

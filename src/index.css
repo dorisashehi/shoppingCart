@@ -48,6 +48,9 @@
   @apply max-w-screen-xl mx-auto px-5;
 }
 
+.card {
+  @apply cursor-pointer;
+}
 /*Icons*/
 .social-media-icons {
   @apply p-[7px] outline outline-8 outline-[#573621] w-[27px];

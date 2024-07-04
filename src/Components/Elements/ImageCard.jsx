@@ -1,6 +1,6 @@
-const ImageCard = ({ imgSrc, category, lowPrice, proName, price }) => {
+const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
   return (
-    <div className="card mr-3">
+    <div className={`card ${classN}`}>
       <div className="relative">
         <img src={imgSrc} className="w-full object-cover h-[300px]" />
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">

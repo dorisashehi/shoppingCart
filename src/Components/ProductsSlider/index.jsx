@@ -53,6 +53,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
             <ImageCard
               imgSrc={exampleImg}
@@ -60,6 +61,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
             <ImageCard
               imgSrc={exampleImg}
@@ -67,6 +69,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
             <ImageCard
               imgSrc={exampleImg}
@@ -74,6 +77,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
             <ImageCard
               imgSrc={exampleImg}
@@ -81,6 +85,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
             <ImageCard
               imgSrc={exampleImg}
@@ -88,6 +93,7 @@ const ProductsSlider = () => {
               proName="Trendy brown Coust"
               lowPrice="34"
               price="56"
+              classN="mr-3"
             />
           </Slider>
         </div>
