@@ -49,12 +49,15 @@
   @apply p-[7px] outline outline-8 outline-[#573621] w-[27px];
 }
 
+.filter-item {
+  @apply mb-1;
+}
 .filter-section {
   @apply py-4 border-b-2 border-[#eaeaea];
 }
 
 .filter-header {
-  @apply font-epilogue text-base font-semibold;
+  @apply font-epilogue text-base font-semibold mb-[1.5rem];
 }
 
 .filter-content {
@@ -96,10 +99,26 @@
   font-size: 10px;
 }
 
+/*CHECKBOX STYLE*/
 #check-box-1:checked ~ .check-1 {
   @apply opacity-100;
 }
 
 #check-box-1:checked {
   @apply bg-optional border-optional;
+}
+
+/*SLIDER STYLE*/
+
+.multi-range-slider.price-slider .bar-left,
+.multi-range-slider.price-slider .bar-right,
+.multi-range-slider.price-slider .thumb::before,
+.multi-range-slider.price-slider .thumb .caption * {
+  @apply shadow-none;
+}
+.multi-range-slider.price-slider .thumb .caption * {
+  @apply bg-yellow;
+}
+.multi-range-slider.price-slider .bar-left {
+  @apply py-[0.1rem];
 }
