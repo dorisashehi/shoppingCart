@@ -43,14 +43,14 @@ const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
         <h4 className="font-inter text-xs text-secondary pb-2 font-semibold">
           {category}
         </h4>
-        <h5 className="font-epilogue font-semibold text-base text-primary pb-3">
+        <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">
           {proName}
         </h5>
         <div className="price flex gap-3">
-          <div className="low-price font-epilogue text-primary font-semibold text-[25px]">
+          <div className="low-price font-epilogue text-primary font-semibold text-[1.1rem] lg:text-[1.3rem]">
             ${lowPrice}
           </div>
-          <div className="price font-epilogue text-secondary line-through font-normal text-[25px]">
+          <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem] lg:text-[1.3rem]">
             ${price}
           </div>
         </div>
