@@ -29,7 +29,7 @@
 }
 
 .slider-icon {
-  @apply w-[35px] hover:opacity-90 cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
+  @apply w-[35px] hover:opacity-[0.8] cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
 }
 .hamburger-menu {
   @apply lg:hidden pr-1 w-[35px];
@@ -53,7 +53,7 @@
 }
 /*Icons*/
 .social-media-icons {
-  @apply p-[7px] outline outline-8 outline-[#573621] w-[27px];
+  @apply p-[7px] outline outline-8 outline-[#573621] w-[27px] hover:opacity-[0.8];
 }
 
 .filter-icons {
@@ -80,6 +80,9 @@
   @apply flex bg-yellow py-2 px-4  hover:opacity-[0.8] cursor-pointer;
 }
 
+.sort svg {
+  @apply text-primary;
+}
 /* .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before {
   opacity: 1 !important;
