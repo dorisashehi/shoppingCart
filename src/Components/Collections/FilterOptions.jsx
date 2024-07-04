@@ -1,6 +1,6 @@
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
-const FilterComponent = () => {
+const FilterOptions = () => {
   return (
     <>
       <div className="filter-section">
@@ -43,4 +43,4 @@ const FilterComponent = () => {
   );
 };
 
-export default FilterComponent;
+export default FilterOptions;

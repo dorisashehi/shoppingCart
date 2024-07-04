@@ -19,7 +19,9 @@ export default {
         category: "var(--category-color)",
         paragraph: "var(--paragraph-color)",
         borderColor: "var(--border-color)",
+        backdrop: "var(--backdrop)",
       },
+
       fontFamily: {
         epilogue: ["Epilogue"],
         inter: ["Inter"],

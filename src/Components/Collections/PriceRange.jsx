@@ -10,7 +10,7 @@ const PriceRange = () => {
 
   return (
     <>
-      <div className="filter-content mb-5">
+      <div className="filter-content mb-5 filter-item">
         ${minValue}.00 - ${maxValue}.00
       </div>
 

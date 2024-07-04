@@ -17,6 +17,7 @@
   --category-color: #bdc1caff;
   --paragraph-color: #7e6454ff;
   --border-color: #eaeaea;
+  --backdrop: rgb(0 0 0 / 50%);
 }
 
 /*Menu style*/
@@ -31,6 +32,7 @@
 .slider-icon {
   @apply w-[35px] hover:opacity-[0.8] cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
 }
+
 .hamburger-menu {
   @apply lg:hidden pr-1 w-[35px];
 }
@@ -62,21 +64,24 @@
 
 /*FILTER STYLE*/
 .filter-item {
-  @apply mb-1 text-[0.9rem];
+  @apply mb-1 text-[0.8rem] lg:text-[0.9rem];
 }
 .filter-section {
-  @apply py-4 border-b-2 border-[#eaeaea];
+  @apply py-2 lg:py-4 border-b-2 border-[#eaeaea];
 }
 
+.mobile-filter {
+  @apply flex py-2 px-4  border-2 border-borderColor rounded-[0.2em] w-fit mb-7 cursor-pointer text-primary opacity-[0.8] text-[0.8rem] items-center;
+}
 .filter-header {
-  @apply font-epilogue text-base font-semibold mb-[1.5rem];
+  @apply font-epilogue text-[0.8rem] lg:text-base font-semibold mb-[1rem];
 }
 
 .filter-content {
   @apply font-epilogue text-[#484848];
 }
 .sort-text {
-  @apply text-[0.9rem] lg:text-[1rem];
+  @apply text-[0.8rem] lg:text-[1rem];
 }
 
 .selected-filter {
@@ -144,4 +149,8 @@
 }
 .multi-range-slider.price-slider .bar-left {
   @apply py-[0.1rem];
+}
+
+.multi-range-slider.price-slider .thumb::before {
+  @apply w-[15px] lg:w-[20px] h-[15px] lg:h-[20px]  mt-[-6px] lg:mt-[-8px];
 }

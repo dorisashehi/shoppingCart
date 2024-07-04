@@ -2,7 +2,7 @@ import { Children } from "react";
 
 const CostumCheckbox = ({ label }) => {
   return (
-    <label htmlFor="check-box-1" className="cursor-pointer relative">
+    <label htmlFor="check-box-1" className="cursor-pointer relative flex">
       <input
         type="checkbox"
         id="check-box-1"
