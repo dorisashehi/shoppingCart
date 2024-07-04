@@ -18,7 +18,9 @@ const Collections = () => {
                   <li>
                     <CostumCheckbox label="Man" />
                   </li>
-                  <li>Women</li>
+                  <li>
+                    <CostumCheckbox label="Women" />
+                  </li>
                 </ul>
               </div>
               <div className="filter-section">
@@ -28,10 +30,18 @@ const Collections = () => {
               <div className="filter-section">
                 <h1 className="filter-header">Size</h1>
                 <ul className="filter-content">
-                  <li>S</li>
-                  <li>M</li>
-                  <li>L</li>
-                  <li>XL</li>
+                  <li>
+                    <CostumCheckbox label="S" />
+                  </li>
+                  <li>
+                    <CostumCheckbox label="M" />
+                  </li>
+                  <li>
+                    <CostumCheckbox label="L" />
+                  </li>
+                  <li>
+                    <CostumCheckbox label="XL" />
+                  </li>
                 </ul>
               </div>
             </div>

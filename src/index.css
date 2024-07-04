@@ -6,9 +6,10 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #171a1fff;
-  --secondary-color: #9095a1ff;
-  --brown-color: #3d1700ff;
+  --primary-color: #242424;
+  --secondary-color: #919191;
+  --optional-color: #3e1800;
+  --brown-color: #3e1800;
   --button-color: #f8f6f5;
   --yellow-color: #f4bd62;
   --gray-color: #ebebeb;
@@ -97,4 +98,8 @@
 
 #check-box-1:checked ~ .check-1 {
   @apply opacity-100;
+}
+
+#check-box-1:checked {
+  @apply bg-optional border-optional;
 }

@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
+        optional: "var(--optional-color)",
         brown: "var(--brown-color)",
         buttonColor: "var(--button-color)",
         yellow: "var(--yellow-color)",
@@ -13,7 +14,7 @@ export default {
         sectionColor: "var(--section-bg-color)",
         category: "var(--category-color)",
         paragraph: "var(--paragraph-color)",
-        border: "var(--border-color)",
+        borderColor: "var(--border-color)",
       },
       fontFamily: {
         epilogue: ["Epilogue"],
