@@ -27,15 +27,15 @@ const Collections = () => {
                       className="filter-icons ml-1"
                       data-slot="icon"
                       fill="none"
-                      stroke-width="2.2"
+                      strokeWidth="2.2"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M6 18 18 6M6 6l12 12"
                       ></path>
                     </svg>
@@ -46,15 +46,15 @@ const Collections = () => {
                       className="filter-icons ml-1"
                       data-slot="icon"
                       fill="none"
-                      stroke-width="2.2"
+                      strokeWidth="2.2"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M6 18 18 6M6 6l12 12"
                       ></path>
                     </svg>
