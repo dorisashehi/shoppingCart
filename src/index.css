@@ -42,6 +42,10 @@
   @apply bg-brown py-[10px] px-[20px] text-buttonColor hover:opacity-80 flex items-center text-base lg:text-lg;
 }
 
+.cart-btn {
+  @apply text-center py-2 w-full;
+}
+
 .list-item {
   @apply py-2 text-[0.8rem] list-none leading-6;
 }

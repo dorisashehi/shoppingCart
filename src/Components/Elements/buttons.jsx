@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-const Button = ({ text, children }) => {
+const Button = ({ text, classN, children }) => {
   return (
-    <Link src="" className="btn-primary">
+    <Link src="" className={`btn-primary ${classN}`}>
       <span>{text}</span>
       {children}
     </Link>
