@@ -3,7 +3,7 @@ import { useState } from "react";
 import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
-
+import CartSummary from "../Elements/CartSummary";
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -131,7 +131,7 @@ const Navigation = () => {
         sidebarOpened={sidebarOpened}
         handleOpenSidebar={handleOpenSidebar}
       >
-        hello
+        <CartSummary />
       </Sidebar>
     </>
   );

@@ -58,12 +58,14 @@
   @apply p-[7px] outline outline-8 outline-[#573621] w-[27px] hover:opacity-[0.8];
 }
 
-.filter-icons {
+.filter-icons,
+.cart-icons {
   @apply w-[1rem];
 }
 
 /*FILTER STYLE*/
-.filter-item {
+.filter-item,
+.cart-item {
   @apply mb-1 text-[0.8rem] lg:text-[0.9rem];
 }
 .filter-section {
@@ -73,7 +75,8 @@
 .mobile-filter {
   @apply flex py-2 px-4  border-2 border-borderColor rounded-[0.2em] w-fit mb-7 cursor-pointer text-primary opacity-[0.8] text-[0.8rem] items-center;
 }
-.filter-header {
+.filter-header,
+.cart-header {
   @apply font-epilogue text-[0.8rem] lg:text-base font-semibold mb-[1rem];
 }
 
@@ -91,6 +94,7 @@
 .sort svg {
   @apply text-primary;
 }
+
 /* .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before {
   opacity: 1 !important;
