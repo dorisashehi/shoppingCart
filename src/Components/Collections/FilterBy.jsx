@@ -3,10 +3,10 @@ import FilterOptions from "./FilterOptions";
 import { useState } from "react";
 
 const FilterBy = () => {
-  const [sidebarState, setSidebar] = useState(false);
+  const [sidebarOpened, setOpen] = useState(false);
   const handleOpenSidebar = () => {
-    //OPEN / CLOSE SIDEBAR
-    setSidebar(!sidebarState);
+    //OPEN SIDEBAR
+    setOpen(!sidebarOpened);
   };
 
   return (
@@ -30,26 +30,11 @@ const FilterBy = () => {
         </svg>
         <span className="ml-1">Filter By</span>
       </div>
-
-      <Sidebar sidebarState={sidebarState}>
+      <Sidebar
+        sidebarOpened={sidebarOpened}
+        handleOpenSidebar={handleOpenSidebar}
+      >
         <FilterOptions />
-        <svg
-          className="filter-icons ml-1 absolute top-15 right-10"
-          data-slot="icon"
-          fill="none"
-          strokeWidth="2.2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          onClick={handleOpenSidebar}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18 18 6M6 6l12 12"
-          ></path>
-        </svg>
       </Sidebar>
     </>
   );
