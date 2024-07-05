@@ -19,17 +19,17 @@ const Sidebar = ({ sidebarOpened, handleOpenSidebar, children }) => {
     <>
       <div
         className={`fixed top-0 bg-backdrop left-0 w-[100%] z-40 p-5 h-[100%] ${
-          sidebar ? "flex" : "hidden"
+          sidebar ? "flex md:hidden" : "hidden"
         } flex-col`}
       ></div>
       <div
-        className={`fixed top-0 bg-white left-0 w-[80%] z-50 p-5 h-[100%] duration-500 flex transition-all ease-out  ${
-          sidebar ? "ml-0" : "ml-[-100%]"
+        className={`fixed top-0 bg-white right-0 w-[80%] md:w-[350px] shadow-lg shadow-neutral-400 z-50 p-5 h-[100%] duration-500 flex transition-all ease-out  ${
+          sidebar ? "mr-0" : "mr-[-100%]"
         } flex-col`}
       >
         {children}
         <svg
-          className="filter-icons ml-1 absolute top-15 right-10"
+          className="filter-icons ml-1 absolute top-15 right-10 cursor-pointer"
           data-slot="icon"
           fill="none"
           strokeWidth="2.2"
