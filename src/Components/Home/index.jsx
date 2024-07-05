@@ -1,4 +1,4 @@
-import Hero from "../Hero";
+import Hero from "./Hero";
 import ProductsSlider from "../ProductsSlider";
 
 const Home = () => {
