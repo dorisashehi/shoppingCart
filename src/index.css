@@ -72,7 +72,8 @@
 .cart-item {
   @apply mb-1 text-[0.8rem] lg:text-[0.9rem];
 }
-.filter-section {
+.filter-section,
+.cart-section {
   @apply py-2 lg:py-4 border-b-2 border-[#eaeaea];
 }
 

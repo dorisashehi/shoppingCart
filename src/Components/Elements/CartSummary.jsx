@@ -5,12 +5,12 @@ const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
   return (
     <div>
-      <div className="filter-section">
-        <h1 className="filter-header">Cart</h1>
+      <div className="cart-section">
+        <h1 className="cart-header">Cart</h1>
       </div>
 
       <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
-        <div className="flex gap-x-5 filter-section mb-5">
+        <div className="flex gap-x-5 cart-section mb-5">
           <img className="w-[100px] h-[100px] object-cover" src={exampleImg} />
           <div className="flex flex-col relative flex-1">
             <svg
@@ -38,7 +38,7 @@ const CartSummary = () => {
           </div>
         </div>
 
-        <div className="flex gap-x-5 filter-section mb-5">
+        <div className="flex gap-x-5 cart-section mb-5">
           <img className="w-[100px] h-[100px] object-cover" src={exampleImg} />
           <div className="flex flex-col relative flex-1">
             <svg
