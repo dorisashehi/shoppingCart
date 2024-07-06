@@ -1,6 +1,14 @@
-const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
+const ImageCard = ({
+  id,
+  imgSrc,
+  category,
+  lowPrice,
+  proName,
+  price,
+  classN,
+}) => {
   return (
-    <div className={`card ${classN}`}>
+    <div className={`card ${classN}`} key={id}>
       <div className="relative">
         <img src={imgSrc} className="w-full object-cover h-[300px]" />
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
@@ -48,10 +56,10 @@ const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
         </h5>
         <div className="price flex gap-3">
           <div className="low-price font-epilogue text-primary font-semibold text-[1.1rem] lg:text-[1.3rem]">
-            ${lowPrice}
+            ${price}
           </div>
           <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem] lg:text-[1.3rem]">
-            ${price}
+            ${lowPrice}
           </div>
         </div>
       </div>
