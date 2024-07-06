@@ -109,18 +109,18 @@ const Navigation = () => {
             id="navbar-sticky"
           >
             <li>
-              <Link href="/" className="menu-item" aria-current="page">
+              <Link to="/" className="menu-item" aria-current="page">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/collections" className="menu-item">
-                Collections
+              <Link to="/shop" className="menu-item">
+                Shop
               </Link>
             </li>
             <li>
-              <Link href="/contacts" className="menu-item">
-                Contact1
+              <Link to="/contacts" className="menu-item">
+                Contact
               </Link>
             </li>
           </ul>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import exampleImg from "../../assets/images/cart/example-cloth.png";
 import Button from "../Elements/buttons";
 
@@ -129,7 +130,7 @@ const CartSummary = () => {
           text="Checkout"
         ></Button>
         <div className="underline cursor-pointer sort-text md:self-end text-center">
-          View Cart
+          <Link to="/cart">View Cart</Link>
         </div>
       </div>
     </div>
