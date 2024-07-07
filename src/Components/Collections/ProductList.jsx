@@ -24,46 +24,56 @@ const ProductList = () => {
       const data = await response.json();
       return data.products; //RETURN ONLY PRODUCTS FROM DATA TAKEN
     } catch (error) {
-      // setProducts({
-      //   ...products,
-      //   loading: false,
-      //   errorMsg: error,
-      // });
-      console.log(error);
       throw error;
     }
   };
 
   const fetchAllData = async () => {
     const categoryListUrl = "https://dummyjson.com/products/category-list";
-    const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
-    const catArray = await response.json();
+    try {
+      const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
+      if (!response.ok) {
+        throw new Error("Couldn't fetch data");
+      }
+      const catArray = await response.json();
 
-    const womenCategories = catArray.filter(
-      (
-        category //FILTER ONES THAT ARE RELATED TPO WOMENS
-      ) => category.startsWith("womens-")
-    );
+      const womenCategories = catArray.filter(
+        (
+          category //FILTER ONES THAT ARE RELATED TPO WOMENS
+        ) => category.startsWith("womens-")
+      );
 
-    const allData = await Promise.all(
-      //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
-      womenCategories.map((cat) => fetchData(getUrl(cat)))
-    );
-    return allData;
+      const allData = await Promise.all(
+        //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
+        womenCategories.map((cat) => fetchData(getUrl(cat)))
+      );
+      return allData;
+    } catch (error) {
+      throw error;
+    }
   };
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchAllData(); //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
-
-      const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
-      setTimeout(() => {
-        setProducts({
-          //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-          loading: false,
-          data: allProducts,
+      fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+        .then((data) => {
+          const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
+          setTimeout(() => {
+            setProducts({
+              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+              loading: false,
+              data: allProducts,
+            });
+          }, 1000);
+        })
+        .catch((error) => {
+          setProducts({
+            ...products,
+            loading: false,
+            errorMsg: error.message,
+          });
+          console.log(error.message);
         });
-      }, 1000);
     };
 
     getProducts(); //START HERE
@@ -86,7 +96,7 @@ const ProductList = () => {
         ))
       )}
 
-      {/* <div>{products.errorMsg}</div> */}
+      <div className="w-full">{products.errorMsg}</div>
     </div>
   );
 };
