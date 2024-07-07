@@ -14,7 +14,7 @@ const ProductList = () => {
     const categoryProducts = "https://dummyjson.com/products/category/" + cat;
     return categoryProducts;
   };
-  const fetchData = async (url) => {
+  const fetchUrlData = async (url) => {
     //FETCH DATA FROM THE API AND SHOW / HIDE LOADING SPINNER.
     try {
       const response = await fetch(url); //FETCH DATA FOR A SPECIFIC URL
@@ -28,24 +28,30 @@ const ProductList = () => {
     }
   };
 
-  const fetchAllData = async () => {
+  const fetchCategories = async () => {
+    //FETCH SPECIFIC CATEGORIES AVAILABLE
     const categoryListUrl = "https://dummyjson.com/products/category-list";
+    const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
+    if (!response.ok) {
+      throw new Error("Couldn't fetch data");
+    }
+    const catArray = await response.json();
+
+    const womenCategories = catArray.filter(
+      (
+        category //FILTER ONES THAT ARE RELATED TPO WOMENS
+      ) => category.startsWith("womens-")
+    );
+
+    return womenCategories;
+  };
+
+  const fetchAllData = async () => {
     try {
-      const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
-      if (!response.ok) {
-        throw new Error("Couldn't fetch data");
-      }
-      const catArray = await response.json();
-
-      const womenCategories = catArray.filter(
-        (
-          category //FILTER ONES THAT ARE RELATED TPO WOMENS
-        ) => category.startsWith("womens-")
-      );
-
+      const categories = await fetchCategories();
       const allData = await Promise.all(
         //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
-        womenCategories.map((cat) => fetchData(getUrl(cat)))
+        categories.map((cat) => fetchUrlData(getUrl(cat)))
       );
       return allData;
     } catch (error) {
