@@ -1,16 +1,11 @@
-const ImageCard = ({
-  id,
-  imgSrc,
-  category,
-  lowPrice,
-  proName,
-  price,
-  classN,
-}) => {
+const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
   return (
-    <div className={`card ${classN}`} key={id}>
+    <div className={`card ${classN}`}>
       <div className="relative">
-        <img src={imgSrc} className="w-full object-cover h-[300px]" />
+        <img
+          src={imgSrc}
+          className="w-full object-cover h-[300px] bg-[#f5f5f5]"
+        />
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
           <svg
             className="slider-icon"

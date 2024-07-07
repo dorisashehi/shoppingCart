@@ -6,33 +6,54 @@ const ProductList = () => {
   const [products, setProducts] = useState({
     loading: true,
     data: [],
+    errorMsg: "",
   });
-  useEffect(() => {
-    async function fetchData() {
-      //FETCH DATA FROM THE API AND SHOW / HIDE LOADING SPINNER.
+
+  const fetchData = async () => {
+    //FETCH DATA FROM THE API AND SHOW / HIDE LOADING SPINNER.
+    try {
       const response = await fetch(
         "https://dummyjson.com/products/category/womens-dresses"
       );
-      const data = await response.json();
 
+      if (response.ok) {
+        const result = await response.json();
+
+        return result;
+      } else {
+        throw new Error("Couldn't fetch data");
+      }
+    } catch (error) {
+      setProducts({
+        ...products,
+        loading: false,
+        errorMsg: error,
+      });
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await fetchData();
       setTimeout(() => {
         setProducts({
           loading: false,
           data: data.products,
         });
       }, 1000);
-    }
+    };
 
-    fetchData();
+    getProducts();
   }, []);
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
       {products.loading ? (
         <Spinner />
       ) : (
-        Array.from(products.data).map((product, index) => (
+        Object.values(products.data).map((product, index) => (
           <ImageCard
-            id={index}
+            key={index}
             imgSrc={product.thumbnail}
             category={product.category}
             proName={product.title}
@@ -42,6 +63,8 @@ const ProductList = () => {
           />
         ))
       )}
+
+      {/* <div>{products.errorMsg}</div> */}
     </div>
   );
 };
