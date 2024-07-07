@@ -9,49 +9,71 @@ const ProductList = () => {
     errorMsg: "",
   });
 
-  const fetchData = async () => {
+  const getUrl = (cat) => {
+    //GET URL FOR A SPECIFIC CATEGORY
+    const categoryProducts = "https://dummyjson.com/products/category/" + cat;
+    return categoryProducts;
+  };
+  const fetchData = async (url) => {
     //FETCH DATA FROM THE API AND SHOW / HIDE LOADING SPINNER.
     try {
-      const response = await fetch(
-        "https://dummyjson.com/products/category/womens-dresses"
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-
-        return result;
-      } else {
+      const response = await fetch(url); //FETCH DATA FOR A SPECIFIC URL
+      if (!response.ok) {
         throw new Error("Couldn't fetch data");
       }
+      const data = await response.json();
+      return data.products; //RETURN ONLY PRODUCTS FROM DATA TAKEN
     } catch (error) {
-      setProducts({
-        ...products,
-        loading: false,
-        errorMsg: error,
-      });
+      // setProducts({
+      //   ...products,
+      //   loading: false,
+      //   errorMsg: error,
+      // });
       console.log(error);
+      throw error;
     }
+  };
+
+  const fetchAllData = async () => {
+    const categoryListUrl = "https://dummyjson.com/products/category-list";
+    const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
+    const catArray = await response.json();
+
+    const womenCategories = catArray.filter(
+      (
+        category //FILTER ONES THAT ARE RELATED TPO WOMENS
+      ) => category.startsWith("womens-")
+    );
+
+    const allData = await Promise.all(
+      //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
+      womenCategories.map((cat) => fetchData(getUrl(cat)))
+    );
+    return allData;
   };
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchData();
+      const data = await fetchAllData(); //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+
+      const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
       setTimeout(() => {
         setProducts({
+          //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
           loading: false,
-          data: data.products,
+          data: allProducts,
         });
       }, 1000);
     };
 
-    getProducts();
+    getProducts(); //START HERE
   }, []);
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
       {products.loading ? (
         <Spinner />
       ) : (
-        Object.values(products.data).map((product, index) => (
+        products.data.map((product, index) => (
           <ImageCard
             key={index}
             imgSrc={product.thumbnail}
