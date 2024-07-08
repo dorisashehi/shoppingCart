@@ -137,11 +137,11 @@
 }
 
 /*CHECKBOX STYLE*/
-#check-box-1:checked ~ .check-1 {
+.cat-checkbox:checked ~ svg {
   @apply opacity-100;
 }
 
-#check-box-1:checked {
+.cat-checkbox:checked {
   @apply bg-optional border-optional;
 }
 

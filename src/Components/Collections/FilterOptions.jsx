@@ -56,7 +56,7 @@ const FilterOptions = () => {
         <h1 className="filter-header">Price</h1>
         <PriceRange />
       </div>
-      <div className="filter-section">
+      {/* <div className="filter-section">
         <h1 className="filter-header">Size</h1>
         <ul className="filter-content">
           <li className="filter-item">
@@ -72,7 +72,7 @@ const FilterOptions = () => {
             <CostumCheckbox label="XL" />
           </li>
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };

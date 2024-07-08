@@ -1,15 +1,21 @@
-import { Children } from "react";
+import { Children, useState } from "react";
 
 const CostumCheckbox = ({ label }) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleChecked = () => {
+    setIsChecked(!isChecked);
+  };
   return (
-    <label htmlFor="check-box-1" className="cursor-pointer relative flex">
+    <label htmlFor={label} className="cursor-pointer relative flex">
       <input
         type="checkbox"
-        id="check-box-1"
-        className=" appearance-none h-4 w-4 border-2 rounded-[0.2em] border-borderColor"
+        id={label}
+        className=" appearance-none h-4 w-4 border-2 rounded-[0.2em] border-borderColor cat-checkbox"
+        checked={isChecked}
+        onChange={handleChecked}
       />
       <svg
-        className="check-1 text-white h-2.5 rounded-3x w-2.5 absolute left-[3px] top-[-1px] opacity-0 ease-in transition-opacity"
+        className="text-white h-2.5 rounded-3x w-2.5 absolute left-[3px] top-[-1px] opacity-0 ease-in transition-opacity"
         data-slot="icon"
         fill="none"
         strokeWidth="3.9"
