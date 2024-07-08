@@ -2,37 +2,34 @@ import { useEffect, useState } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 
-const FilterOptions = () => {
-  const [filters, setFilters] = useState({
-    categories: [],
-  });
+const FilterOptions = ({ categories, categoriesChck }) => {
+  const [selectedCat, setSelectedCat] = useState([]);
 
-  const fetchCategories = async () => {
-    //FETCH SPECIFIC CATEGORIES AVAILABLE
-    const categoryListUrl = "https://dummyjson.com/products/category-list";
-    const response = await fetch(categoryListUrl); //GET ALL WOMEN CATEGORIES FROM LIST OF CATEGORIES
-    if (!response.ok) {
-      throw new Error("Couldn't fetch data");
+  const handleSelected = (e) => {
+    //FNC TO AADD/REMOVE A CATEGORY SELECTED.
+    if (selectedCat.includes(e.target.value)) {
+      const updatedCat = selectedCat.filter((item) => item !== e.target.value);
+      setSelectedCat(updatedCat);
+    } else {
+      setSelectedCat([...selectedCat, e.target.value]);
     }
-    const catArray = await response.json();
-
-    const womenCategories = catArray.filter(
-      (
-        category //FILTER ONES THAT ARE RELATED TPO WOMENS
-      ) => category.startsWith("womens-")
-    );
-
-    return womenCategories;
   };
 
-  useEffect(() => {
-    const getCat = async () => {
-      const cat = await fetchCategories();
-      setFilters(cat);
-    };
+  // const [prevSelectedCat] = useState(selectedCat);
+  // if (prevSelectedCat !== selectedCat) {
+  //   console.log(selectedCat);
+  //   categoriesChck(selectedCat);
+  // }
 
-    getCat();
-  }, []);
+  // const [prevSelectedCat, setSidebarOpened] = useState(selectedCat);
+  // if (prevSelectedCat !== selectedCat) {
+  //   categoriesChck(selectedCat);
+  // }
+
+  useEffect(() => {
+    console.log(selectedCat);
+    categoriesChck(selectedCat);
+  }, [selectedCat]);
 
   return (
     <>
@@ -43,10 +40,10 @@ const FilterOptions = () => {
       <div className="filter-section">
         <h1 className="filter-header">Category</h1>
         <ul className="filter-content">
-          {Object.values(filters).map((cat, index) => {
+          {categories.map((cat, index) => {
             return (
               <li className="filter-item" key={index}>
-                <CostumCheckbox label={cat} />
+                <CostumCheckbox label={cat} handleSelected={handleSelected} />
               </li>
             );
           })}

@@ -1,15 +1,18 @@
-import { Children, useState } from "react";
+import { Children, useEffect, useState } from "react";
 
-const CostumCheckbox = ({ label }) => {
+const CostumCheckbox = ({ label, handleSelected }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const handleChecked = () => {
+  const handleChecked = (e) => {
     setIsChecked(!isChecked);
+    handleSelected(e);
   };
+
   return (
     <label htmlFor={label} className="cursor-pointer relative flex">
       <input
         type="checkbox"
         id={label}
+        value={label}
         className=" appearance-none h-4 w-4 border-2 rounded-[0.2em] border-borderColor cat-checkbox"
         checked={isChecked}
         onChange={handleChecked}
