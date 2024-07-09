@@ -7,19 +7,19 @@ const ProductList = ({ products, error, filters }) => {
 
   const filteredProd = products.data.filter((product) => {
     // console.log(categories.includes(product.category));
-    if (categories && categories.includes(product.category)) {
-      return true;
+
+    if (categories && !categories.includes(product.category)) {
+      return false;
     }
     return true;
   });
 
-  console.log(filteredProd);
-
-  // console.log(filteredProd);
+  const initialProducts =
+    filteredProd.length === 0 ? products.data : filteredProd;
 
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
-      {filteredProd.map((product, index) => (
+      {initialProducts.map((product, index) => (
         <ImageCard
           key={index}
           imgSrc={product.thumbnail}
