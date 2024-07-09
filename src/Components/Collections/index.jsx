@@ -7,8 +7,6 @@ import FilterBy from "./FilterBy";
 import { useEffect, useState } from "react";
 
 const Collections = () => {
-  //let [products, setProducts] = useState([]);
-
   const [categories, setDefaultCategories] = useState([]); //ALL CATEGORIES
 
   const [filters, setFilters] = useState({
