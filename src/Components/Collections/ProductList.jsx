@@ -7,6 +7,8 @@ const ProductList = ({ products, error }) => {
     <div className="flex flex-wrap justify-between gap-y-10">
       {products.loading ? (
         <Spinner />
+      ) : error !== "" ? (
+        <div className="w-full">{error}</div>
       ) : (
         products.data.map((product, index) => (
           <ImageCard
@@ -20,8 +22,6 @@ const ProductList = ({ products, error }) => {
           />
         ))
       )}
-
-      <div className="w-full">{error}</div>
     </div>
   );
 };

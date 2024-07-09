@@ -23,6 +23,8 @@ const Collections = () => {
     errorMsg: "",
   });
 
+  const [error, setErrorMsg] = useState(""); //STATE TO HANDLE ERROR MESSAGES
+
   const getUrl = (cat) => {
     //GET URL FOR A SPECIFIC CATEGORY
     const categoryProducts = "https://dummyjson.com/products/category/" + cat;
@@ -43,7 +45,6 @@ const Collections = () => {
   };
 
   const fetchAllData = async () => {
-    console.log("yy");
     try {
       //const categories = await fetchCategories();
 
@@ -95,32 +96,36 @@ const Collections = () => {
               loading: false,
               data: allProducts,
             });
-          }, 1000);
+          }, 200);
         })
         .catch((error) => {
-          // setProducts({
-          //   ...products,
-          //   loading: false,
-          //   errorMsg: error.message,
-          // });
-          console.log(error.message);
+          setErrorMsg(error.message);
         });
     } else {
-      let updatedProd = products.filter((item) =>
-        filters.categories.includes(item.category)
-      );
       setFilteredProducts({
-        //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-        loading: false,
-        data: updatedProd,
+        //ADD LOADING UNTILL DATA IS TAKEN
+        loading: true,
       });
+
+      let updatedProd = products.filter(
+        (
+          item //FILTER ONLY PRODUCTS WITH CATEGORY INCLUDED INTO FILTERS
+        ) => filters.categories.includes(item.category)
+      );
+      setTimeout(() => {
+        setFilteredProducts({
+          //SET PRODCUTS TO THE FILTERED STATE AFTER A SMALL DELAY OF LOADING
+          loading: false,
+          data: updatedProd,
+        });
+      }, 1000);
     }
   };
 
   useEffect(() => {
     //IF FILTERS DATA CHANGED
     getProducts(); //START HERE
-  }, [categories, filters.categories]);
+  }, [categories, filters.categories]); //EXECUTED ONLY ON CATEGORIES OR FILTERS CHANGE
 
   const updateFilters = (filteredProd) => {
     //FUNC to update filters
@@ -144,7 +149,7 @@ const Collections = () => {
               <SortFilter />
 
               <ActiveFilters />
-              <ProductList products={filteredProducts} />
+              <ProductList products={filteredProducts} error={error} />
             </div>
           </div>
         </div>
