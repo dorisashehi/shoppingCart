@@ -2,7 +2,7 @@ import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
 import { useEffect } from "react";
 import { useState } from "react";
-const ProductList = ({ products }) => {
+const ProductList = ({ products, error }) => {
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
       {products.loading ? (
@@ -21,7 +21,7 @@ const ProductList = ({ products }) => {
         ))
       )}
 
-      <div className="w-full">{products.errorMsg}</div>
+      <div className="w-full">{error}</div>
     </div>
   );
 };

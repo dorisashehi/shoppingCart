@@ -7,11 +7,7 @@ import FilterBy from "./FilterBy";
 import { useEffect, useState } from "react";
 
 const Collections = () => {
-  let [products, setProducts] = useState({
-    loading: true,
-    data: [],
-    errorMsg: "",
-  });
+  let [products, setProducts] = useState([]);
 
   const [categories, setDefaultCategories] = useState([]); //ALL CATEGORIES
 
@@ -90,11 +86,10 @@ const Collections = () => {
         .then((data) => {
           const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
           setTimeout(() => {
-            setProducts({
+            setProducts(
               //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-              loading: false,
-              data: allProducts,
-            });
+              allProducts
+            );
             setFilteredProducts({
               //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
               loading: false,
@@ -103,15 +98,15 @@ const Collections = () => {
           }, 1000);
         })
         .catch((error) => {
-          setProducts({
-            ...products,
-            loading: false,
-            errorMsg: error.message,
-          });
+          // setProducts({
+          //   ...products,
+          //   loading: false,
+          //   errorMsg: error.message,
+          // });
           console.log(error.message);
         });
     } else {
-      let updatedProd = products.data.filter((item) =>
+      let updatedProd = products.filter((item) =>
         filters.categories.includes(item.category)
       );
       setFilteredProducts({
