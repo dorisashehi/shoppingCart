@@ -128,7 +128,10 @@ const Collections = () => {
             <div className="flex-1">
               <SortFilter />
 
-              <ActiveFilters />
+              <ActiveFilters
+                categories={filters.categories}
+                setFilters={setFilters}
+              />
               <ProductList
                 products={products}
                 error={error}

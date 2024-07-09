@@ -3,8 +3,6 @@ import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 
 const FilterOptions = ({ categories, selectedCategories, setFilters }) => {
-  //const [selectedCat, setSelectedCat] = useState([]);
-
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
 

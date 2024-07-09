@@ -6,8 +6,6 @@ const ProductList = ({ products, error, filters }) => {
   const categories = [...filters.categories];
 
   const filteredProd = products.data.filter((product) => {
-    // console.log(categories.includes(product.category));
-
     if (categories && !categories.includes(product.category)) {
       return false;
     }
