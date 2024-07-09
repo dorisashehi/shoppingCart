@@ -7,14 +7,24 @@ import FilterBy from "./FilterBy";
 import { useEffect, useState } from "react";
 
 const Collections = () => {
-  const [products, setProducts] = useState({
+  let [products, setProducts] = useState({
     loading: true,
     data: [],
     errorMsg: "",
   });
 
+  const [categories, setDefaultCategories] = useState([]); //ALL CATEGORIES
+
   const [filters, setFilters] = useState({
+    //FILTERS SELECTED
     categories: [],
+  });
+
+  const [filteredProducts, setFilteredProducts] = useState({
+    //PRODUCTS FILTERED BASED ON CATEGORIES
+    loading: true,
+    data: [],
+    errorMsg: "",
   });
 
   const getUrl = (cat) => {
@@ -39,9 +49,10 @@ const Collections = () => {
   const fetchAllData = async () => {
     try {
       //const categories = await fetchCategories();
+
       const allData = await Promise.all(
         //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
-        filters.categories.map((cat) => fetchUrlData(getUrl(cat)))
+        categories.map((cat) => fetchUrlData(getUrl(cat)))
       );
       return allData;
     } catch (error) {
@@ -64,45 +75,60 @@ const Collections = () => {
       ) => category.startsWith("womens-")
     );
 
-    setFilters({ ...filters, categories: womenCategories });
+    return womenCategories;
   };
 
   useEffect(() => {
     //ON RENDERER GET ALL CATEGORIES
-    fetchCategories();
+    fetchCategories().then((data) => setDefaultCategories(data));
   }, []);
 
-  useEffect(() => {
-    //IF FILTERS DATA CHANGED
-    const getProducts = async () => {
-      fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
-        .then((data) => {
-          const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
-          setTimeout(() => {
+  const getProducts = async () => {
+    fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+      .then((data) => {
+        const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
+        setTimeout(() => {
+          if (filters.categories.length === 0) {
             setProducts({
               //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
               loading: false,
               data: allProducts,
             });
-          }, 1000);
-        })
-        .catch((error) => {
-          setProducts({
-            ...products,
-            loading: false,
-            errorMsg: error.message,
-          });
-          console.log(error.message);
+            setFilteredProducts({
+              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+              loading: false,
+              data: allProducts,
+            });
+          } else {
+            let updatedProd = products.data.filter((item) =>
+              filters.categories.includes(item.category)
+            );
+            setFilteredProducts({
+              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+              loading: false,
+              data: updatedProd,
+            });
+          }
+        }, 1000);
+      })
+      .catch((error) => {
+        setProducts({
+          ...products,
+          loading: false,
+          errorMsg: error.message,
         });
-    };
+        console.log(error.message);
+      });
+  };
 
+  useEffect(() => {
+    //IF FILTERS DATA CHANGED
     getProducts(); //START HERE
-  }, [filters]);
+  }, [categories, filters.categories]);
 
-  const categoriesChck = (updatedCat) => {
-    //SET AT FILTERS CATEGORIES CHECKED TO UPDATE THE VIEW
-    //console.log(updatedCat);
-    setFilters({ ...filters, categories: updatedCat });
+  const updateFilters = (filteredProd) => {
+    //FUNC to update filters
+    setFilters({ ...filters, categories: filteredProd });
   };
 
   return (
@@ -113,8 +139,8 @@ const Collections = () => {
           <div className="flex gap-10">
             <div className="w-[250px] pr-5 hidden lg:block">
               <FilterOptions
-                categories={filters.categories}
-                categoriesChck={categoriesChck}
+                categories={categories}
+                updateFilters={updateFilters}
               />
             </div>
 
@@ -122,7 +148,7 @@ const Collections = () => {
               <SortFilter />
 
               <ActiveFilters />
-              <ProductList products={products} />
+              <ProductList products={filteredProducts} />
             </div>
           </div>
         </div>

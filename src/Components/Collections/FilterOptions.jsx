@@ -2,33 +2,39 @@ import { useEffect, useState } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 
-const FilterOptions = ({ categories, categoriesChck }) => {
+const FilterOptions = ({ categories, updateFilters }) => {
   const [selectedCat, setSelectedCat] = useState([]);
+
+  const addCategory = (cat) => {
+    //ADD CATEGORIES TO SELECTED CATEGORIES LIST
+
+    setSelectedCat([...selectedCat, cat]);
+  };
+
+  const removeCategory = (cat) => {
+    //REMOVE CATEGORIE FROM SELECTED CATEGORIES LIST
+
+    const updatedCat = selectedCat.filter((item) => item !== cat);
+    setSelectedCat(updatedCat);
+  };
+
+  const resetCategories = () => {
+    //REMOVE ALL SELECTED CATEGORIES
+    setSelectedCat([]);
+  };
 
   const handleSelected = (e) => {
     //FNC TO AADD/REMOVE A CATEGORY SELECTED.
+
     if (selectedCat.includes(e.target.value)) {
-      const updatedCat = selectedCat.filter((item) => item !== e.target.value);
-      setSelectedCat(updatedCat);
+      removeCategory(e.target.value);
     } else {
-      setSelectedCat([...selectedCat, e.target.value]);
+      addCategory(e.target.value);
     }
   };
 
-  // const [prevSelectedCat] = useState(selectedCat);
-  // if (prevSelectedCat !== selectedCat) {
-  //   console.log(selectedCat);
-  //   categoriesChck(selectedCat);
-  // }
-
-  // const [prevSelectedCat, setSidebarOpened] = useState(selectedCat);
-  // if (prevSelectedCat !== selectedCat) {
-  //   categoriesChck(selectedCat);
-  // }
-
   useEffect(() => {
-    console.log(selectedCat);
-    categoriesChck(selectedCat);
+    updateFilters(selectedCat);
   }, [selectedCat]);
 
   return (
@@ -43,7 +49,11 @@ const FilterOptions = ({ categories, categoriesChck }) => {
           {categories.map((cat, index) => {
             return (
               <li className="filter-item" key={index}>
-                <CostumCheckbox label={cat} handleSelected={handleSelected} />
+                <CostumCheckbox
+                  label={cat}
+                  handleSelected={handleSelected}
+                  checked={selectedCat.includes(cat) && true}
+                />
               </li>
             );
           })}

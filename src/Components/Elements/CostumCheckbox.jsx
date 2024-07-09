@@ -1,7 +1,7 @@
 import { Children, useEffect, useState } from "react";
 
-const CostumCheckbox = ({ label, handleSelected }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const CostumCheckbox = ({ label, handleSelected, checked }) => {
+  const [isChecked, setIsChecked] = useState(checked);
   const handleChecked = (e) => {
     setIsChecked(!isChecked);
     handleSelected(e);
@@ -14,7 +14,7 @@ const CostumCheckbox = ({ label, handleSelected }) => {
         id={label}
         value={label}
         className=" appearance-none h-4 w-4 border-2 rounded-[0.2em] border-borderColor cat-checkbox"
-        checked={isChecked}
+        checked={checked}
         onChange={handleChecked}
       />
       <svg
