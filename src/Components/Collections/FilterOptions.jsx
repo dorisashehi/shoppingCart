@@ -2,20 +2,27 @@ import { useEffect, useState } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 
-const FilterOptions = ({ categories, updateFilters }) => {
-  const [selectedCat, setSelectedCat] = useState([]);
+const FilterOptions = ({ categories, selectedCategories, setFilters }) => {
+  //const [selectedCat, setSelectedCat] = useState([]);
 
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
 
-    setSelectedCat([...selectedCat, cat]);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      categories: [...prevFilters.categories, cat],
+    }));
   };
 
   const removeCategory = (cat) => {
     //REMOVE CATEGORIE FROM SELECTED CATEGORIES LIST
 
-    const updatedCat = selectedCat.filter((item) => item !== cat);
-    setSelectedCat(updatedCat);
+    const updatedCat = selectedCategories.filter((item) => item !== cat);
+
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      categories: updatedCat,
+    }));
   };
 
   const resetCategories = () => {
@@ -26,16 +33,16 @@ const FilterOptions = ({ categories, updateFilters }) => {
   const handleSelected = (e) => {
     //FNC TO AADD/REMOVE A CATEGORY SELECTED.
 
-    if (selectedCat.includes(e.target.value)) {
+    if (selectedCategories.includes(e.target.value)) {
       removeCategory(e.target.value);
     } else {
       addCategory(e.target.value);
     }
   };
 
-  useEffect(() => {
-    updateFilters(selectedCat);
-  }, [selectedCat]);
+  // useEffect(() => {
+  //   updateFilters(selectedCat);
+  // }, [selectedCat]);
 
   return (
     <>
@@ -52,7 +59,7 @@ const FilterOptions = ({ categories, updateFilters }) => {
                 <CostumCheckbox
                   label={cat}
                   handleSelected={handleSelected}
-                  checked={selectedCat.includes(cat) && true}
+                  checked={selectedCategories.includes(cat) && true}
                 />
               </li>
             );

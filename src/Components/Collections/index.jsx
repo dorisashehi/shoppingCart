@@ -7,7 +7,7 @@ import FilterBy from "./FilterBy";
 import { useEffect, useState } from "react";
 
 const Collections = () => {
-  let [products, setProducts] = useState([]);
+  //let [products, setProducts] = useState([]);
 
   const [categories, setDefaultCategories] = useState([]); //ALL CATEGORIES
 
@@ -16,7 +16,7 @@ const Collections = () => {
     categories: [],
   });
 
-  const [filteredProducts, setFilteredProducts] = useState({
+  const [products, setProducts] = useState({
     //PRODUCTS FILTERED BASED ON CATEGORIES
     loading: true,
     data: [],
@@ -82,55 +82,36 @@ const Collections = () => {
   }, []);
 
   const getProducts = async () => {
-    if (filters.categories.length === 0) {
-      fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
-        .then((data) => {
-          const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
-          setTimeout(() => {
-            setProducts(
-              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-              allProducts
-            );
-            setFilteredProducts({
-              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-              loading: false,
-              data: allProducts,
-            });
-          }, 200);
-        })
-        .catch((error) => {
-          setErrorMsg(error.message);
-        });
-    } else {
-      setFilteredProducts({
-        //ADD LOADING UNTILL DATA IS TAKEN
-        loading: true,
+    fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+      .then((data) => {
+        const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
+        setTimeout(() => {
+          setProducts({
+            //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+            loading: false,
+            data: allProducts,
+          });
+          // setFilteredProducts({
+          //   //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+          //   loading: false,
+          //   data: allProducts,
+          // });
+        }, 200);
+      })
+      .catch((error) => {
+        setErrorMsg(error.message);
       });
-
-      let updatedProd = products.filter(
-        (
-          item //FILTER ONLY PRODUCTS WITH CATEGORY INCLUDED INTO FILTERS
-        ) => filters.categories.includes(item.category)
-      );
-      setTimeout(() => {
-        setFilteredProducts({
-          //SET PRODCUTS TO THE FILTERED STATE AFTER A SMALL DELAY OF LOADING
-          loading: false,
-          data: updatedProd,
-        });
-      }, 1000);
-    }
   };
 
   useEffect(() => {
     //IF FILTERS DATA CHANGED
     getProducts(); //START HERE
-  }, [categories, filters.categories]); //EXECUTED ONLY ON CATEGORIES OR FILTERS CHANGE
+  }, [categories]); //EXECUTED ONLY ON CATEGORIES OR FILTERS CHANGE
 
-  const updateFilters = (filteredProd) => {
-    //FUNC to update filters
-    setFilters({ ...filters, categories: filteredProd });
-  };
+  // const updateFilters = (filteredProd) => {
+  //   //FUNC to update filters
+  //   setFilters({ ...filters, categories: filteredProd });
+  // };
 
   return (
     <>
@@ -141,7 +122,8 @@ const Collections = () => {
             <div className="w-[250px] pr-5 hidden lg:block">
               <FilterOptions
                 categories={categories}
-                updateFilters={updateFilters}
+                selectedCategories={filters.categories}
+                setFilters={setFilters}
               />
             </div>
 
@@ -149,7 +131,11 @@ const Collections = () => {
               <SortFilter />
 
               <ActiveFilters />
-              <ProductList products={filteredProducts} error={error} />
+              <ProductList
+                products={products}
+                error={error}
+                filters={filters}
+              />
             </div>
           </div>
         </div>
