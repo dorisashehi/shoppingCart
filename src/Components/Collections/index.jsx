@@ -47,6 +47,7 @@ const Collections = () => {
   };
 
   const fetchAllData = async () => {
+    console.log("yy");
     try {
       //const categories = await fetchCategories();
 
@@ -84,11 +85,11 @@ const Collections = () => {
   }, []);
 
   const getProducts = async () => {
-    fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
-      .then((data) => {
-        const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
-        setTimeout(() => {
-          if (filters.categories.length === 0) {
+    if (filters.categories.length === 0) {
+      fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+        .then((data) => {
+          const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
+          setTimeout(() => {
             setProducts({
               //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
               loading: false,
@@ -99,26 +100,26 @@ const Collections = () => {
               loading: false,
               data: allProducts,
             });
-          } else {
-            let updatedProd = products.data.filter((item) =>
-              filters.categories.includes(item.category)
-            );
-            setFilteredProducts({
-              //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-              loading: false,
-              data: updatedProd,
-            });
-          }
-        }, 1000);
-      })
-      .catch((error) => {
-        setProducts({
-          ...products,
-          loading: false,
-          errorMsg: error.message,
+          }, 1000);
+        })
+        .catch((error) => {
+          setProducts({
+            ...products,
+            loading: false,
+            errorMsg: error.message,
+          });
+          console.log(error.message);
         });
-        console.log(error.message);
+    } else {
+      let updatedProd = products.data.filter((item) =>
+        filters.categories.includes(item.category)
+      );
+      setFilteredProducts({
+        //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
+        loading: false,
+        data: updatedProd,
       });
+    }
   };
 
   useEffect(() => {
