@@ -12,6 +12,10 @@ const Collections = () => {
   const [filters, setFilters] = useState({
     //FILTERS SELECTED
     categories: [],
+    priceRange: {
+      minVal: 0,
+      maxVal: 1000,
+    },
   });
 
   const [products, setProducts] = useState({
@@ -121,6 +125,7 @@ const Collections = () => {
               <FilterOptions
                 categories={categories}
                 selectedCategories={filters.categories}
+                priceRange={filters.priceRange}
                 setFilters={setFilters}
               />
             </div>
