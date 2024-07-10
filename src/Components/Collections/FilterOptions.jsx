@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 
-const FilterOptions = ({ categories, selectedCategories, setFilters }) => {
+const FilterOptions = ({
+  categories,
+  selectedCategories,
+  priceRange,
+  setFilters,
+}) => {
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
 
@@ -21,11 +26,6 @@ const FilterOptions = ({ categories, selectedCategories, setFilters }) => {
       ...prevFilters,
       categories: updatedCat,
     }));
-  };
-
-  const resetCategories = () => {
-    //REMOVE ALL SELECTED CATEGORIES
-    setSelectedCat([]);
   };
 
   const handleSelected = (e) => {
@@ -66,7 +66,7 @@ const FilterOptions = ({ categories, selectedCategories, setFilters }) => {
       </div>
       <div className="filter-section">
         <h1 className="filter-header">Price</h1>
-        <PriceRange />
+        <PriceRange setFilters={setFilters} initialRange={priceRange} />
       </div>
       {/* <div className="filter-section">
         <h1 className="filter-header">Size</h1>

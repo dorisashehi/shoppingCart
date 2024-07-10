@@ -3,13 +3,41 @@ import Spinner from "../Spinner";
 import { useEffect } from "react";
 import { useState } from "react";
 const ProductList = ({ products, error, filters }) => {
-  const categories = [...filters.categories];
+  const { categories, priceRange } = filters;
+  const { minVal, maxVal } = priceRange;
 
   const filteredProd = products.data.filter((product) => {
-    if (categories && !categories.includes(product.category)) {
-      return false;
+    // if (categories && !categories.includes(product.category)) {
+    //   return false;
+    // }
+
+    // // Check if product price is within the specified range
+    // if (!(product.price > minVal && product.price < maxVal)) {
+    //   return false; // Exclude products outside price range
+    // }
+
+    let catMatches = true;
+    let priceMatches = true;
+    if (categories && categories.length > 0) {
+      catMatches = categories.includes(product.category);
     }
-    return true;
+
+    // Check if product price is within the specified range
+    if (minVal !== undefined && maxVal !== undefined) {
+      priceMatches = product.price > minVal && product.price < maxVal; // Exclude products outside price range
+    }
+
+    let bothMatched = catMatches && priceMatches;
+
+    // let catt = catMatches || !priceMatches;
+
+    // let tt = !catMatches || priceMatches;
+
+    // console.log(catt);
+
+    return bothMatched;
+
+    //return true;
   });
 
   const initialProducts =
