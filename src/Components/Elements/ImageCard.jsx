@@ -1,11 +1,34 @@
 import { useState } from "react";
 
-const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
-  const [addedToCard, setAdded] = useState(false);
+const ImageCard = ({
+  id,
+  imgSrc,
+  category,
+  lowPrice,
+  proName,
+  price,
+  classN,
+  addToCard,
+}) => {
+  //const [cartProp, setToCard] = useState({});
 
-  const addToCard = () => {
-    console.log("hello");
-    setAdded(true);
+  let [quantity, setQuantity] = useState(0);
+
+  const addQuantity = () => {
+    setQuantity(quantity + 1);
+    const newProd = {
+      id: id,
+      quantity: 1, // Start with quantity 1 if adding a new item
+    };
+    addToCard(newProd);
+  };
+
+  const removeQuantity = () => {
+    //ADD QUANTITY ONLY WHEN ITS > 0
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+    return;
   };
   return (
     <div className={`card ${classN}`}>
@@ -43,35 +66,36 @@ const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
               data-slot="icon"
               className="slider-icon"
               fill="none"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
+              onClick={removeQuantity}
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M5 12h14"
               ></path>
             </svg>
 
-            <span className="slider-icon">1</span>
+            <span className="slider-icon">{quantity}</span>
 
             <svg
               data-slot="icon"
               className="slider-icon"
-              onClick={addToCard}
               fill="none"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
+              onClick={addQuantity}
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M12 4.5v15m7.5-7.5h-15"
               ></path>
             </svg>
@@ -80,7 +104,7 @@ const ImageCard = ({ imgSrc, category, lowPrice, proName, price, classN }) => {
       </div>
       <div className="content py-5">
         <h4 className="font-inter text-xs text-secondary pb-2 font-semibold">
-          {category}
+          {category} {id}
         </h4>
         <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">
           {proName}

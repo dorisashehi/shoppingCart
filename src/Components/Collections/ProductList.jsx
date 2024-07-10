@@ -2,6 +2,8 @@ import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+
 const ProductList = ({ products, error, filters }) => {
   const { categories, priceRange } = filters;
   const { minVal, maxVal } = priceRange;
@@ -43,10 +45,13 @@ const ProductList = ({ products, error, filters }) => {
   const initialProducts =
     filteredProd.length === 0 ? products.data : filteredProd;
 
+  const [addToCard] = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
       {initialProducts.map((product, index) => (
         <ImageCard
+          id={product.id}
           key={index}
           imgSrc={product.thumbnail}
           category={product.category}
@@ -54,6 +59,7 @@ const ProductList = ({ products, error, filters }) => {
           lowPrice="34"
           price={product.price}
           classN="w-[100%] md:w-[31%]"
+          addToCard={addToCard}
         />
       ))}
     </div>

@@ -93,11 +93,6 @@ const Collections = () => {
             loading: false,
             data: allProducts,
           });
-          // setFilteredProducts({
-          //   //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-          //   loading: false,
-          //   data: allProducts,
-          // });
         }, 200);
       })
       .catch((error) => {
