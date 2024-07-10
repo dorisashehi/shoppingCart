@@ -4,7 +4,7 @@ import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
 import CartSummary from "../Elements/CartSummary";
-const Navigation = ({ card }) => {
+const Navigation = () => {
   const [toggle, setToggle] = useState(false);
 
   const toggleMenu = () => {

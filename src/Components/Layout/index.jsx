@@ -24,7 +24,7 @@ const Layout = () => {
   return (
     <div className="flex flex-col">
       <Navigation card={card} />
-      <Outlet context={[addToCard]} />
+      <Outlet context={{ addToCard }} />
       <Footer />
     </div>
   );

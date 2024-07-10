@@ -45,7 +45,7 @@ const ProductList = ({ products, error, filters }) => {
   const initialProducts =
     filteredProd.length === 0 ? products.data : filteredProd;
 
-  const [addToCard] = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { addToCard } = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
