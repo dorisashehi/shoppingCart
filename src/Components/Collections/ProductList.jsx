@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-const ProductList = ({ products, error, filters }) => {
-  const { categories, priceRange } = filters;
+const ProductList = ({ filters }) => {
+  const { categories, priceRange, error } = filters;
   const { minVal, maxVal } = priceRange;
+
+  const { addToCard, products } = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   const filteredProd = products.data.filter((product) => {
     // if (categories && !categories.includes(product.category)) {
@@ -44,8 +46,6 @@ const ProductList = ({ products, error, filters }) => {
 
   const initialProducts =
     filteredProd.length === 0 ? products.data : filteredProd;
-
-  const { addToCard } = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   return (
     <div className="flex flex-wrap justify-between gap-y-10">

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
+import { useOutletContext } from "react-router-dom";
 
-const FilterOptions = ({
-  categories,
-  selectedCategories,
-  priceRange,
-  setFilters,
-}) => {
+const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
+  const contextData = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+
+  const categories = contextData.categories;
+
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
 
@@ -41,7 +41,6 @@ const FilterOptions = ({
   // useEffect(() => {
   //   updateFilters(selectedCat);
   // }, [selectedCat]);
-
   return (
     <>
       <div className="filter-section">
