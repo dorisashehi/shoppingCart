@@ -51,9 +51,30 @@ const CartProvider = ({ children }) => {
     setCard(updatedCart);
   };
 
+  const findTotal = (findProdInCart) => {
+    //CALCULATE TOTAL TO PAY
+    const total = card.reduce((total, curr) => {
+      return total + curr.quantity * findProdInCart(curr.id).price;
+    }, 0);
+
+    return Number.parseFloat(total).toFixed(2);
+  };
+
+  const countCartItems = () => {
+    //COUNT CART LENGTH
+    return card.length;
+  };
+
   return (
     <CartContext.Provider
-      value={{ card, addToCard, removeFromCart, deleteAddedPro }}
+      value={{
+        card,
+        addToCard,
+        removeFromCart,
+        deleteAddedPro,
+        findTotal,
+        countCartItems,
+      }}
     >
       {children}
     </CartContext.Provider>

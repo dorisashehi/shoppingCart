@@ -6,22 +6,8 @@ import { ProductsContext } from "../../Context/ProductsContext";
 const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
 
-  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card, deleteAddedPro } = useContext(CartContext);
-
-  const findProdInCart = (proID) => {
-    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
-    return products.data.find((item) => item.id === proID);
-  };
-
-  const findTotal = () => {
-    //CALCULATE TOTAL TO PAY
-    const total = card.reduce((total, curr) => {
-      return total + curr.quantity * findProdInCart(curr.id).price;
-    }, 0);
-
-    return Number.parseFloat(total).toFixed(2);
-  };
+  const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { card, deleteAddedPro, findTotal } = useContext(CartContext);
 
   return (
     <div>
@@ -31,7 +17,7 @@ const CartSummary = () => {
 
       <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
         {card.map((product) => {
-          let { id, title, thumbnail, price } = findProdInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+          let { id, title, thumbnail, price } = prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
 
           return (
             <div className="flex gap-x-5 cart-section mb-5" key={product.id}>
@@ -70,7 +56,9 @@ const CartSummary = () => {
           );
         })}
 
-        <span className="cart-header">Order Total: $ {findTotal()}</span>
+        <span className="cart-header">
+          Order Total: $ {findTotal(prodInCart)}
+        </span>
       </div>
 
       <div className="absolute bottom-0 w-[100%] pr-[20px] bg-white pb-10 pt-5 md:pt-4 xl:pb-6 lg:pb-40">

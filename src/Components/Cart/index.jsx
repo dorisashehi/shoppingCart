@@ -1,31 +1,13 @@
 import Banner from "../Banner";
 import Button from "../Elements/buttons";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
 
 const Cart = () => {
-  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card, deleteAddedPro } = useContext(CartContext);
-
-  const findProdInCart = (proID) => {
-    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
-    return products.data.find((item) => item.id === proID);
-  };
-
-  const findTotal = () => {
-    //CALCULATE TOTAL TO PAY
-    const total = card.reduce((total, curr) => {
-      return total + curr.quantity * findProdInCart(curr.id).price;
-    }, 0);
-
-    return Number.parseFloat(total).toFixed(2);
-  };
-
-  const countCartItems = () => {
-    //COUNT CART LENGTH
-    return card.length;
-  };
+  const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { card, deleteAddedPro, findTotal, countCartItems } =
+    useContext(CartContext);
 
   return (
     <>
@@ -67,7 +49,7 @@ const Cart = () => {
                   </thead>
                   <tbody>
                     {card.map((product) => {
-                      let { id, title, thumbnail, price } = findProdInCart(
+                      let { id, title, thumbnail, price } = prodInCart(
                         product.id
                       ); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
                       return (
@@ -131,7 +113,7 @@ const Cart = () => {
                 <li className="flex justify-between mb-2 text-sm">
                   <span>Subtotal</span>
                   <span className="text-primary font-medium">
-                    ${findTotal()}
+                    ${findTotal(prodInCart)}
                   </span>
                 </li>
                 <li className="flex justify-between  mb-2 text-sm">
