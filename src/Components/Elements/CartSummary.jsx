@@ -7,7 +7,7 @@ const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
 
   const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card } = useContext(CartContext);
+  const { card, deleteAddedPro } = useContext(CartContext);
 
   const findProdInCart = (proID) => {
     //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
@@ -31,7 +31,7 @@ const CartSummary = () => {
 
       <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
         {card.map((product) => {
-          let { title, thumbnail, price } = findProdInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+          let { id, title, thumbnail, price } = findProdInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
 
           return (
             <div className="flex gap-x-5 cart-section mb-5" key={product.id}>
@@ -49,6 +49,7 @@ const CartSummary = () => {
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
+                  onClick={() => deleteAddedPro(product.id)}
                 >
                   <path
                     strokeLinecap="round"

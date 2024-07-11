@@ -4,10 +4,13 @@ import { useState } from "react";
 const CartProvider = ({ children }) => {
   const [card, setCard] = useState([]); //CART STATE
 
+  const findPro = (proID) => {
+    return card.findIndex((item) => item.id === proID); //FIND INDEX OF THE PRODUCT IN CART
+  };
+
   const addToCard = (newProd) => {
-    //ADD ITEM TO CARD FROM CHILD COMPONENT
     // Check if the item with the same id already exists in the cart
-    const index = card.findIndex((item) => item.id === newProd.id); //FIND INDEX OF THE PRODUCT IN CART
+    const index = findPro(newProd.id); //FIND INDEX OF THE PRODUCT IN CART
 
     if (index !== -1) {
       // If id exists, update the quantity
@@ -20,9 +23,8 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const removeFromCart = (updatedPro) => {
-    const index = card.findIndex((item) => item.id === updatedPro.id); //FIND INDEX OF THE PRODUCT IN CART
-
+  const removeFromCart = (updatedProID) => {
+    const index = findPro(updatedProID);
     if (index !== -1) {
       //IF ITS PRESENT
       const updatedCart = [...card];
@@ -36,13 +38,23 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const findProdInCart = (proID) => {
-    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
-    return products.data.find((item) => item.id === proID);
+  const deleteAddedPro = (proID) => {
+    //DELETE PROJECT FROM CART SIDEBAR
+
+    const index = findPro(proID);
+
+    //IF ITS PRESENT
+    const updatedCart = [...card];
+    //DELETE PRODUCT FROM CART
+    updatedCart.splice(index, 1);
+
+    setCard(updatedCart);
   };
 
   return (
-    <CartContext.Provider value={{ card, addToCard, removeFromCart }}>
+    <CartContext.Provider
+      value={{ card, addToCard, removeFromCart, deleteAddedPro }}
+    >
       {children}
     </CartContext.Provider>
   );

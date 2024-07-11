@@ -29,11 +29,7 @@ const ImageCard = ({
     //ADD QUANTITY ONLY WHEN ITS > 0
     if (quantity > 0) {
       setQuantity(quantity - 1);
-      const updatedPro = {
-        id: id,
-        quantity: quantity - 1, // Start with quantity 1 if adding a new item
-      };
-      removeFromCart(updatedPro);
+      removeFromCart(id);
     }
     return;
   };
