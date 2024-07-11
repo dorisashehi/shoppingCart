@@ -1,7 +1,6 @@
 import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 
 const ProductList = ({ filters }) => {
@@ -9,7 +8,6 @@ const ProductList = ({ filters }) => {
   const { minVal, maxVal } = priceRange;
 
   const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { addToCard } = useContext(CartContext);
 
   const filteredProd = products.data.filter((product) => {
     // if (categories && !categories.includes(product.category)) {

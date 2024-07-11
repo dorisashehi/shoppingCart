@@ -1,5 +1,4 @@
 import Banner from "../Banner";
-import exampleImg from "../../assets/images/cart/example-cloth.png";
 import Button from "../Elements/buttons";
 import { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
