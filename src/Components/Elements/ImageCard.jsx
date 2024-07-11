@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 
 const ImageCard = ({
   id,
@@ -11,18 +11,18 @@ const ImageCard = ({
   price,
   classN,
 }) => {
-  //const [cartProp, setToCard] = useState({});
-
   let [quantity, setQuantity] = useState(0);
   let { addToCard, removeFromCart } = useContext(CartContext);
+  let { wishlisted, toggleWishlist } = useContext(WishlistContext);
 
   const addQuantity = () => {
+    // Start with quantity 1 if adding a new item
     setQuantity(quantity + 1);
-    const newProd = {
+
+    addToCard({
       id: id,
-      quantity: 1, // Start with quantity 1 if adding a new item
-    };
-    addToCard(newProd);
+      quantity: 1,
+    });
   };
 
   const removeQuantity = () => {
@@ -33,6 +33,15 @@ const ImageCard = ({
     }
     return;
   };
+
+  const isWishlisted = (id) => {
+    const index = wishlisted.find((item) => item.id === id);
+    if (index === -1) {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <div className={`card ${classN}`}>
       <div className="relative">
@@ -42,7 +51,7 @@ const ImageCard = ({
         />
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
           <svg
-            className="slider-icon"
+            className={`slider-icon ${isWishlisted && "wishlisted"}`}
             data-slot="icon"
             fill="none"
             strokeWidth="1.5"
@@ -50,6 +59,7 @@ const ImageCard = ({
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
+            onClick={() => toggleWishlist({ id: id })}
           >
             <path
               strokeLinecap="round"
@@ -61,10 +71,6 @@ const ImageCard = ({
 
         <div className="icons absolute p-3  bottom-0 left-0 flex flex-row w-full justify-center text-center opacity-[0.8] gap-3">
           <div className="flex flex-row gap-5 items-center">
-            {/* <input type="button" value="-" />
-            <input type="text" value="" />
-            <input type="button" value="+" /> */}
-
             <svg
               data-slot="icon"
               className="slider-icon"
@@ -107,7 +113,7 @@ const ImageCard = ({
       </div>
       <div className="content py-5">
         <h4 className="font-inter text-xs text-secondary pb-2 font-semibold">
-          {category} {id}
+          {category}
         </h4>
         <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">
           {proName}
