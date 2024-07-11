@@ -4,8 +4,8 @@ import ProductList from "./ProductList";
 import SortFilter from "./SortFilter";
 import ActiveFilters from "./ActiveFilters";
 import FilterBy from "./FilterBy";
-import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useContext, useState } from "react";
+import { ProductsContext } from "../Context/ProductsContext";
 
 const Collections = () => {
   const [filters, setFilters] = useState({
@@ -17,7 +17,7 @@ const Collections = () => {
     },
   });
 
-  const contextData = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   return (
     <>

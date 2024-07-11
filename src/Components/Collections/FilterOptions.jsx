@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
-import { useOutletContext } from "react-router-dom";
+import { ProductsContext } from "../Context/ProductsContext";
 
 const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
-  const contextData = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   const categories = contextData.categories;
 

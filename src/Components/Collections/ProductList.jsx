@@ -1,14 +1,15 @@
 import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../Context/CartContext";
+import { ProductsContext } from "../Context/ProductsContext";
 
 const ProductList = ({ filters }) => {
   const { categories, priceRange, error } = filters;
   const { minVal, maxVal } = priceRange;
 
-  const { addToCard, products } = useOutletContext(); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { addToCard } = useContext(CartContext);
 
   const filteredProd = products.data.filter((product) => {
     // if (categories && !categories.includes(product.category)) {
