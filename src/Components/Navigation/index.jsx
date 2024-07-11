@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
 import CartSummary from "../Elements/CartSummary";
 import ProductsProvider from "../../Context/ProductsProvider";
+import { CartContext } from "../../Context/CartContext";
+
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
+  const { countCartItems } = useContext(CartContext);
 
   const toggleMenu = () => {
     //EXPAND MENU ON MOBILE
@@ -83,7 +86,7 @@ const Navigation = () => {
               </li>
               <li className="relative">
                 <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                  0
+                  {countCartItems()}
                 </span>
                 <svg
                   onClick={handleOpenSidebar}

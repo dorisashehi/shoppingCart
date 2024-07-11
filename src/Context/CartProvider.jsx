@@ -62,7 +62,11 @@ const CartProvider = ({ children }) => {
 
   const countCartItems = () => {
     //COUNT CART LENGTH
-    return card.length;
+    const total = card.reduce((total, curr) => {
+      return total + curr.quantity;
+    }, 0);
+
+    return total;
   };
 
   return (
