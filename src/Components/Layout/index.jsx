@@ -1,8 +1,8 @@
 import Footer from "../Footer";
 import Navigation from "../Navigation";
 import { Outlet } from "react-router-dom";
-import CartProvider from "../Context/CartProvider";
-import ProductsProvider from "../Context/ProductsProvider";
+import CartProvider from "../../Context/CartProvider";
+import ProductsProvider from "../../Context/ProductsProvider";
 
 const Layout = () => {
   return (

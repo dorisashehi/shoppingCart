@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "../Elements/buttons";
 import { useContext, useState } from "react";
-import { CartContext } from "../Context/CartContext";
-import { ProductsContext } from "../Context/ProductsContext";
+import { CartContext } from "../../Context/CartContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
 

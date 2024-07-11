@@ -4,7 +4,7 @@ import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
 import CartSummary from "../Elements/CartSummary";
-import ProductsProvider from "../Context/ProductsProvider";
+import ProductsProvider from "../../Context/ProductsProvider";
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -81,7 +81,10 @@ const Navigation = () => {
                   ></path>
                 </svg>
               </li>
-              <li>
+              <li className="relative">
+                <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
+                  0
+                </span>
                 <svg
                   onClick={handleOpenSidebar}
                   className="menu-icon"

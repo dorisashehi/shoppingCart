@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
-import { ProductsContext } from "../Context/ProductsContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 
 const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
   const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP

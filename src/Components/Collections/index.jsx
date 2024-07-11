@@ -5,7 +5,7 @@ import SortFilter from "./SortFilter";
 import ActiveFilters from "./ActiveFilters";
 import FilterBy from "./FilterBy";
 import { useContext, useState } from "react";
-import { ProductsContext } from "../Context/ProductsContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 
 const Collections = () => {
   const [filters, setFilters] = useState({

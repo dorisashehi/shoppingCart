@@ -26,7 +26,7 @@
 }
 
 .menu-icon {
-  @apply w-6 md:w-8 hover:opacity-90 cursor-pointer;
+  @apply w-6 md:w-8 cursor-pointer z-30;
 }
 
 .slider-icon {

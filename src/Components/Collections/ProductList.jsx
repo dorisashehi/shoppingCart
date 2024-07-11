@@ -1,8 +1,8 @@
 import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
 import { useContext, useEffect } from "react";
-import { CartContext } from "../Context/CartContext";
-import { ProductsContext } from "../Context/ProductsContext";
+import { CartContext } from "../../Context/CartContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 
 const ProductList = ({ filters }) => {
   const { categories, priceRange, error } = filters;
