@@ -60,7 +60,6 @@ const ProductList = ({ filters }) => {
           lowPrice="34"
           price={product.price}
           classN="w-[100%] md:w-[31%]"
-          addToCard={addToCard}
         />
       ))}
     </div>

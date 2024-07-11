@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
 
 const ImageCard = ({
   id,
@@ -8,11 +10,11 @@ const ImageCard = ({
   proName,
   price,
   classN,
-  addToCard,
 }) => {
   //const [cartProp, setToCard] = useState({});
 
   let [quantity, setQuantity] = useState(0);
+  let { addToCard, removeFromCart } = useContext(CartContext);
 
   const addQuantity = () => {
     setQuantity(quantity + 1);
@@ -27,6 +29,11 @@ const ImageCard = ({
     //ADD QUANTITY ONLY WHEN ITS > 0
     if (quantity > 0) {
       setQuantity(quantity - 1);
+      const updatedPro = {
+        id: id,
+        quantity: quantity - 1, // Start with quantity 1 if adding a new item
+      };
+      removeFromCart(updatedPro);
     }
     return;
   };
