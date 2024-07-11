@@ -1,7 +1,33 @@
 import Banner from "../Banner";
 import exampleImg from "../../assets/images/cart/example-cloth.png";
 import Button from "../Elements/buttons";
+import { useContext, useState } from "react";
+import { CartContext } from "../Context/CartContext";
+import { ProductsContext } from "../Context/ProductsContext";
+
 const Cart = () => {
+  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { card, deleteAddedPro } = useContext(CartContext);
+
+  const findProdInCart = (proID) => {
+    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
+    return products.data.find((item) => item.id === proID);
+  };
+
+  const findTotal = () => {
+    //CALCULATE TOTAL TO PAY
+    const total = card.reduce((total, curr) => {
+      return total + curr.quantity * findProdInCart(curr.id).price;
+    }, 0);
+
+    return Number.parseFloat(total).toFixed(2);
+  };
+
+  const countCartItems = () => {
+    //COUNT CART LENGTH
+    return card.length;
+  };
+
   return (
     <>
       <Banner title="Shopping Cart" path="Home / Cart" />
@@ -41,36 +67,53 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-white border-b border-borderColor text-primary">
-                      <td className="">
-                        <svg
-                          className="filter-icons cursor-pointer"
-                          data-slot="icon"
-                          fill="none"
-                          strokeWidth="2.2"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
+                    {card.map((product) => {
+                      let { id, title, thumbnail, price } = findProdInCart(
+                        product.id
+                      ); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+                      return (
+                        <tr
+                          className="bg-white border-b border-borderColor text-primary"
+                          key={product.id}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18 18 6M6 6l12 12"
-                          ></path>
-                        </svg>
-                      </td>
-                      <td className="hidden md:table-cell">
-                        <img
-                          src={exampleImg}
-                          className="w-[100px] h-[100px] object-cover"
-                        />
-                      </td>
-                      <td className="px-6 py-4">Hat</td>
-                      <td className="px-6 py-4 hidden md:table-cell">$56</td>
-                      <td className="px-6 py-4 hidden md:table-cell">2</td>
-                      <td className="px-6 py-4">$294</td>
-                    </tr>
+                          <td className="">
+                            <svg
+                              className="filter-icons cursor-pointer"
+                              data-slot="icon"
+                              fill="none"
+                              strokeWidth="2.2"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              onClick={() => deleteAddedPro(product.id)}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18 18 6M6 6l12 12"
+                              ></path>
+                            </svg>
+                          </td>
+                          <td className="hidden md:table-cell">
+                            <img
+                              src={thumbnail}
+                              className="w-[100px] h-[100px] object-cover"
+                            />
+                          </td>
+                          <td className="px-6 py-4">{title}</td>
+                          <td className="px-6 py-4 hidden md:table-cell">
+                            ${price}
+                          </td>
+                          <td className="px-6 py-4 hidden md:table-cell">
+                            {product.quantity}
+                          </td>
+                          <td className="px-6 py-4">
+                            ${price * product.quantity}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -82,11 +125,15 @@ const Cart = () => {
               <ul className="filter-content mt-6">
                 <li className="flex justify-between mb-2 text-sm">
                   <span>Items</span>
-                  <span className="text-primary font-medium">8</span>
+                  <span className="text-primary font-medium">
+                    {countCartItems()}
+                  </span>
                 </li>
                 <li className="flex justify-between mb-2 text-sm">
                   <span>Subtotal</span>
-                  <span className="text-primary font-medium">$454</span>
+                  <span className="text-primary font-medium">
+                    ${findTotal()}
+                  </span>
                 </li>
                 <li className="flex justify-between  mb-2 text-sm">
                   <span>Shipping</span>
