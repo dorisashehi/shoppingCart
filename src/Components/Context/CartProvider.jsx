@@ -1,5 +1,6 @@
 import { CartContext } from "./CartContext";
 import { useState } from "react";
+
 const CartProvider = ({ children }) => {
   const [card, setCard] = useState([]); //CART STATE
 
@@ -33,6 +34,11 @@ const CartProvider = ({ children }) => {
       }
       setCard(updatedCart);
     }
+  };
+
+  const findProdInCart = (proID) => {
+    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
+    return products.data.find((item) => item.id === proID);
   };
 
   return (
