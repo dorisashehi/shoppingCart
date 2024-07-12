@@ -1,8 +1,13 @@
 import Slider from "react-slick";
 import exampleImg from "../../assets/images/cart/example-cloth.png";
 import ImageCard from "../Elements/ImageCard";
+import { useContext } from "react";
+import { ProductsContext } from "../../Context/ProductsContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 
 const ProductsSlider = () => {
+  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+
   var settings = {
     dots: true,
     speed: 500,
@@ -33,6 +38,16 @@ const ProductsSlider = () => {
     ],
   };
 
+  let { wishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
+
+  const isWishlisted = (id) => {
+    const index = wishlisted.find((item) => item.id === id);
+    if (index) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div className="w-full py-20">
       <div className="content">
@@ -47,54 +62,19 @@ const ProductsSlider = () => {
 
         <div className="slider-container">
           <Slider {...settings}>
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
-            <ImageCard
-              imgSrc={exampleImg}
-              category="Couts"
-              proName="Trendy brown Coust"
-              lowPrice="34"
-              price="56"
-              classN="mr-3"
-            />
+            {products.data.slice(0, 10).map((product, index) => (
+              <ImageCard
+                id={product.id}
+                key={index}
+                imgSrc={product.thumbnail}
+                category={product.category}
+                proName={product.title}
+                lowPrice="34"
+                price={product.price}
+                classN="mr-3"
+                wishlisted={isWishlisted(product.id)}
+              />
+            ))}
           </Slider>
         </div>
       </div>
