@@ -6,7 +6,6 @@ import ActiveFilters from "./ActiveFilters";
 import FilterBy from "./FilterBy";
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
-import WishlistProvider from "../../Context/WishlistProvider";
 
 const Collections = () => {
   const [filters, setFilters] = useState({
@@ -41,9 +40,8 @@ const Collections = () => {
                 categories={filters.categories}
                 setFilters={setFilters}
               />
-              <WishlistProvider>
-                <ProductList error={contextData.error} filters={filters} />
-              </WishlistProvider>
+
+              <ProductList error={contextData.error} filters={filters} />
             </div>
           </div>
         </div>

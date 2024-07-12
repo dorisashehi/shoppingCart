@@ -33,6 +33,10 @@
   @apply w-[35px] hover:opacity-[0.8] cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
 }
 
+.slider-icon.wishlisted {
+  @apply bg-yellow;
+}
+
 .hamburger-menu {
   @apply lg:hidden pr-1 w-[35px];
 }

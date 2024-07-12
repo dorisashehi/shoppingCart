@@ -10,21 +10,30 @@ const ImageCard = ({
   proName,
   price,
   classN,
+  wishlisted,
 }) => {
-  let [quantity, setQuantity] = useState(0);
-  let { addToCard, removeFromCart } = useContext(CartContext);
-  let { wishlisted, toggleWishlist } = useContext(WishlistContext);
+  let [quantity, setQuantity] = useState(0); //STATE TO HANDLE QUANTITY
+  let { addToCard, removeFromCart } = useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+  let { toggleWishlist } = useContext(WishlistContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+  const [wishlist, setWishlist] = useState(wishlisted); //STATE HANDLE ADD REMOVE TO WISHLIST
 
+  //ON CLICK TO WISHLIST ICON
+  const handleSetWishlist = (proID) => {
+    setWishlist(!wishlist); //TOGGLE WISHLIST STATE
+    toggleWishlist({ id: proID }); //SET REMOVE PRODUCT ID FROM WISHLIST
+  };
+
+  //ON CLICK TO PLUS ICON
   const addQuantity = () => {
-    // Start with quantity 1 if adding a new item
     setQuantity(quantity + 1);
-
+    // Start with quantity 1 if adding a new item
     addToCard({
       id: id,
       quantity: 1,
     });
   };
 
+  //ON CLICK TO REMOVE ICON
   const removeQuantity = () => {
     //ADD QUANTITY ONLY WHEN ITS > 0
     if (quantity > 0) {
@@ -32,14 +41,6 @@ const ImageCard = ({
       removeFromCart(id);
     }
     return;
-  };
-
-  const isWishlisted = (id) => {
-    const index = wishlisted.find((item) => item.id === id);
-    if (index === -1) {
-      return false;
-    }
-    return true;
   };
 
   return (
@@ -51,7 +52,7 @@ const ImageCard = ({
         />
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
           <svg
-            className={`slider-icon ${isWishlisted && "wishlisted"}`}
+            className={`slider-icon ${wishlist && "wishlisted"}`}
             data-slot="icon"
             fill="none"
             strokeWidth="1.5"
@@ -59,7 +60,7 @@ const ImageCard = ({
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
-            onClick={() => toggleWishlist({ id: id })}
+            onClick={() => handleSetWishlist(id)}
           >
             <path
               strokeLinecap="round"

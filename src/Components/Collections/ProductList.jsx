@@ -2,6 +2,7 @@ import ImageCard from "../Elements/ImageCard";
 import Spinner from "../Spinner";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 
 const ProductList = ({ filters }) => {
   const { categories, priceRange, error } = filters;
@@ -43,6 +44,16 @@ const ProductList = ({ filters }) => {
     //return true;
   });
 
+  let { wishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
+
+  const isWishlisted = (id) => {
+    const index = wishlisted.find((item) => item.id === id);
+    if (index) {
+      return true;
+    }
+    return false;
+  };
+
   const initialProducts =
     filteredProd.length === 0 ? products.data : filteredProd;
 
@@ -58,6 +69,7 @@ const ProductList = ({ filters }) => {
           lowPrice="34"
           price={product.price}
           classN="w-[100%] md:w-[31%]"
+          wishlisted={isWishlisted(product.id)}
         />
       ))}
     </div>
