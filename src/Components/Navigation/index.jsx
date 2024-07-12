@@ -23,8 +23,12 @@ const Navigation = () => {
   });
   const handleOpenSidebar = (type) => {
     //OPEN SIDEBAR
-    if (type === "card") setOpen({ wishlist: false, card: true });
-    if (type === "wishlist") setOpen({ wishlist: true, card: false });
+    if (type === "card") {
+      setOpen({ wishlist: false, card: !sidebarOpened.card });
+    }
+    if (type === "wishlist") {
+      setOpen({ wishlist: true, card: !sidebarOpened.card });
+    }
   };
 
   return (
