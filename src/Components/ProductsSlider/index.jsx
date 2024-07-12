@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import exampleImg from "../../assets/images/cart/example-cloth.png";
 import ImageCard from "../Elements/ImageCard";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
@@ -11,7 +10,7 @@ const ProductsSlider = () => {
   var settings = {
     dots: true,
     speed: 500,
-    autoplay: false,
+    autoplay: true,
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 4,

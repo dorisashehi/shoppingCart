@@ -1,5 +1,4 @@
 import ImageCard from "../Elements/ImageCard";
-import Spinner from "../Spinner";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
