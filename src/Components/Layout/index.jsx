@@ -9,13 +9,13 @@ const Layout = () => {
   return (
     <div className="flex flex-col">
       <CartProvider>
-        <Navigation />
-        <ProductsProvider>
-          <WishlistProvider>
+        <WishlistProvider>
+          <Navigation />
+          <ProductsProvider>
             <Outlet />
-          </WishlistProvider>
-        </ProductsProvider>
-        <Footer />
+          </ProductsProvider>
+          <Footer />
+        </WishlistProvider>
       </CartProvider>
     </div>
   );

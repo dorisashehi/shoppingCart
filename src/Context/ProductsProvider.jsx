@@ -94,9 +94,14 @@ const ProductsProvider = ({ children }) => {
     return products.data.find((item) => item.id === proID);
   };
 
+  const prodInWishlist = (proID) => {
+    //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
+    return products.data.find((item) => item.id === proID);
+  };
+
   return (
     <ProductsContext.Provider
-      value={{ categories, products, error, prodInCart }}
+      value={{ categories, products, error, prodInCart, prodInWishlist }}
     >
       {children}
     </ProductsContext.Provider>

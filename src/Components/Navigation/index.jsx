@@ -3,7 +3,8 @@ import { useContext, useState } from "react";
 import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
-import CartSummary from "../Elements/CartSummary";
+import CartSummary from "../Cart/CartSummary";
+import WishlistSummary from "../Wishlist/WishlistSummary";
 import ProductsProvider from "../../Context/ProductsProvider";
 import { CartContext } from "../../Context/CartContext";
 
@@ -16,10 +17,14 @@ const Navigation = () => {
     setToggle(!toggle);
   };
 
-  const [sidebarOpened, setOpen] = useState(false);
-  const handleOpenSidebar = () => {
+  const [sidebarOpened, setOpen] = useState({
+    wishlist: false,
+    card: false,
+  });
+  const handleOpenSidebar = (type) => {
     //OPEN SIDEBAR
-    setOpen(!sidebarOpened);
+    if (type === "card") setOpen({ wishlist: false, card: true });
+    if (type === "wishlist") setOpen({ wishlist: true, card: false });
   };
 
   return (
@@ -76,6 +81,7 @@ const Navigation = () => {
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
+                  onClick={() => handleOpenSidebar("wishlist")}
                 >
                   <path
                     strokeLinecap="round"
@@ -89,7 +95,7 @@ const Navigation = () => {
                   {countCartItems()}
                 </span>
                 <svg
-                  onClick={handleOpenSidebar}
+                  onClick={() => handleOpenSidebar("card")}
                   className="menu-icon"
                   data-slot="icon"
                   fill="none"
@@ -133,13 +139,21 @@ const Navigation = () => {
           </ul>
         </div>
       </nav>
-
       <Sidebar
-        sidebarOpened={sidebarOpened}
-        handleOpenSidebar={handleOpenSidebar}
+        sidebarOpened={sidebarOpened.card}
+        handleOpenSidebar={() => handleOpenSidebar("card")}
       >
         <ProductsProvider>
           <CartSummary />
+        </ProductsProvider>
+      </Sidebar>
+
+      <Sidebar
+        sidebarOpened={sidebarOpened.wishlist}
+        handleOpenSidebar={() => handleOpenSidebar("wishlist")}
+      >
+        <ProductsProvider>
+          <WishlistSummary />
         </ProductsProvider>
       </Sidebar>
     </>

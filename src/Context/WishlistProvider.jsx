@@ -20,8 +20,28 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
+  const deleteAddedPro = (proID) => {
+    //DELETE PROJECT FROM CART SIDEBAR
+
+    const index = findPro(proID);
+
+    //IF ITS PRESENT
+    const updatedWishlist = [...wishlisted];
+    //DELETE PRODUCT FROM CART
+    updatedWishlist.splice(index, 1);
+
+    setWishlisted(updatedWishlist);
+  };
+
+  const countWishlistItems = () => {
+    //COUNT Wishlist LENGTH
+    return wishlisted.length;
+  };
+
   return (
-    <WishlistContext.Provider value={{ wishlisted, toggleWishlist }}>
+    <WishlistContext.Provider
+      value={{ wishlisted, toggleWishlist, countWishlistItems, deleteAddedPro }}
+    >
       {children}
     </WishlistContext.Provider>
   );
