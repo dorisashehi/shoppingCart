@@ -47,7 +47,7 @@ const ProductsProvider = ({ children }) => {
         throw new Error("Couldn't fetch data");
       }
       const data = await response.json();
-      return data.products; //RETURN ONLY PRODUCTS FROM DATA TAKEN
+      return data.products; //RETURN ONLY PRODUCTS FROM DATA TAKEN ([Array(5), Array(5), Array(3), Array(5), Array(5)])
     } catch (error) {
       throw error;
     }
@@ -70,14 +70,14 @@ const ProductsProvider = ({ children }) => {
   const getProducts = async () => {
     fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
       .then((data) => {
-        const allProducts = [].concat(...data); //CONCAT THEM INTO ONE ARRAY
+        const allProducts = [].concat(...data); //DESTRUCTOR THE ARRAY OF ARRAYS WITH DATA FROM EACH PROMISE AND CONCAT THEM INTO ONE ARRAY ([{…}, {…}, {…}, {…}, {…}] (5) [{…}, {…}, {…}, {…}, {…}])
         setTimeout(() => {
           setProducts({
             //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
             loading: false,
-            data: allProducts,
+            data: allProducts, //AN ARRAY WITH PRODUCTS OBJECTS
           });
-        }, 200);
+        }, 1000);
       })
       .catch((error) => {
         setErrorMsg(error.message);
