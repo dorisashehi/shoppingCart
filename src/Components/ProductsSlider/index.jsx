@@ -3,9 +3,11 @@ import ImageCard from "../Elements/ImageCard";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
+import { CartContext } from "../../Context/CartContext";
 
 const ProductsSlider = () => {
   const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   var settings = {
     dots: true,
@@ -66,13 +68,13 @@ const ProductsSlider = () => {
                 id={product.id}
                 key={index}
                 imgSrc={product.thumbnail}
-                category={product.category}
                 proName={product.title}
                 lowPrice="34"
                 price={product.price}
                 classN="mr-3"
                 wishlisted={isWishlisted(product.id)}
                 discountPercentage={product.discountPercentage}
+                inCard={isInCard(product.id)}
               />
             ))}
           </Slider>

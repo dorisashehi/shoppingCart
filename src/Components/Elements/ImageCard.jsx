@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 
@@ -10,10 +10,17 @@ const ImageCard = ({
   classN,
   wishlisted,
   discountPercentage,
+  inCard,
 }) => {
-  let [quantity, setQuantity] = useState(0); //STATE TO HANDLE QUANTITY
+  let [quantity, setQuantity] = useState(inCard); //STATE TO HANDLE QUANTITY
+
+  useEffect(() => {
+    setQuantity(inCard);
+  }, [inCard]);
+
   let { addToCard, removeFromCart, calculateRealPrice } =
     useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+
   let { toggleWishlist } = useContext(WishlistContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   const [wishlist, setWishlist] = useState(wishlisted); //STATE HANDLE ADD REMOVE TO WISHLIST
 

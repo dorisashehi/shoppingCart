@@ -86,6 +86,14 @@ const CartProvider = ({ children }) => {
     return total;
   };
 
+  const isInCard = (id) => {
+    //FIND PROD IN CARD
+
+    const product = card?.find((item) => item.id === id);
+    console.log(product?.quantity);
+    return product?.quantity || 0;
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -96,6 +104,7 @@ const CartProvider = ({ children }) => {
         findTotal,
         countCartItems,
         calculateRealPrice,
+        isInCard,
       }}
     >
       {children}

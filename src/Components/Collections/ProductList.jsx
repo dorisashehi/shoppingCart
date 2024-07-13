@@ -2,12 +2,14 @@ import ImageCard from "../Elements/ImageCard";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
+import { CartContext } from "../../Context/CartContext";
 
 const ProductList = ({ filters }) => {
   const { categories, priceRange, error } = filters;
   const { minVal, maxVal } = priceRange;
 
   const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   const filteredProd = products.data.filter((product) => {
     // if (categories && !categories.includes(product.category)) {
@@ -69,6 +71,7 @@ const ProductList = ({ filters }) => {
           price={product.price}
           classN="w-[100%] md:w-[31%]"
           wishlisted={isWishlisted(product.id)}
+          inCard={isInCard(product.id)}
         />
       ))}
     </div>
