@@ -45,15 +45,7 @@ const ProductList = ({ filters }) => {
   // const initialProducts =
   //   filteredProd.length === 0 ? products.data : filteredProd;
 
-  let { wishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
-
-  const isWishlisted = (id) => {
-    const index = wishlisted.find((item) => item.id === id);
-    if (index) {
-      return true;
-    }
-    return false;
-  };
+  let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
 
   const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP

@@ -14,15 +14,19 @@ const ImageCard = ({
 }) => {
   let [quantity, setQuantity] = useState(inCard); //STATE TO HANDLE QUANTITY
 
-  useEffect(() => {
+  if (quantity !== inCard) {
     setQuantity(inCard);
-  }, [inCard]);
+  }
 
   let { addToCard, removeFromCart, calculateRealPrice } =
     useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
 
   let { toggleWishlist } = useContext(WishlistContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   const [wishlist, setWishlist] = useState(wishlisted); //STATE HANDLE ADD REMOVE TO WISHLIST
+
+  if (wishlist !== wishlisted) {
+    setWishlist(wishlisted);
+  }
 
   //ON CLICK TO WISHLIST ICON
   const handleSetWishlist = (proID) => {
