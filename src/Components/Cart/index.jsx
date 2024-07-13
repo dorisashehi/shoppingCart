@@ -6,8 +6,13 @@ import { ProductsContext } from "../../Context/ProductsContext";
 
 const Cart = () => {
   const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card, deleteAddedPro, findTotal, countCartItems } =
-    useContext(CartContext);
+  const {
+    card,
+    deleteAddedPro,
+    findTotal,
+    countCartItems,
+    calculateRealPrice,
+  } = useContext(CartContext);
 
   return (
     <>
@@ -49,9 +54,11 @@ const Cart = () => {
                   </thead>
                   <tbody>
                     {card.map((product) => {
-                      let { id, title, thumbnail, price } = prodInCart(
-                        product.id
-                      ); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+                      let { id, title, thumbnail, price, discountPercentage } =
+                        prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+                      let realPrice = discountPercentage
+                        ? calculateRealPrice(price, discountPercentage)
+                        : price;
                       return (
                         <tr
                           className="bg-white border-b border-borderColor text-primary"
@@ -84,13 +91,13 @@ const Cart = () => {
                           </td>
                           <td className="px-6 py-4">{title}</td>
                           <td className="px-6 py-4 hidden md:table-cell">
-                            ${price}
+                            ${realPrice}
                           </td>
                           <td className="px-6 py-4 hidden md:table-cell">
-                            {product.quantity}
+                            {product.quantity} {product.quantity}
                           </td>
                           <td className="px-6 py-4">
-                            ${price * product.quantity}
+                            ${realPrice * product.quantity}
                           </td>
                         </tr>
                       );

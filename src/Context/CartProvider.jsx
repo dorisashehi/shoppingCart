@@ -51,10 +51,27 @@ const CartProvider = ({ children }) => {
     setCard(updatedCart);
   };
 
+  const calculateRealPrice = (price, percentage) => {
+    //CALCULATE REAL PRICE AFTER DISCOUNT
+    const discountPrice = (percentage / 100) * price;
+    const realPrice = price - discountPrice;
+    return Number.parseFloat(realPrice).toFixed(2);
+  };
+
   const findTotal = (findProdInCart) => {
     //CALCULATE TOTAL TO PAY
     const total = card.reduce((total, curr) => {
-      return total + curr.quantity * findProdInCart(curr.id).price;
+      const product = findProdInCart(curr.id);
+
+      if (product.discountPercentage) {
+        //PRODUCT HAS DISCOUNT
+        return (
+          total +
+          curr.quantity *
+            calculateRealPrice(product.price, product.discountPercentage)
+        );
+      }
+      return total + curr.quantity * product.price; //PRODUCT HASN'T DISCOUNT
     }, 0);
 
     return Number.parseFloat(total).toFixed(2);
@@ -78,6 +95,7 @@ const CartProvider = ({ children }) => {
         deleteAddedPro,
         findTotal,
         countCartItems,
+        calculateRealPrice,
       }}
     >
       {children}

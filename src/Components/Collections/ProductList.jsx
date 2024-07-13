@@ -64,8 +64,8 @@ const ProductList = ({ filters }) => {
           key={index}
           imgSrc={product.thumbnail}
           category={product.category}
+          discountPercentage={product.discountPercentage}
           proName={product.title}
-          lowPrice="34"
           price={product.price}
           classN="w-[100%] md:w-[31%]"
           wishlisted={isWishlisted(product.id)}

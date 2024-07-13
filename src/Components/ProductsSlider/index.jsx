@@ -11,7 +11,7 @@ const ProductsSlider = () => {
     dots: true,
     speed: 500,
     autoplay: true,
-    infinite: false,
+    infinite: true,
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
@@ -72,6 +72,7 @@ const ProductsSlider = () => {
                 price={product.price}
                 classN="mr-3"
                 wishlisted={isWishlisted(product.id)}
+                discountPercentage={product.discountPercentage}
               />
             ))}
           </Slider>

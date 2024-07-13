@@ -5,15 +5,15 @@ import { WishlistContext } from "../../Context/WishlistContext";
 const ImageCard = ({
   id,
   imgSrc,
-  category,
-  lowPrice,
   proName,
   price,
   classN,
   wishlisted,
+  discountPercentage,
 }) => {
   let [quantity, setQuantity] = useState(0); //STATE TO HANDLE QUANTITY
-  let { addToCard, removeFromCart } = useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+  let { addToCard, removeFromCart, calculateRealPrice } =
+    useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   let { toggleWishlist } = useContext(WishlistContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   const [wishlist, setWishlist] = useState(wishlisted); //STATE HANDLE ADD REMOVE TO WISHLIST
 
@@ -113,18 +113,17 @@ const ImageCard = ({
         </div>
       </div>
       <div className="content py-5">
-        <h4 className="font-inter text-xs text-secondary pb-2 font-semibold">
-          {category}
-        </h4>
         <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">
           {proName}
         </h5>
         <div className="price flex gap-3">
-          <div className="low-price font-epilogue text-primary font-semibold text-[1.1rem] lg:text-[1.3rem]">
-            ${price}
+          <div className="low-price font-epilogue text-primary font-semibold text-[1.1rem]">
+            {discountPercentage
+              ? calculateRealPrice(price, discountPercentage)
+              : price}
           </div>
-          <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem] lg:text-[1.3rem]">
-            ${lowPrice}
+          <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem]">
+            ${price}
           </div>
         </div>
       </div>

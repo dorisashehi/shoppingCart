@@ -7,8 +7,13 @@ const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
 
   const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card, deleteAddedPro, findTotal, countCartItems } =
-    useContext(CartContext);
+  const {
+    card,
+    deleteAddedPro,
+    findTotal,
+    countCartItems,
+    calculateRealPrice,
+  } = useContext(CartContext);
 
   return (
     <div>
@@ -20,8 +25,11 @@ const CartSummary = () => {
         <>
           <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
             {card.map((product) => {
-              let { id, title, thumbnail, price } = prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
-
+              let { id, title, thumbnail, price, discountPercentage } =
+                prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+              let realPrice = discountPercentage
+                ? calculateRealPrice(price, discountPercentage)
+                : price;
               return (
                 <div
                   className="flex gap-x-5 cart-section mb-5"
@@ -51,13 +59,13 @@ const CartSummary = () => {
                     </svg>
                     <h3 className="cart-header">{title}</h3>
                     <span className="cart-item font-epilogue">
-                      Price: ${price}
+                      Price: ${realPrice}
                     </span>
                     <span className="cart-item font-epilogue">
                       Quantity: {product.quantity}
                     </span>
                     <span className="cart-item font-epilogue">
-                      <b>Total:</b> ${price * product.quantity}
+                      <b>Total:</b> ${realPrice * product.quantity}
                     </span>
                   </div>
                 </div>
