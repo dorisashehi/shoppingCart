@@ -39,15 +39,7 @@ const ProductsSlider = () => {
     ],
   };
 
-  let { wishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
-
-  const isWishlisted = (id) => {
-    const index = wishlisted.find((item) => item.id === id);
-    if (index) {
-      return true;
-    }
-    return false;
-  };
+  let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
 
   return (
     <div className="w-full py-20">

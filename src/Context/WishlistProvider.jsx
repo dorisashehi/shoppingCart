@@ -33,6 +33,14 @@ const WishlistProvider = ({ children }) => {
     setWishlisted(updatedWishlist);
   };
 
+  const isWishlisted = (id) => {
+    const index = wishlisted.find((item) => item.id === id);
+    if (index) {
+      return true;
+    }
+    return false;
+  };
+
   const countWishlistItems = () => {
     //COUNT Wishlist LENGTH
     return wishlisted.length;
@@ -40,7 +48,13 @@ const WishlistProvider = ({ children }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlisted, toggleWishlist, countWishlistItems, deleteAddedPro }}
+      value={{
+        wishlisted,
+        toggleWishlist,
+        countWishlistItems,
+        deleteAddedPro,
+        isWishlisted,
+      }}
     >
       {children}
     </WishlistContext.Provider>

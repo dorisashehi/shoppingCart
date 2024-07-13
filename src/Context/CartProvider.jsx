@@ -87,10 +87,8 @@ const CartProvider = ({ children }) => {
   };
 
   const isInCard = (id) => {
-    //FIND PROD IN CARD
-
+    //FIND PROD QUANTITY IN CARD
     const product = card?.find((item) => item.id === id);
-    console.log(product?.quantity);
     return product?.quantity || 0;
   };
 
