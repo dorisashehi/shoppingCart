@@ -57,7 +57,6 @@ const ProductList = ({ filters }) => {
 
   const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  console.log(products);
 
   return (
     <div className="flex flex-wrap justify-between gap-y-10">

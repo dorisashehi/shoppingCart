@@ -7,10 +7,12 @@ import CartSummary from "../Cart/CartSummary";
 import WishlistSummary from "../Wishlist/WishlistSummary";
 import ProductsProvider from "../../Context/ProductsProvider";
 import { CartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
   const { countCartItems } = useContext(CartContext);
+  const { countWishlistItems } = useContext(WishlistContext);
 
   const toggleMenu = () => {
     //EXPAND MENU ON MOBILE
@@ -75,7 +77,13 @@ const Navigation = () => {
                   ></path>
                 </svg>
               </li>
-              <li className="px-4">
+              <li className="relative px-4">
+                {countWishlistItems() > 0 && (
+                  <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[4px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
+                    {countWishlistItems()}
+                  </span>
+                )}
+
                 <svg
                   className="menu-icon"
                   data-slot="icon"
@@ -95,9 +103,11 @@ const Navigation = () => {
                 </svg>
               </li>
               <li className="relative">
-                <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                  {countCartItems()}
-                </span>
+                {countCartItems() > 0 && (
+                  <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
+                    {countCartItems()}
+                  </span>
+                )}
                 <svg
                   onClick={() => handleOpenSidebar("card")}
                   className="menu-icon"
