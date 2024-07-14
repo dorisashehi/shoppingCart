@@ -1,5 +1,5 @@
 import { CartContext } from "./CartContext";
-import { useReducer, useState } from "react";
+import { useReducer, useState, useMemo } from "react";
 
 const CartProvider = ({ children }) => {
   //const [card, setCard] = useState([]); //CART STATE
@@ -100,14 +100,14 @@ const CartProvider = ({ children }) => {
     return Number.parseFloat(total).toFixed(2);
   };
 
-  const countCartItems = () => {
+  const countCartItems = useMemo(() => {
     //COUNT CART LENGTH
     const total = card.reduce((total, curr) => {
       return total + curr.quantity;
     }, 0);
 
     return total;
-  };
+  }, [card]);
 
   const isInCard = (id) => {
     //FIND PROD QUANTITY IN CARD

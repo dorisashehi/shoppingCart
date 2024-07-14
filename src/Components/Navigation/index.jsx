@@ -103,9 +103,9 @@ const Navigation = () => {
                 </svg>
               </li>
               <li className="relative">
-                {countCartItems() > 0 && (
+                {countCartItems > 0 && (
                   <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                    {countCartItems()}
+                    {countCartItems}
                   </span>
                 )}
                 <svg

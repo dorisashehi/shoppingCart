@@ -18,7 +18,7 @@ const CartSummary = () => {
   return (
     <div>
       <div className="cart-section">
-        <h1 className="cart-header">Cart({countCartItems()})</h1>
+        <h1 className="cart-header">Cart({countCartItems})</h1>
       </div>
 
       {card.length > 0 && (
