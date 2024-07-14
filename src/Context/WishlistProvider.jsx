@@ -57,7 +57,6 @@ const WishlistProvider = ({ children }) => {
 
   const countWishlistItems = useMemo(() => {
     //COUNT Wishlist LENGTH
-    console.log("tt");
     return wishlisted.length;
   }, [wishlisted]);
 
