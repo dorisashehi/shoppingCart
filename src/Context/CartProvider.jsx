@@ -30,7 +30,7 @@ const CartProvider = ({ children }) => {
     }
 
     if (action.type === "remove") {
-      const index = findPro(updatedProID, card);
+      const index = findPro(action.updatedProID, card);
       if (index !== -1) {
         //IF ITS PRESENT
         const updatedCart = [...card];
