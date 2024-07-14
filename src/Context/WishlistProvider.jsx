@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useMemo, useReducer, useState } from "react";
 import { WishlistContext } from "./WishlistContext";
 
 const WishlistProvider = ({ children }) => {
@@ -55,10 +55,11 @@ const WishlistProvider = ({ children }) => {
     return product ? true : false;
   };
 
-  const countWishlistItems = () => {
+  const countWishlistItems = useMemo(() => {
     //COUNT Wishlist LENGTH
+    console.log("tt");
     return wishlisted.length;
-  };
+  }, [wishlisted]);
 
   return (
     <WishlistContext.Provider

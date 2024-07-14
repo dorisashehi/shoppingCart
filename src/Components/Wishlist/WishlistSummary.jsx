@@ -11,7 +11,7 @@ const WishlistSummary = () => {
   return (
     <div>
       <div className="cart-section">
-        <h1 className="cart-header">Wishlist({countWishlistItems()})</h1>
+        <h1 className="cart-header">Wishlist({countWishlistItems})</h1>
       </div>
 
       {wishlisted.length > 0 && (

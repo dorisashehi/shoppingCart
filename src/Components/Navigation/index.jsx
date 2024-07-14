@@ -78,9 +78,9 @@ const Navigation = () => {
                 </svg>
               </li>
               <li className="relative px-4">
-                {countWishlistItems() > 0 && (
+                {countWishlistItems > 0 && (
                   <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[4px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                    {countWishlistItems()}
+                    {countWishlistItems}
                   </span>
                 )}
 
