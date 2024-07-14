@@ -114,7 +114,7 @@ const Cart = () => {
                 <li className="flex justify-between mb-2 text-sm">
                   <span>Items</span>
                   <span className="text-primary font-medium">
-                    {countCartItems()}
+                    {countCartItems}
                   </span>
                 </li>
                 <li className="flex justify-between mb-2 text-sm">
