@@ -14,9 +14,11 @@ const ImageCard = ({
 }) => {
   let [quantity, setQuantity] = useState(inCard); //STATE TO HANDLE QUANTITY
 
-  if (quantity !== inCard) {
-    setQuantity(inCard);
-  }
+  useEffect(() => {
+    if (quantity !== inCard) {
+      setQuantity(inCard);
+    }
+  }, [inCard]);
 
   let { addToCard, removeFromCart, calculateRealPrice } =
     useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT

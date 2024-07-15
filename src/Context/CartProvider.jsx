@@ -17,31 +17,36 @@ const CartProvider = ({ children }) => {
 
       if (index !== -1) {
         // If id exists, update the quantity
-        const updatedCard = [...card];
-        updatedCard[index].quantity += 1;
+        const updatedCard = [
+          ...card.slice(0, index),
+          { ...card[index], quantity: card[index]?.quantity + 1 },
+          ...card.slice(index + 1),
+        ];
+
         return updatedCard;
-        //setCard(updatedCard);
       } else {
         //NOT IN CARD ADD IT
-
         return [...card, action.newProd];
-        // setCard([...card, newProd]);
       }
     }
 
     if (action.type === "remove") {
-      const index = findPro(action.updatedProID, card);
+      const index = findPro(action.payload, card);
       if (index !== -1) {
         //IF ITS PRESENT
-        const updatedCart = [...card];
-        updatedCart[index].quantity -= 1; //DISCOUNT QUANTITY BY 1
+        let updatedCard = [];
+        updatedCard = [
+          ...card.slice(0, index),
+          { ...card[index], quantity: card[index].quantity - 1 }, //DISCOUNT QUANTITY BY 1
+          ...card.slice(index + 1),
+        ];
 
-        if (updatedCart[index].quantity === 0) {
+        if (card[index].quantity === 0) {
           //WHEN THE QUANTITY OF THE PRODUCT REACHES 0, REMOVE IT FROM CART
-          updatedCart.splice(index, 1);
+          updatedCard = [...card.slice(0, index), ...card.slice(index + 1)];
         }
 
-        return updatedCart;
+        return updatedCard;
       }
     }
 
