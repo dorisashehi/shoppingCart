@@ -1,5 +1,5 @@
 import { CartContext } from "./CartContext";
-import { useReducer, useState, useMemo } from "react";
+import { useReducer, useMemo } from "react";
 
 const CartProvider = ({ children }) => {
   //const [card, setCard] = useState([]); //CART STATE

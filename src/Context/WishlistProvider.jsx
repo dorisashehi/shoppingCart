@@ -31,8 +31,6 @@ const WishlistProvider = ({ children }) => {
       const updatedWishlist = [...wishlisted];
       //DELETE PRODUCT FROM CART
       updatedWishlist.splice(index, 1);
-
-      console.log(updatedWishlist);
       return updatedWishlist;
     }
 
