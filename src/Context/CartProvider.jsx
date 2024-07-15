@@ -13,20 +13,20 @@ const CartProvider = ({ children }) => {
   const reducer = (card, action) => {
     if (action.type === "increment") {
       // Check if the item with the same id already exists in the cart
-      const index = findPro(action.newProd.id, card); //FIND INDEX OF THE PRODUCT IN CART
+      const index = findPro(action.payload.id, card); //FIND INDEX OF THE PRODUCT IN CART
 
       if (index !== -1) {
         // If id exists, update the quantity
         const updatedCard = [
           ...card.slice(0, index),
-          { ...card[index], quantity: card[index]?.quantity + 1 },
+          { ...card[index], quantity: card[index].quantity + 1 },
           ...card.slice(index + 1),
         ];
 
         return updatedCard;
       } else {
         //NOT IN CARD ADD IT
-        return [...card, action.newProd];
+        return [...card, action.payload];
       }
     }
 
@@ -34,17 +34,12 @@ const CartProvider = ({ children }) => {
       const index = findPro(action.payload, card);
       if (index !== -1) {
         //IF ITS PRESENT
-        let updatedCard = [];
+        let updatedCard = [...card.slice(0, index), ...card.slice(index + 1)];
         updatedCard = [
           ...card.slice(0, index),
           { ...card[index], quantity: card[index].quantity - 1 }, //DISCOUNT QUANTITY BY 1
           ...card.slice(index + 1),
         ];
-
-        if (card[index].quantity === 0) {
-          //WHEN THE QUANTITY OF THE PRODUCT REACHES 0, REMOVE IT FROM CART
-          updatedCard = [...card.slice(0, index), ...card.slice(index + 1)];
-        }
 
         return updatedCard;
       }
@@ -53,7 +48,7 @@ const CartProvider = ({ children }) => {
     if (action.type === "deleteAdded") {
       //DELETE PROJECT FROM CART SIDEBAR
 
-      const index = findPro(action.proID, card);
+      const index = findPro(action.payload, card);
 
       //IF ITS PRESENT
       const updatedCart = [...card];
@@ -67,7 +62,7 @@ const CartProvider = ({ children }) => {
   const [card, dispatch] = useReducer(reducer, initialCard);
 
   const addToCard = (newProd) => {
-    dispatch({ type: "increment", newProd: newProd });
+    dispatch({ type: "increment", payload: newProd });
   };
 
   const removeFromCart = (updatedProID) => {
