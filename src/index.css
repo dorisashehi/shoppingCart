@@ -107,40 +107,57 @@
   @apply text-primary;
 }
 
-/* .slick-prev.slick-disabled:before,
-.slick-next.slick-disabled:before {
+.prod-details .slick-prev.slick-disabled:before,
+.prod-details .slick-next.slick-disabled:before {
   opacity: 1 !important;
 }
-.slick-prev:before {
+.prod-details .slick-prev:before,
+.prod-details .slick-next:before {
   color: #171a1fff !important;
-  background: #f4bd62;
+  background: #ffffff;
   padding: 12px !important;
+}
+.prod-details .slick-prev:before {
   content: "<" !important;
 }
-.slick-prev:before,
-.slick-next:before {
+.prod-details .slick-next:before {
+  content: ">" !important;
+}
+.prod-details .slick-prev:before,
+.prod-details .slick-next:before {
   font-family: "Epilogue" !important;
   font-weight: 500 !important;
   font-size: 30px !important;
 }
-.slick-prev {
-  left: -58px !important;
+.prod-details .slick-prev {
+  @apply z-10 left-[20px];
 }
 
-.slider-container:hover button {
-  display: none !important;
+.prod-details .slider-container:hover button {
+  @apply hidden;
 }
 
-.slider-container:hover button {
-  display: block !important;
-} */
-
-.slick-dots.button__bar li.slick-active button:before {
-  color: #f4bd62;
+.prod-details .slider-container:hover button {
+  @apply block;
 }
 
-.slick-dots.button__bar li button:before {
-  font-size: 10px;
+.prod-details .slick-dots.button__bar li.slick-active button:before {
+  @apply text-[#f4bd62];
+}
+
+.prod-details .slick-dots.button__bar li button:before {
+  @apply font-[10px];
+}
+
+.prod-details .slick-next {
+  @apply right-[45px];
+}
+
+.prod-details .slick-prev:hover:before,
+.prod-details .slick-prev:focus:before,
+.prod-details .slick-next:hover:before,
+.prod-details .slick-next:focus:before {
+  @apply bg-[#f4bd62];
 }
 
 /*CHECKBOX STYLE*/

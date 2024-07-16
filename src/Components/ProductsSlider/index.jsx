@@ -11,6 +11,7 @@ const ProductsSlider = () => {
 
   var settings = {
     dots: true,
+    arrows: true,
     speed: 500,
     autoplay: true,
     infinite: true,
