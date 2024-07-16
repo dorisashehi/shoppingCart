@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
+import { Link } from "react-router-dom";
 
 const ImageCard = ({
   id,
@@ -59,10 +60,12 @@ const ImageCard = ({
   return (
     <div className={`card ${classN}`}>
       <div className="relative">
-        <img
-          src={imgSrc}
-          className="w-full object-cover h-[300px] bg-[#f5f5f5]"
-        />
+        <Link to={`/product-details/${id}`} className={`card ${classN}`}>
+          <img
+            src={imgSrc}
+            className="w-full object-cover h-[300px] bg-[#f5f5f5]"
+          />
+        </Link>
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
           <svg
             className={`slider-icon ${wishlist && "wishlisted"}`}

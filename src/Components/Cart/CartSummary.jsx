@@ -6,7 +6,7 @@ import { ProductsContext } from "../../Context/ProductsContext";
 const CartSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
 
-  const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const {
     card,
     deleteAddedPro,
@@ -25,8 +25,9 @@ const CartSummary = () => {
         <>
           <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
             {card.map((product) => {
-              let { id, title, thumbnail, price, discountPercentage } =
-                prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+              let { title, thumbnail, price, discountPercentage } = getProd(
+                product.id
+              ); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
               let realPrice = discountPercentage
                 ? calculateRealPrice(price, discountPercentage)
                 : price;
@@ -73,7 +74,7 @@ const CartSummary = () => {
             })}
 
             <span className="cart-header">
-              Order Total: $ {findTotal(prodInCart)}
+              Order Total: $ {findTotal(getProd)}
             </span>
           </div>
 

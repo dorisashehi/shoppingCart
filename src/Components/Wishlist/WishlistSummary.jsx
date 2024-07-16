@@ -18,7 +18,7 @@ const WishlistSummary = () => {
         <>
           <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
             {wishlisted.map((product) => {
-              let { id, title, thumbnail, price } = prodInWishlist(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+              let { title, thumbnail, price } = prodInWishlist(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
 
               return (
                 <div

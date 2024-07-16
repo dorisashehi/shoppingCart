@@ -5,7 +5,7 @@ import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
 
 const Cart = () => {
-  const { prodInCart } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const {
     card,
     deleteAddedPro,
@@ -54,8 +54,8 @@ const Cart = () => {
                   </thead>
                   <tbody>
                     {card.map((product) => {
-                      let { id, title, thumbnail, price, discountPercentage } =
-                        prodInCart(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+                      let { title, thumbnail, price, discountPercentage } =
+                        getProd(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
                       let realPrice = discountPercentage
                         ? calculateRealPrice(price, discountPercentage)
                         : price;
@@ -120,7 +120,7 @@ const Cart = () => {
                 <li className="flex justify-between mb-2 text-sm">
                   <span>Subtotal</span>
                   <span className="text-primary font-medium">
-                    ${findTotal(prodInCart)}
+                    ${findTotal(getProd)}
                   </span>
                 </li>
                 <li className="flex justify-between  mb-2 text-sm">

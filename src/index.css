@@ -71,6 +71,9 @@
   @apply w-[1rem];
 }
 
+.plusMinus {
+  @apply w-[49px] h-[49px] p-[10px] border-borderColor border-2 text-center font-epilogue cursor-pointer;
+}
 /*FILTER STYLE*/
 .filter-item,
 .cart-item {

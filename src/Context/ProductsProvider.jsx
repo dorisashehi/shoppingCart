@@ -89,9 +89,9 @@ const ProductsProvider = ({ children }) => {
     getProducts(); //START HERE
   }, [categories]); //EXECUTED ONLY ON CATEGORIES OR FILTERS CHANGE
 
-  const prodInCart = (proID) => {
+  const getProd = (proID) => {
     //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
-    return products.data.find((item) => item.id === proID);
+    return products.data.map((item) => console.log(item));
   };
 
   const prodInWishlist = (proID) => {
@@ -101,7 +101,7 @@ const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ categories, products, error, prodInCart, prodInWishlist }}
+      value={{ categories, products, error, getProd, prodInWishlist }}
     >
       {children}
     </ProductsContext.Provider>
