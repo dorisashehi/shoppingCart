@@ -43,7 +43,7 @@
 
 /*Button style*/
 .btn-primary {
-  @apply bg-brown py-[10px] px-[20px] text-buttonColor hover:opacity-80 flex items-center text-base lg:text-lg;
+  @apply bg-brown py-[10px] px-[20px] text-buttonColor hover:opacity-80 flex items-center text-[0.8rem] lg:text-[1rem];
 }
 
 .cart-btn {
@@ -72,7 +72,7 @@
 }
 
 .plusMinus {
-  @apply w-[49px] h-[49px] p-[10px] border-borderColor border-2 text-center font-epilogue cursor-pointer;
+  @apply font-[0.8rem] lg:font-[1rem] w-[45px] lg:w-[49px] h-[45px] lg:h-[49px] p-[14px] lg:p-[10px] border-borderColor border-2 text-center font-epilogue cursor-pointer;
 }
 /*FILTER STYLE*/
 .filter-item,
@@ -107,6 +107,13 @@
   @apply text-primary;
 }
 
+.prod-paragraph {
+  @apply font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary;
+}
+
+.prod-paragraph-value {
+  @apply font-inter text-base text-secondary font-medium;
+}
 .prod-details .slick-prev.slick-disabled:before,
 .prod-details .slick-next.slick-disabled:before {
   opacity: 1 !important;

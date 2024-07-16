@@ -63,10 +63,13 @@ const ProductDetails = () => {
       <Banner title="Shopping Cart" path="Home / Shop / Product Details" />
       <div className="w-full py-20">
         {!error ? (
-          <div className="content justify-center flex flex-col md:flex-row gap-[30px] md:gap-3">
-            <div className="w-1/2 prod-details">
+          <div className="content justify-center flex flex-col lg:flex-row gap-[30px] md:gap-3">
+            <div className="flex-1 lg:w-1/2 prod-details">
               {
-                <Slider {...settings} className="w-[90%]">
+                <Slider
+                  {...settings}
+                  className="flex-1 md:w-[60%] mx-auto lg:w-[90%]"
+                >
                   {product.images?.map((image, index) => (
                     <div key={index}>
                       <img src={image} className="bg-[#f5f5f5]" />
@@ -75,7 +78,7 @@ const ProductDetails = () => {
                 </Slider>
               }
             </div>
-            <div className="w-1/2">
+            <div className="flex-1 lg:w-1/2">
               <div className="content py-5">
                 <h4 className="font-inter text-md text-secondary pb-2 font-semibold">
                   {product.category}
@@ -84,7 +87,7 @@ const ProductDetails = () => {
                   {product.title}
                 </h5>
                 <div className="price flex gap-3">
-                  <div className="low-price font-epilogue text-primary font-semibold text-2xl">
+                  <div className="low-price font-epilogue text-primary font-semibold text-md lg:text-2xl">
                     {product.discountPercentage
                       ? calculateRealPrice(
                           product.price,
@@ -92,15 +95,16 @@ const ProductDetails = () => {
                         )
                       : product.price}
                   </div>
-                  <div className="price font-epilogue text-secondary line-through font-normal text-2xl">
+                  <div className="price font-epilogue text-secondary line-through font-normal text-md lg:text-2xl">
                     ${product.price}
                   </div>
                 </div>
-                <div className="font-inter text-sm text-secondary pt-2 pb-5 font-medium">
+                <div className="font-inter text-sm text-secondary pt-2 pb-5 font-medium ">
                   {product.description}
                 </div>
-                <div className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary py-3">
-                  InStock: {product.stock}
+                <div className="prod-paragraph py-3">
+                  InStock:{" "}
+                  <span className="prod-paragraph-value">{product.stock}</span>
                 </div>
                 <div className="pt-4 flex gap-5">
                   <div className="flex flex-row items-center">
@@ -142,18 +146,16 @@ const ProductDetails = () => {
                       ></path>
                     </svg>
                   </div>
-                  <Button text="Add To Card"></Button>
+                  <Button classN="text-[0.9rem]" text="Add To Card"></Button>
                 </div>
                 <div className="border-borderColor border-2 my-10"></div>
-                <div className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary">
+                <div className="prod-paragraph">
                   SKU :{"  "}
-                  <span className="font-inter text-md text-secondary font-medium">
-                    {product.sku}
-                  </span>
+                  <span className="prod-paragraph-value">{product.sku}</span>
                 </div>
-                <div className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary">
+                <div className="prod-paragraph">
                   Tags :{"  "}
-                  <span className="font-inter text-md text-secondary pb-2 font-medium">
+                  <span className="prod-paragraph-value pb-2 ">
                     {product.tags?.join(", ")}
                   </span>
                 </div>
