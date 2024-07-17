@@ -3,6 +3,7 @@ import Layout from "../Components/Layout";
 import Collections from "../Components/Collections";
 import Cart from "../Components/Cart";
 import ProductDetails from "../Components/Collections/ProductDetails";
+import Checkout from "../Components/Checkout";
 const routes = [
   {
     path: "/",
@@ -20,6 +21,10 @@ const routes = [
       {
         path: "product-details/:proID",
         element: <ProductDetails />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
     ],
   },

@@ -80,11 +80,12 @@ const CartSummary = () => {
 
           <div className="absolute bottom-0 w-[100%] pr-[20px] bg-white pb-10 pt-5 md:pt-4 xl:pb-6 lg:pb-40">
             <Button
+              src="/checkout"
               classN="cart-btn justify-center text-[0.9rem] md:text-[1rem] mb-5"
               text="Checkout"
             ></Button>
             <div className="underline cursor-pointer sort-text md:self-end text-center">
-              <Link to="/cart">View Cart</Link>
+              <Link to="/cart">View Card</Link>
             </div>
           </div>
         </>
