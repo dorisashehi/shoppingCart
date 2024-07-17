@@ -33,7 +33,7 @@
   @apply w-[35px] hover:opacity-[0.8] cursor-pointer rounded-full bg-white p-[7px] bottom-7 border-gray shadow-md hover:bg-yellow;
 }
 
-.slider-icon.wishlisted {
+.wishlisted {
   @apply bg-yellow;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .plusMinus {
-  @apply font-[0.8rem] lg:font-[1rem] w-[45px] lg:w-[49px] h-[45px] lg:h-[49px] p-[14px] lg:p-[10px] border-borderColor border-2 text-center font-epilogue cursor-pointer;
+  @apply font-[0.8rem] lg:font-[1rem] w-[45px] lg:w-[49px] h-[45px] lg:h-[49px] p-[14px] lg:p-[15px] border-borderColor border-2 text-center font-epilogue cursor-pointer;
 }
 /*FILTER STYLE*/
 .filter-item,

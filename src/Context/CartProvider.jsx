@@ -30,6 +30,28 @@ const CartProvider = ({ children }) => {
       }
     }
 
+    if (action.type === "addMore") {
+      // Check if the item with the same id already exists in the cart
+      const index = findPro(action.payload.id, card); //FIND INDEX OF THE PRODUCT IN CART
+
+      if (index !== -1) {
+        // If id exists, update the quantity
+        const updatedCard = [
+          ...card.slice(0, index),
+          {
+            ...card[index],
+            quantity: card[index].quantity + action.payload.quantity,
+          },
+          ...card.slice(index + 1),
+        ];
+
+        return updatedCard;
+      } else {
+        //NOT IN CARD ADD IT
+        return [...card, action.payload];
+      }
+    }
+
     if (action.type === "remove") {
       const index = findPro(action.payload, card);
       if (index !== -1) {
@@ -72,6 +94,11 @@ const CartProvider = ({ children }) => {
   const deleteAddedPro = (proID) => {
     //DELETE PROJECT FROM CART SIDEBAR
     dispatch({ type: "deleteAdded", payload: proID });
+  };
+
+  const addMoreProd = (newProd) => {
+    //DELETE PROJECT FROM CART SIDEBAR
+    dispatch({ type: "addMore", payload: newProd });
   };
 
   const calculateRealPrice = (price, percentage) => {
@@ -126,6 +153,7 @@ const CartProvider = ({ children }) => {
         countCartItems,
         calculateRealPrice,
         isInCard,
+        addMoreProd,
       }}
     >
       {children}

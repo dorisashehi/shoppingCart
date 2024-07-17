@@ -91,7 +91,7 @@ const ProductsProvider = ({ children }) => {
 
   const getProd = (proID) => {
     //GET PRODUCT INFO FOR A SPECIFIC PRODUCT PERESENT IN CART
-    return products.data.map((item) => console.log(item));
+    return products.data.find((item) => item.id === proID);
   };
 
   const prodInWishlist = (proID) => {

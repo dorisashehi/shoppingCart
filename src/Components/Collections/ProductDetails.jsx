@@ -3,24 +3,19 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import { CartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import Button from "../Elements/buttons";
 const ProductDetails = () => {
   const { proID } = useParams();
   const [error, setError] = useState("");
   const [product, setProduct] = useState({});
-
-  let { addToCard, removeFromCart, calculateRealPrice, inCard } =
-    useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
-  let [quantity, setQuantity] = useState(inCard || 0); //STATE TO HANDLE QUANTITY
+  let { calculateRealPrice, addMoreProd } = useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+  let { toggleWishlist, isWishlisted } = useContext(WishlistContext);
+  let [quantity, setQuantity] = useState(0); //STATE TO HANDLE QUANTITY
 
   //ON CLICK TO PLUS ICON
   const addQuantity = () => {
     setQuantity(quantity + 1);
-    // Start with quantity 1 if adding a new item
-    addToCard({
-      id: id,
-      quantity: 1,
-    });
   };
 
   //ON CLICK TO REMOVE ICON
@@ -28,11 +23,17 @@ const ProductDetails = () => {
     //ADD QUANTITY ONLY WHEN ITS > 0
     if (quantity > 0) {
       setQuantity(quantity - 1);
-      removeFromCart(id);
     }
     return;
   };
 
+  const changeProd = (event) => {
+    event.preventDefault();
+    addMoreProd({
+      id: product.id,
+      quantity: quantity,
+    });
+  };
   useEffect(() => {
     const getProd = async () => {
       try {
@@ -110,7 +111,7 @@ const ProductDetails = () => {
                   <div className="flex flex-row items-center">
                     <svg
                       data-slot="icon"
-                      className="plusMinus"
+                      className="plusMinus hover:bg-yellow"
                       fill="none"
                       strokeWidth="1.5"
                       stroke="currentColor"
@@ -130,7 +131,7 @@ const ProductDetails = () => {
 
                     <svg
                       data-slot="icon"
-                      className="plusMinus"
+                      className="plusMinus hover:bg-yellow"
                       fill="none"
                       strokeWidth="1.5"
                       stroke="currentColor"
@@ -146,7 +147,31 @@ const ProductDetails = () => {
                       ></path>
                     </svg>
                   </div>
-                  <Button classN="text-[0.9rem]" text="Add To Card"></Button>
+                  <Button
+                    classN="text-[0.9rem]"
+                    text="Add To Card"
+                    clickAction={(event) => changeProd(event)}
+                  ></Button>
+
+                  <svg
+                    data-slot="icon"
+                    fill="none"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    className={`plusMinus ${
+                      isWishlisted(product.id) && "wishlisted"
+                    }`}
+                    onClick={() => toggleWishlist({ id: product.id })}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    ></path>
+                  </svg>
                 </div>
                 <div className="border-borderColor border-2 my-10"></div>
                 <div className="prod-paragraph">
@@ -161,6 +186,20 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
+            {/* <div>
+              <div className="flex flex-row">
+                <div>Description</div>
+                <div>Additional Information</div>
+              </div>
+              <div>{product.description}</div>
+              <div>
+                <ul>
+                  <li>
+                    Weight: <span>{product.weight}</span>
+                  </li>
+                </ul>
+              </div>
+            </div> */}
           </div>
         ) : (
           { error }
