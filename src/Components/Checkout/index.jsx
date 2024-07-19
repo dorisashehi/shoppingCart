@@ -24,6 +24,7 @@ const Checkout = () => {
   };
 
   const validateInput = () => {
+    //ON FORM SUBMIT
     Object.entries(formData).map((input) => {
       //VALIDATE IF FIELD IS EMPTY, SET ERROR
       if (input[1] === "") {
@@ -37,9 +38,11 @@ const Checkout = () => {
     });
   };
   const removeError = (name) => {
+    //REMOVE ERROR FROM ERROR OBJ
     setInputError((prevErrors) => ({ ...prevErrors, [name]: null }));
   };
   const setError = (name, errorMsg) => {
+    //SET ERROR TO ERROR OBJ
     setInputError((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
   };
   const handleSubmit = (event) => {
@@ -192,6 +195,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.email}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
