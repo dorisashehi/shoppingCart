@@ -3,6 +3,7 @@ import Button from "../Elements/buttons";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
+import OrderSidebar from "../Elements/OrderSidebar";
 
 const Cart = () => {
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
@@ -107,33 +108,12 @@ const Cart = () => {
               </div>
             </div>
             <div className="w-full md:w-[350px] pr-5 lg:block border-2 border-borderColor px-7 py-5 h-fit">
-              <div className="border-b-2 border-borderColor pb-3 font-medium">
-                <h1 className="">Cart</h1>
-              </div>
-              <ul className="filter-content mt-6">
-                <li className="flex justify-between mb-2 text-sm">
-                  <span>Items</span>
-                  <span className="text-primary font-medium">
-                    {countCartItems}
-                  </span>
-                </li>
-                <li className="flex justify-between mb-2 text-sm">
-                  <span>Subtotal</span>
-                  <span className="text-primary font-medium">
-                    ${findTotal(getProd)}
-                  </span>
-                </li>
-                <li className="flex justify-between  mb-2 text-sm">
-                  <span>Shipping</span>
-                  <span className="text-primary font-medium">$00.00</span>
-                </li>
-              </ul>
-              <div className=" w-[100%] bg-white mt-3">
+              <OrderSidebar>
                 <Button
                   classN="cart-btn justify-center text-[0.9rem] md:text-sm"
                   text="Proceed To Checkout"
                 ></Button>
-              </div>
+              </OrderSidebar>
             </div>
           </div>
         </div>

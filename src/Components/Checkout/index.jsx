@@ -1,7 +1,46 @@
+import { useState } from "react";
 import Banner from "../Banner";
 import Button from "../Elements/buttons";
 import InputItem from "../Elements/InputItem";
+import OrderSidebar from "../Elements/OrderSidebar";
+import { useRef } from "react";
 const Checkout = () => {
+  const [inputError, setInputError] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    lastname: "",
+    country: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+    phone: "",
+    email: "",
+  });
+
+  const changeFormData = ({ name, value }) => {
+    //SET THE INPUT CHANGED VALUE TO THE formData state
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+  const validateInput = () => {
+    Object.entries(formData).map((input) => {
+      //VALIDATE IF FIELD IS EMPTY, SET ERROR
+      if (input[1] === "") {
+        setInputError((prevErrors) => ({
+          ...prevErrors,
+          [input[0]]: "That is a required field",
+        }));
+      } else {
+        setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: null }));
+      }
+    });
+  };
+  const handleSubmit = (event) => {
+    //HANDLE FORM SUBMIT
+    event.preventDefault();
+    validateInput(); //VALIDATE FORM INPUTS
+  };
   return (
     <>
       <Banner title="Checkout" path="Home / Shopping Card / Checkout" />
@@ -12,7 +51,7 @@ const Checkout = () => {
               <h1 className="font-epilogue text-[1.7rem] font-medium mt-3 mb-9">
                 Shipping Address
               </h1>
-              <form className="w-full max-w-xl">
+              <form className="w-full max-w-xl" method="POST">
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputItem
@@ -20,7 +59,10 @@ const Checkout = () => {
                       placeholder="Ex. John"
                       errorMsg=" Please fill out this field."
                       id="shipping-first-name"
+                      name="name"
                       type="text"
+                      changeFormData={changeFormData}
+                      inputError={inputError.name}
                     />
                   </div>
                   <div className="w-full md:w-1/2 px-3">
@@ -29,6 +71,9 @@ const Checkout = () => {
                       placeholder="Ex. Doe"
                       id="shipping-last-name"
                       type="text"
+                      name="lastname"
+                      changeFormData={changeFormData}
+                      inputError={inputError.lastname}
                     />
                   </div>
                 </div>
@@ -39,6 +84,9 @@ const Checkout = () => {
                       placeholder="Ex. Company 1"
                       id="shipping-company"
                       type="text"
+                      name="company"
+                      changeFormData={changeFormData}
+                      inputError={inputError.company}
                     />
                   </div>
                 </div>
@@ -49,6 +97,9 @@ const Checkout = () => {
                       placeholder="Enter Country"
                       id="shipping-country"
                       type="text"
+                      name="country"
+                      changeFormData={changeFormData}
+                      inputError={inputError.country}
                     />
                   </div>
                 </div>
@@ -59,6 +110,9 @@ const Checkout = () => {
                       placeholder="Enter Street Address"
                       id="shipping-street"
                       type="text"
+                      name="street"
+                      changeFormData={changeFormData}
+                      inputError={inputError.street}
                     />
                   </div>
                 </div>
@@ -69,6 +123,9 @@ const Checkout = () => {
                       placeholder="Enter City"
                       id="shipping-city"
                       type="text"
+                      name="city"
+                      changeFormData={changeFormData}
+                      inputError={inputError.city}
                     />
                   </div>
                 </div>
@@ -79,6 +136,9 @@ const Checkout = () => {
                       placeholder="Enter State"
                       id="shipping-state"
                       type="text"
+                      name="state"
+                      changeFormData={changeFormData}
+                      inputError={inputError.state}
                     />
                   </div>
                 </div>
@@ -89,6 +149,9 @@ const Checkout = () => {
                       placeholder="Enter Zip"
                       id="shipping-zip"
                       type="text"
+                      name="zip"
+                      changeFormData={changeFormData}
+                      inputError={inputError.zip}
                     />
                   </div>
                 </div>
@@ -99,6 +162,9 @@ const Checkout = () => {
                       placeholder="Enter Phone"
                       id="shipping-phone"
                       type="text"
+                      name="phone"
+                      changeFormData={changeFormData}
+                      inputError={inputError.phone}
                     />
                   </div>
                 </div>
@@ -109,35 +175,23 @@ const Checkout = () => {
                       placeholder="Enter Email Address"
                       id="shipping-emai"
                       type="text"
+                      name="email"
+                      changeFormData={changeFormData}
+                      inputError={inputError.email}
                     />
                   </div>
                 </div>
               </form>
             </div>
+
             <div className="w-full md:w-[350px] pr-5 lg:block border-2 border-borderColor px-7 py-5 h-fit mt-[80px]">
-              <div className="border-b-2 border-borderColor pb-3 font-medium">
-                <h1 className="">Cart</h1>
-              </div>
-              <ul className="filter-content mt-6">
-                <li className="flex justify-between mb-2 text-sm">
-                  <span>Items</span>
-                  <span className="text-primary font-medium"></span>
-                </li>
-                <li className="flex justify-between mb-2 text-sm">
-                  <span>Subtotal</span>
-                  <span className="text-primary font-medium"></span>
-                </li>
-                <li className="flex justify-between  mb-2 text-sm">
-                  <span>Shipping</span>
-                  <span className="text-primary font-medium">$00.00</span>
-                </li>
-              </ul>
-              <div className=" w-[100%] bg-white mt-3">
+              <OrderSidebar>
                 <Button
                   classN="cart-btn justify-center text-[0.9rem] md:text-sm"
-                  text="Continue Payment"
+                  text="Continue To Payment"
+                  clickAction={(event) => handleSubmit(event)}
                 ></Button>
-              </div>
+              </OrderSidebar>
             </div>
           </div>
         </div>

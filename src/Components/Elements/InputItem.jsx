@@ -1,23 +1,37 @@
+import { useState } from "react";
+
 const InputItem = ({
   id,
+  name,
   type,
   label,
   placeholder,
-  errorMsg = "",
   classN = "",
+  changeFormData,
+  inputError,
 }) => {
+  const handleChange = (event) => {
+    //ON CHENGE INPUT VALUE
+    const { name, value } = event.target;
+    changeFormData({ name, value });
+  };
+
   return (
     <>
-      <label className="input-label" for={id}>
+      <label className="input-label" htmlFor={id}>
         {label}
       </label>
       <input
-        className="input-style  border-red-500"
+        className={`input-style  border-red-500 ${classN}`}
         id={id}
-        type="text"
+        name={name}
+        type={type}
         placeholder={placeholder}
+        onChange={(event) => handleChange(event)}
       />
-      <p className="text-red-500 text-xs italic">{errorMsg}</p>
+      {inputError && (
+        <p className="text-red-500 text-xs italic">{inputError}</p>
+      )}
     </>
   );
 };
