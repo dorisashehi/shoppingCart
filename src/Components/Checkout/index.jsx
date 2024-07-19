@@ -176,7 +176,7 @@ const Checkout = () => {
                       label="Phone"
                       placeholder="Enter Phone"
                       id="shipping-phone"
-                      type="text"
+                      type="tel"
                       name="phone"
                       changeFormData={changeFormData}
                       inputError={inputError.phone}

@@ -12,7 +12,6 @@ const InputItem = ({
 }) => {
   const testField = (regEX, input, value, errMsg) => {
     //VALIDATE INPUT BASED ON REGEX
-    //TEST BASED ON REG EX EXPRESION PASED
 
     let timer;
     clearTimeout(timer);
