@@ -36,6 +36,12 @@ const Checkout = () => {
       }
     });
   };
+  const removeError = (name) => {
+    setInputError((prevErrors) => ({ ...prevErrors, [name]: null }));
+  };
+  const setError = (name, errorMsg) => {
+    setInputError((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
+  };
   const handleSubmit = (event) => {
     //HANDLE FORM SUBMIT
     event.preventDefault();
@@ -63,6 +69,7 @@ const Checkout = () => {
                       type="text"
                       changeFormData={changeFormData}
                       inputError={inputError.name}
+                      removeError={removeError}
                     />
                   </div>
                   <div className="w-full md:w-1/2 px-3">
@@ -74,6 +81,7 @@ const Checkout = () => {
                       name="lastname"
                       changeFormData={changeFormData}
                       inputError={inputError.lastname}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -86,7 +94,6 @@ const Checkout = () => {
                       type="text"
                       name="company"
                       changeFormData={changeFormData}
-                      inputError={inputError.company}
                     />
                   </div>
                 </div>
@@ -100,6 +107,7 @@ const Checkout = () => {
                       name="country"
                       changeFormData={changeFormData}
                       inputError={inputError.country}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -113,6 +121,7 @@ const Checkout = () => {
                       name="street"
                       changeFormData={changeFormData}
                       inputError={inputError.street}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -126,6 +135,7 @@ const Checkout = () => {
                       name="city"
                       changeFormData={changeFormData}
                       inputError={inputError.city}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -139,6 +149,7 @@ const Checkout = () => {
                       name="state"
                       changeFormData={changeFormData}
                       inputError={inputError.state}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -152,6 +163,7 @@ const Checkout = () => {
                       name="zip"
                       changeFormData={changeFormData}
                       inputError={inputError.zip}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -165,6 +177,7 @@ const Checkout = () => {
                       name="phone"
                       changeFormData={changeFormData}
                       inputError={inputError.phone}
+                      removeError={removeError}
                     />
                   </div>
                 </div>
@@ -178,6 +191,7 @@ const Checkout = () => {
                       name="email"
                       changeFormData={changeFormData}
                       inputError={inputError.email}
+                      removeError={removeError}
                     />
                   </div>
                 </div>

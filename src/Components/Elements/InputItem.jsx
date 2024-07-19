@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const InputItem = ({
   id,
   name,
@@ -9,11 +7,16 @@ const InputItem = ({
   classN = "",
   changeFormData,
   inputError,
+  removeError,
 }) => {
   const handleChange = (event) => {
     //ON CHENGE INPUT VALUE
     const { name, value } = event.target;
-    changeFormData({ name, value });
+    if (name.value !== "") {
+      //REMOVE ERROR REQUIRED IF THE INPUT GETS FILLED
+      removeError(name);
+    }
+    changeFormData({ name, value }); //SAVE INPUT DATA TO FORM DATA
   };
 
   return (
@@ -22,7 +25,7 @@ const InputItem = ({
         {label}
       </label>
       <input
-        className={`input-style  border-red-500 ${classN}`}
+        className={`input-style ${inputError && "error"} ${classN}`}
         id={id}
         name={name}
         type={type}
