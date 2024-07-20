@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
+import { CartContext } from "../../Context/CartContext";
 
 const WishlistSummary = () => {
   //CART SUMMARY SHOWN IN SIDEBAR
   const { prodInWishlist } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { calculateRealPrice } = useContext(CartContext);
   let { wishlisted, countWishlistItems, deleteAddedPro } =
     useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
 
@@ -18,8 +20,11 @@ const WishlistSummary = () => {
         <>
           <div className="flex flex-col h-[500px] md:h-[800px] lg:h-[500px] overflow-y-auto">
             {wishlisted.map((product) => {
-              let { title, thumbnail, price } = prodInWishlist(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
-
+              let { title, thumbnail, price, discountPercentage } =
+                prodInWishlist(product.id); //DESTRUCTUR SOME INFO FROM ALL PRODUCT INFOS
+              let realPrice = discountPercentage
+                ? calculateRealPrice(price, discountPercentage)
+                : price;
               return (
                 <div
                   className="flex gap-x-5 cart-section mb-5"
@@ -49,13 +54,11 @@ const WishlistSummary = () => {
                     </svg>
                     <h3 className="cart-header">{title}</h3>
                     <span className="cart-item font-epilogue">
-                      Price: ${price}
+                      Price: ${realPrice}
                     </span>
+                    <span className="cart-item font-epilogue">Quantity: 1</span>
                     <span className="cart-item font-epilogue">
-                      Quantity: {product.quantity}
-                    </span>
-                    <span className="cart-item font-epilogue">
-                      <b>Total:</b> ${price * product.quantity}
+                      <b>Total:</b> ${realPrice * 1}
                     </span>
                   </div>
                 </div>

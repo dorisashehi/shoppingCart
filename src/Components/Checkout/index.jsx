@@ -3,7 +3,7 @@ import Banner from "../Banner";
 import Button from "../Elements/buttons";
 import InputItem from "../Elements/InputItem";
 import OrderSidebar from "../Elements/OrderSidebar";
-import { useRef } from "react";
+
 const Checkout = () => {
   const [inputError, setInputError] = useState({});
   const [formData, setFormData] = useState({
