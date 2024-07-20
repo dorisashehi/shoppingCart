@@ -1,6 +1,15 @@
-const ActiveFilters = ({ categories, setFilters }) => {
+const ActiveFilters = ({ categories, setFilters, selectedCategories }) => {
   const resetFilters = () => {
     setFilters((prevFilters) => ({ ...prevFilters, categories: [] }));
+  };
+
+  const handleDelete = (cat) => {
+    const updatedCat = selectedCategories.filter((item) => item !== cat);
+
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      categories: updatedCat,
+    }));
   };
 
   return (
@@ -19,6 +28,7 @@ const ActiveFilters = ({ categories, setFilters }) => {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
+              onClick={() => handleDelete(cat)}
             >
               <path
                 strokeLinecap="round"

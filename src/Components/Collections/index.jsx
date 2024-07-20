@@ -42,6 +42,7 @@ const Collections = () => {
               <SortFilter />
 
               <ActiveFilters
+                selectedCategories={filters.categories}
                 categories={filters.categories}
                 setFilters={setFilters}
               />
