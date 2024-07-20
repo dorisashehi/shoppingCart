@@ -6,48 +6,32 @@ import { CartContext } from "../../Context/CartContext";
 import Spinner from "../Spinner";
 
 const ProductList = ({ filters }) => {
-  // const { categories, priceRange, error } = filters;
-  // const { minVal, maxVal } = priceRange;
-  // const filteredProd = products.data.filter((product) => {
-  //   // if (categories && !categories.includes(product.category)) {
-  //   //   return false;
-  //   // }
+  const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { categories, priceRange } = filters;
+  const { minVal, maxVal } = priceRange;
 
-  //   // // Check if product price is within the specified range
-  //   // if (!(product.price > minVal && product.price < maxVal)) {
-  //   //   return false; // Exclude products outside price range
-  //   // }
+  const applyFilters = () => {
+    let filteredProducts = products.data.filter((product) => {
+      // Check if product's category is in selectedCategories
+      let catMatch = true;
+      let priceMatch = false;
 
-  //   let catMatches = true;
-  //   let priceMatches = true;
-  //   if (categories && categories.length > 0) {
-  //     catMatches = categories.includes(product.category);
-  //   }
+      // Check if product's price is within the selected priceRange
+      if (product.price > minVal && product.price < maxVal) {
+        priceMatch = true;
+      }
+      if (categories.length > 0 && !categories.includes(product.category)) {
+        catMatch = false;
+      }
+      return catMatch && priceMatch;
+    });
 
-  //   // Check if product price is within the specified range
-  //   if (minVal !== undefined && maxVal !== undefined) {
-  //     priceMatches = product.price > minVal && product.price < maxVal; // Exclude products outside price range
-  //   }
+    return filteredProducts;
+  };
 
-  //   let bothMatched = catMatches && priceMatches;
-
-  //   // let catt = catMatches || !priceMatches;
-
-  //   // let tt = !catMatches || priceMatches;
-
-  //   // console.log(catt);
-
-  //   return bothMatched;
-
-  //   //return true;
-  // });
-
-  // const initialProducts =
-  //   filteredProd.length === 0 ? products.data : filteredProd;
+  const initialProducts = applyFilters();
 
   let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
-
-  const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   return (
@@ -57,7 +41,7 @@ const ProductList = ({ filters }) => {
       ) : error !== "" ? (
         <div className="w-full">{error}</div>
       ) : (
-        products.data.map((product, index) => (
+        initialProducts.map((product, index) => (
           <ImageCard
             id={product.id}
             key={index}

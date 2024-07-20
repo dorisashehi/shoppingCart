@@ -8,6 +8,11 @@ import { useContext, useState } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 
 const Collections = () => {
+  const categories = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+
+  //const categories = contextData.categories;
+
   const [filters, setFilters] = useState({
     //FILTERS SELECTED
     categories: [],

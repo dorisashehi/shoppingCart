@@ -67,23 +67,6 @@ const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
         <h1 className="filter-header">Price</h1>
         <PriceRange setFilters={setFilters} initialRange={priceRange} />
       </div>
-      {/* <div className="filter-section">
-        <h1 className="filter-header">Size</h1>
-        <ul className="filter-content">
-          <li className="filter-item">
-            <CostumCheckbox label="S" />
-          </li>
-          <li className="filter-item">
-            <CostumCheckbox label="M" />
-          </li>
-          <li className="filter-item">
-            <CostumCheckbox label="L" />
-          </li>
-          <li className="filter-item">
-            <CostumCheckbox label="XL" />
-          </li>
-        </ul>
-      </div> */}
     </>
   );
 };
