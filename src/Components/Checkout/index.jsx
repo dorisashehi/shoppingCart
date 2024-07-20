@@ -73,6 +73,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.name}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                   <div className="w-full md:w-1/2 px-3">
@@ -85,6 +86,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.lastname}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -97,6 +99,8 @@ const Checkout = () => {
                       type="text"
                       name="company"
                       changeFormData={changeFormData}
+                      removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -111,6 +115,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.country}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -125,6 +130,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.street}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -139,6 +145,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.city}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -153,6 +160,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.state}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -167,6 +175,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.zip}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
@@ -181,6 +190,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       inputError={inputError.phone}
                       removeError={removeError}
+                      setError={setError}
                     />
                   </div>
                 </div>
