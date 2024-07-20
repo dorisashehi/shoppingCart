@@ -47,7 +47,7 @@ const InputItem = ({
     if (name === "zip") {
       //TEST ZIP CODE FOR LENGTH AND CONTENT
       let regEX = /^[0-9]*$/;
-      const tt = testField(
+      testField(
         regEX,
         name,
         value,
@@ -58,6 +58,12 @@ const InputItem = ({
           }
         }
       ); //TEST EMAIL FIELD BASED ON REGEX
+    }
+
+    if (name === "phone") {
+      //TEST PHONE CONTENT
+      let regEX = /^[0-9]*$/;
+      testField(regEX, name, value, "Phone number should contain numbers"); //TEST EMAIL FIELD BASED ON REGEX
     }
 
     changeFormData({ name, value }); //SAVE INPUT DATA TO FORM DATA
