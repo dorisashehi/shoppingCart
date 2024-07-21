@@ -20,6 +20,7 @@ const Collections = () => {
       minVal: 0,
       maxVal: 1000,
     },
+    sort: "",
   });
 
   const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
@@ -39,7 +40,7 @@ const Collections = () => {
             </div>
 
             <div className="flex-1">
-              <SortFilter />
+              <SortFilter setFilters={setFilters} />
 
               <ActiveFilters
                 selectedCategories={filters.categories}

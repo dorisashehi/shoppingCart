@@ -1,15 +1,21 @@
 import Select from "react-tailwindcss-select";
 import { useState } from "react";
-const SortFilter = () => {
+const SortFilter = ({ setFilters }) => {
   const options = [
-    { value: "Asc", label: "Ascending" },
-    { value: "Desc", label: "Descending" },
+    { value: "asc-price", label: "low-hight price" },
+    { value: "desc-price", label: "high-low price" },
+    { value: "asc-az", label: "Name A-Z" },
+    { value: "desc-za", label: "Name Z-A" },
   ];
   const [sorted, setSorted] = useState(null);
 
   const handleChange = (value) => {
-    console.log("value:", value);
     setSorted(value);
+
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      sort: value,
+    }));
   };
   return (
     <>
