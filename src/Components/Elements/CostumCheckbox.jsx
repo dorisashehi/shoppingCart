@@ -18,7 +18,7 @@ const CostumCheckbox = ({ label, handleSelected, checked }) => {
         onChange={handleChecked}
       />
       <svg
-        className="text-white h-2.5 rounded-3x w-2.5 absolute left-[3px] top-[-1px] opacity-0 ease-in transition-opacity"
+        className="text-white h-2.5 rounded-3x w-2.5 absolute left-[3px] top-[3px] opacity-0 ease-in transition-opacity"
         data-slot="icon"
         fill="none"
         strokeWidth="3.9"
