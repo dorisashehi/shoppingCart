@@ -6,24 +6,12 @@ import ActiveFilters from "./ActiveFilters";
 import FilterBy from "./FilterBy";
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
+import { FilterContext } from "../../Context/FilterContext";
 
 const Collections = () => {
   const categories = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const { products } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-
-  //const categories = contextData.categories;
-
-  const [filters, setFilters] = useState({
-    //FILTERS SELECTED
-    categories: [],
-    priceRange: {
-      minVal: 0,
-      maxVal: 1000,
-    },
-    sort: "",
-  });
-
-  const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { filters, setFilters } = useContext(FilterContext);
 
   return (
     <>
@@ -48,7 +36,7 @@ const Collections = () => {
                 setFilters={setFilters}
               />
 
-              <ProductList error={contextData.error} filters={filters} />
+              <ProductList error={products.error} filters={filters} />
             </div>
           </div>
         </div>

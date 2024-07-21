@@ -1,18 +1,30 @@
 import Select from "react-tailwindcss-select";
-import { useState } from "react";
-const SortFilter = ({ setFilters }) => {
+import { useContext, useState } from "react";
+import { FilterContext } from "../../Context/FilterContext";
+
+const SortFilter = () => {
+  const { filters, setFilters } = useContext(FilterContext); //FILTER CONTECT
   const options = [
+    //ARRAY OF SELECT OPTIONS
     { value: "asc-price", label: "low-hight price" },
     { value: "desc-price", label: "high-low price" },
     { value: "asc-az", label: "Name A-Z" },
     { value: "desc-za", label: "Name Z-A" },
   ];
-  const [sorted, setSorted] = useState(null);
+  const [sorted, setSorted] = useState(
+    filters.sort
+      ? {
+          value: filters.sort.value,
+          label: filters.sort.label,
+        }
+      : null
+  ); //DEFAULT FILTER SELECTED OR PREVIOUS ONE
 
   const handleChange = (value) => {
     setSorted(value);
 
     setFilters((prevFilters) => ({
+      //SET SELECTED FILTER TO FILTERS
       ...prevFilters,
       sort: value,
     }));

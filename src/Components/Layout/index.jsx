@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import CartProvider from "../../Context/CartProvider";
 import ProductsProvider from "../../Context/ProductsProvider";
 import WishlistProvider from "../../Context/WishlistProvider";
+import FilterProvider from "../../Context/FilterProvider";
 
 const Layout = () => {
   return (
@@ -12,7 +13,9 @@ const Layout = () => {
         <WishlistProvider>
           <Navigation />
           <ProductsProvider>
-            <Outlet />
+            <FilterProvider>
+              <Outlet />
+            </FilterProvider>
           </ProductsProvider>
           <Footer />
         </WishlistProvider>
