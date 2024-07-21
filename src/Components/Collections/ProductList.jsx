@@ -3,10 +3,12 @@ import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 import { CartContext } from "../../Context/CartContext";
+import { FilterContext } from "../../Context/FilterContext";
 import Spinner from "../Spinner";
 
-const ProductList = ({ filters }) => {
+const ProductList = () => {
   const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { filters } = useContext(FilterContext);
   const { categories, priceRange, sort } = filters;
   const { minVal, maxVal } = priceRange;
 

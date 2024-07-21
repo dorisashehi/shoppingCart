@@ -2,11 +2,14 @@ import { useContext } from "react";
 import CostumCheckbox from "../Elements/CostumCheckbox";
 import PriceRange from "./PriceRange";
 import { ProductsContext } from "../../Context/ProductsContext";
+import { FilterContext } from "../../Context/FilterContext";
 
-const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
-  const contextData = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+const FilterOptions = () => {
+  const { categories } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
-  const categories = contextData.categories;
+  const { filters, setFilters } = useContext(FilterContext);
+  const selectedCategories = filters.categories;
+  const priceRange = filters.priceRange;
 
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
@@ -65,7 +68,7 @@ const FilterOptions = ({ selectedCategories, priceRange, setFilters }) => {
       </div>
       <div className="filter-section">
         <h1 className="filter-header">Price</h1>
-        <PriceRange setFilters={setFilters} initialRange={priceRange} />
+        <PriceRange />
       </div>
     </>
   );

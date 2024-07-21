@@ -1,13 +1,17 @@
 import MultiRangeSlider from "multi-range-slider-react";
+import { FilterContext } from "../../Context/FilterContext";
 import { useState } from "react";
-const PriceRange = ({ setFilters, initialRange }) => {
-  const [minValue, set_minValue] = useState(0);
-  const [maxValue, set_maxValue] = useState(1000);
+import { useContext } from "react";
+const PriceRange = () => {
+  const { filters, setFilters } = useContext(FilterContext);
+  const initialRange = filters.priceRange;
+
+  const [minValue, set_minValue] = useState(initialRange.minVal);
+  const [maxValue, set_maxValue] = useState(initialRange.maxVal);
   const handleInput = (e) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
   };
-
   const handleChangePrice = () => {
     if (minValue !== initialRange.minVal || maxValue !== initialRange.maxVal) {
       setFilters((prevFilters) => ({
