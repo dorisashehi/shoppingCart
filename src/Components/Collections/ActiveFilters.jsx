@@ -1,16 +1,19 @@
 import { useContext, useState } from "react";
 import { FilterContext } from "../../Context/FilterContext";
-
+import { ProductsContext } from "../../Context/ProductsContext";
 const ActiveFilters = () => {
   const { filters, setFilters } = useContext(FilterContext);
+  const { setLoading } = useContext(ProductsContext);
   const categories = filters.categories;
   const resetFilters = () => {
+    setLoading(true);
     setFilters((prevFilters) => ({ ...prevFilters, categories: [] }));
   };
 
   const handleDelete = (cat) => {
     const updatedCat = filters.categories.filter((item) => item !== cat);
 
+    setLoading(true);
     setFilters((prevFilters) => ({
       ...prevFilters,
       categories: updatedCat,

@@ -5,13 +5,15 @@ import { ProductsContext } from "../../Context/ProductsContext";
 import { FilterContext } from "../../Context/FilterContext";
 
 const FilterOptions = () => {
-  const { categories } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { categories, setLoading } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   const { filters, setFilters } = useContext(FilterContext);
   const selectedCategories = filters.categories;
 
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST
+
+    setLoading(true);
 
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -21,6 +23,7 @@ const FilterOptions = () => {
 
   const removeCategory = (cat) => {
     //REMOVE CATEGORIE FROM SELECTED CATEGORIES LIST
+    setLoading(true);
 
     const updatedCat = selectedCategories.filter((item) => item !== cat);
 

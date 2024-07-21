@@ -1,9 +1,11 @@
 import Select from "react-tailwindcss-select";
 import { useContext, useState } from "react";
 import { FilterContext } from "../../Context/FilterContext";
+import { ProductsContext } from "../../Context/ProductsContext";
 
 const SortFilter = () => {
   const { filters, setFilters } = useContext(FilterContext); //FILTER CONTECT
+  const { setLoading } = useContext(ProductsContext);
   const options = [
     //ARRAY OF SELECT OPTIONS
     { value: "asc-price", label: "low-hight price" },
@@ -21,6 +23,7 @@ const SortFilter = () => {
   ); //DEFAULT FILTER SELECTED OR PREVIOUS ONE
 
   const handleChange = (value) => {
+    setLoading(true);
     setSorted(value);
 
     setFilters((prevFilters) => ({

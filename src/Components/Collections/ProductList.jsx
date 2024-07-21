@@ -1,5 +1,5 @@
 import ImageCard from "../Elements/ImageCard";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 import { CartContext } from "../../Context/CartContext";
@@ -7,7 +7,7 @@ import { FilterContext } from "../../Context/FilterContext";
 import Spinner from "../Spinner";
 
 const ProductList = () => {
-  const { products, error } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
+  const { products, error, loading, setLoading } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const { filters } = useContext(FilterContext);
   const { categories, priceRange, sort } = filters;
   const { minVal, maxVal } = priceRange;
@@ -80,12 +80,18 @@ const ProductList = () => {
 
   const initialProducts = applyFilters();
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [filters]);
+
   let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
   const { isInCard } = useContext(CartContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
 
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
-      {products.loading ? (
+      {loading ? (
         <Spinner />
       ) : error !== "" ? (
         <div className="w-full">{error}</div>

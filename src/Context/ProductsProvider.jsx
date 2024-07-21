@@ -1,6 +1,7 @@
 import { ProductsContext } from "./ProductsContext";
 import { useEffect, useState } from "react";
 const ProductsProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [categories, setDefaultCategories] = useState([]); //ALL CATEGORIES
   const fetchCategories = async () => {
     //FETCH SPECIFIC CATEGORIES AVAILABLE
@@ -27,7 +28,6 @@ const ProductsProvider = ({ children }) => {
 
   const [products, setProducts] = useState({
     //PRODUCTS FILTERED BASED ON CATEGORIES
-    loading: true,
     data: [],
     errorMsg: "",
   });
@@ -74,9 +74,9 @@ const ProductsProvider = ({ children }) => {
         setTimeout(() => {
           setProducts({
             //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-            loading: false,
             data: allProducts, //AN ARRAY WITH PRODUCTS OBJECTS
           });
+          setLoading(false);
         }, 1000);
       })
       .catch((error) => {
@@ -101,7 +101,16 @@ const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ categories, products, error, getProd, prodInWishlist }}
+      value={{
+        categories,
+        products,
+        error,
+        getProd,
+        prodInWishlist,
+        setProducts,
+        loading,
+        setLoading,
+      }}
     >
       {children}
     </ProductsContext.Provider>
