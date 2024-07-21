@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logoTop from "../../assets/images/navigation/logoTop.png";
 import Logo from "../Elements/Logo";
 import Sidebar from "../Elements/Sidebar";
@@ -8,10 +8,12 @@ import WishlistSummary from "../Wishlist/WishlistSummary";
 import ProductsProvider from "../../Context/ProductsProvider";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
+import Spinner from "../Spinner";
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
-  const { countCartItems } = useContext(CartContext);
+  const { countCartItems, cardLoading, setCardLoading } =
+    useContext(CartContext);
   const { countWishlistItems } = useContext(WishlistContext);
 
   const toggleMenu = () => {
@@ -32,6 +34,13 @@ const Navigation = () => {
       setOpen({ wishlist: true, card: !sidebarOpened.card });
     }
   };
+
+  useEffect(() => {
+    //REMOVE LOADING WHEN CART LENGTH CHANGED
+    setTimeout(() => {
+      setCardLoading(false);
+    }, 2000);
+  }, [countCartItems]);
 
   return (
     <>
@@ -104,8 +113,12 @@ const Navigation = () => {
               </li>
               <li className="relative">
                 {countCartItems > 0 && (
-                  <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                    {countCartItems}
+                  <span className="cardCount">
+                    {cardLoading ? (
+                      <Spinner />
+                    ) : (
+                      <span className="text-center">{countCartItems}</span>
+                    )}
                   </span>
                 )}
                 <svg

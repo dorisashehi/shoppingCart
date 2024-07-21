@@ -1,9 +1,9 @@
 import Loading from "../../assets/images/loading.gif";
 
-const Spinner = () => {
+const Spinner = ({ classN }) => {
   return (
     <div className="w-full">
-      <img src={Loading} className="w-[200px] m-auto" />
+      <img src={Loading} className={`${classN} m-auto`} />
     </div>
   );
 };

@@ -81,9 +81,10 @@ const ProductList = () => {
   const initialProducts = applyFilters();
 
   useEffect(() => {
+    //REMOVE LOADING APPLIED ON FILTER CHANGE
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 900);
   }, [filters]);
 
   let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
@@ -92,7 +93,7 @@ const ProductList = () => {
   return (
     <div className="flex flex-wrap justify-between gap-y-10">
       {loading ? (
-        <Spinner />
+        <Spinner classN="w-[40px]" />
       ) : error !== "" ? (
         <div className="w-full">{error}</div>
       ) : (

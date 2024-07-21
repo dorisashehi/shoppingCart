@@ -1,8 +1,9 @@
 import { CartContext } from "./CartContext";
-import { useReducer, useMemo } from "react";
+import { useReducer, useMemo, useState } from "react";
 
 const CartProvider = ({ children }) => {
   //const [card, setCard] = useState([]); //CART STATE
+  const [cardLoading, setCardLoading] = useState(false);
 
   const initialCard = [];
 
@@ -84,6 +85,7 @@ const CartProvider = ({ children }) => {
   const [card, dispatch] = useReducer(reducer, initialCard);
 
   const addToCard = (newProd) => {
+    setCardLoading(true);
     dispatch({ type: "increment", payload: newProd });
   };
 
@@ -98,6 +100,7 @@ const CartProvider = ({ children }) => {
 
   const addMoreProd = (newProd) => {
     //DELETE PROJECT FROM CART SIDEBAR
+    setCardLoading(true);
     dispatch({ type: "addMore", payload: newProd });
   };
 
@@ -154,6 +157,8 @@ const CartProvider = ({ children }) => {
         calculateRealPrice,
         isInCard,
         addMoreProd,
+        cardLoading,
+        setCardLoading,
       }}
     >
       {children}
