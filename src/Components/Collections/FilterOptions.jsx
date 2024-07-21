@@ -9,7 +9,6 @@ const FilterOptions = () => {
 
   const { filters, setFilters } = useContext(FilterContext);
   const selectedCategories = filters.categories;
-  const priceRange = filters.priceRange;
 
   const addCategory = (cat) => {
     //ADD CATEGORIES TO SELECTED CATEGORIES LIST

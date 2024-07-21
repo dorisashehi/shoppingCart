@@ -51,7 +51,7 @@
 }
 
 .list-item {
-  @apply py-2 text-[0.8rem] list-none leading-6;
+  @apply pt-2 text-[0.8rem] list-none leading-6;
 }
 
 .content {
@@ -100,7 +100,7 @@
 }
 
 .selected-filter {
-  @apply flex bg-yellow py-1 md:py-2 px-4  hover:opacity-[0.8] cursor-pointer text-[0.8rem] lg:text-[1rem];
+  @apply flex bg-yellow py-1 px-4  hover:opacity-[0.8] cursor-pointer text-[0.8rem];
 }
 
 .sort svg {

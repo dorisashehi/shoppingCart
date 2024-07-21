@@ -1,4 +1,4 @@
-import { Children, useEffect, useState } from "react";
+import { useState } from "react";
 
 const CostumCheckbox = ({ label, handleSelected, checked }) => {
   const [isChecked, setIsChecked] = useState(checked);
