@@ -33,6 +33,10 @@ const ProductList = () => {
     };
   }
 
+  const sortFnc = (filteredProducts, attribute, order) => {
+    return filteredProducts.sort(compareValues(attribute, order));
+  };
+
   const applyFilters = () => {
     let filteredProducts = products.data.filter((product) => {
       // Check if product's category is in selectedCategories
@@ -53,22 +57,22 @@ const ProductList = () => {
 
     if (sort && sort.value === "asc-price") {
       //IF ASCENDING SORT
-      filteredProducts = filteredProducts.sort(compareValues("price", "Asc"));
+      sortFnc(filteredProducts, "price", "Asc");
     }
 
     if (sort && sort.value === "desc-price") {
       //IF DESCENDING SORT
-      filteredProducts = filteredProducts.sort(compareValues("price", "Desc"));
+      sortFnc(filteredProducts, "price", "Desc");
     }
 
     if (sort && sort.value === "asc-az") {
       //IF ASCENDING SORT
-      filteredProducts = filteredProducts.sort(compareValues("title", "Asc"));
+      sortFnc(filteredProducts, "title", "Asc");
     }
 
     if (sort && sort.value === "desc-za") {
       //IF DESCENDING SORT
-      filteredProducts = filteredProducts.sort(compareValues("title", "Desc"));
+      sortFnc(filteredProducts, "title", "Desc");
     }
 
     return filteredProducts;
