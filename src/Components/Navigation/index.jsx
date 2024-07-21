@@ -14,7 +14,8 @@ const Navigation = () => {
   const [toggle, setToggle] = useState(false);
   const { countCartItems, cardLoading, setCardLoading } =
     useContext(CartContext);
-  const { countWishlistItems } = useContext(WishlistContext);
+  const { countWishlistItems, setWishlistLoading, wishlistLoading } =
+    useContext(WishlistContext);
 
   const toggleMenu = () => {
     //EXPAND MENU ON MOBILE
@@ -39,8 +40,15 @@ const Navigation = () => {
     //REMOVE LOADING WHEN CART LENGTH CHANGED
     setTimeout(() => {
       setCardLoading(false);
-    }, 2000);
+    }, 1000);
   }, [countCartItems]);
+
+  useEffect(() => {
+    //REMOVE LOADING WHEN WISHLIST LENGTH CHANGED
+    setTimeout(() => {
+      setWishlistLoading(false);
+    }, 1000);
+  }, [countWishlistItems]);
 
   return (
     <>
@@ -88,8 +96,12 @@ const Navigation = () => {
               </li>
               <li className="relative px-4">
                 {countWishlistItems > 0 && (
-                  <span className="bg-yellow w-fit h-fit text-white pt-[4px] px-[6px] text-[0.8rem] right-[4px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0">
-                    {countWishlistItems}
+                  <span className="cardCount right-[4px]">
+                    {wishlistLoading ? (
+                      <Spinner />
+                    ) : (
+                      <span className="text-center">{countWishlistItems}</span>
+                    )}
                   </span>
                 )}
 
@@ -113,7 +125,7 @@ const Navigation = () => {
               </li>
               <li className="relative">
                 {countCartItems > 0 && (
-                  <span className="cardCount">
+                  <span className="cardCount right-[-9px]">
                     {cardLoading ? (
                       <Spinner />
                     ) : (

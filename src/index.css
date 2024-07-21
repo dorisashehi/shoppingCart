@@ -63,7 +63,7 @@
 }
 
 .cardCount {
-  @apply flex justify-center items-center bg-yellow text-white w-[20px] h-[20px] text-[0.7rem] right-[-9px] rounded-xl font-epilogue font-bold absolute bottom-4 z-0;
+  @apply flex justify-center items-center bg-yellow text-white w-[20px] h-[20px] text-[0.7rem] rounded-xl font-epilogue font-bold absolute bottom-4 z-0;
 }
 /*Icons*/
 .social-media-icons {

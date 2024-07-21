@@ -3,6 +3,7 @@ import { WishlistContext } from "./WishlistContext";
 
 const WishlistProvider = ({ children }) => {
   //const [wishlisted, setWishlisted] = useState([]);
+  const [wishlistLoading, setWishlistLoading] = useState(false);
 
   const findPro = (proID, wishlistArr) => {
     return wishlistArr.findIndex((item) => item.id === proID); //FIND INDEX OF THE PRODUCT IN Wishlist
@@ -40,11 +41,13 @@ const WishlistProvider = ({ children }) => {
   const [wishlisted, dispatch] = useReducer(reducer, initialWishlist);
 
   const toggleWishlist = (newProd) => {
+    setWishlistLoading(true);
     dispatch({ type: "toggle", newProd: newProd });
   };
 
   const deleteAddedPro = (proID) => {
     //DELETE PROJECT FROM WISHLIST SIDEBAR
+    setWishlistLoading(true);
     dispatch({ type: "delete", proID: proID });
   };
 
@@ -66,6 +69,8 @@ const WishlistProvider = ({ children }) => {
         countWishlistItems,
         deleteAddedPro,
         isWishlisted,
+        setWishlistLoading,
+        wishlistLoading,
       }}
     >
       {children}

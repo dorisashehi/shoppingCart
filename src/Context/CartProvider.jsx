@@ -90,6 +90,7 @@ const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (updatedProID) => {
+    setCardLoading(true);
     dispatch({ type: "remove", payload: updatedProID });
   };
 
