@@ -93,8 +93,11 @@
 }
 .filter-header,
 .cart-header {
-  @apply font-epilogue text-[0.8rem] lg:text-base font-semibold mb-[1rem];
+  @apply font-epilogue text-[0.8rem] lg:text-[0.9rem] font-semibold mb-[1rem];
 }
+/* .cart-sidebar {
+  @layer h-[calc(100vh - 30%)];
+} */
 
 .filter-content {
   @apply font-epilogue text-[#484848];

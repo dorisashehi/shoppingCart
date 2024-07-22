@@ -23,13 +23,13 @@ const Sidebar = ({ sidebarOpened, handleOpenSidebar, children }) => {
         } flex-col`}
       ></div>
       <div
-        className={`fixed top-0 bg-white right-0 w-[80%] md:w-[300px] shadow-lg shadow-neutral-400 z-50 p-5 h-[100%] duration-500 flex transition-all ease-out  ${
+        className={`fixed top-0 bg-white right-0 w-[80%] md:w-[350px] shadow-lg shadow-neutral-400 z-50 p-5 h-[100%] duration-500 flex transition-all ease-out  ${
           sidebar ? "mr-0" : "mr-[-100%]"
         } flex-col`}
       >
         {children}
         <svg
-          className="filter-icons ml-1 absolute top-15 right-10 cursor-pointer"
+          className="filter-icons ml-1 absolute top-[30px] md:top-[34px] right-10 cursor-pointer"
           data-slot="icon"
           fill="none"
           strokeWidth="2.2"

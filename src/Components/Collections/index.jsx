@@ -3,7 +3,7 @@ import FilterOptions from "./FilterOptions";
 import ProductList from "./ProductList";
 import SortFilter from "./SortFilter";
 import ActiveFilters from "./ActiveFilters";
-
+import FilterBy from "../../Components/Collections/FilterBy";
 const Collections = () => {
   return (
     <>
@@ -16,6 +16,7 @@ const Collections = () => {
             </div>
 
             <div className="flex-1">
+              <FilterBy />
               <SortFilter />
               <ActiveFilters />
               <ProductList />

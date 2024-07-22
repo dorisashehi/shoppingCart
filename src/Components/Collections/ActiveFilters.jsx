@@ -22,7 +22,9 @@ const ActiveFilters = () => {
 
   return (
     <div className="flex gap-5 items-start md:items-center mb-10 flex-col md:flex-row">
-      <h1 className="text-primary sort-text">Active Filters</h1>
+      {categories.length > 0 && (
+        <h1 className="text-primary sort-text">Active Filters</h1>
+      )}
       <div className="flex gap-5 items-center md:items-start flex-wrap">
         {categories.map((cat, index) => (
           <div className="selected-filter" key={index}>

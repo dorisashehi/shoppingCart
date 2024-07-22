@@ -12,6 +12,7 @@ const ProductDetails = () => {
   let { calculateRealPrice, addMoreProd } = useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   let { toggleWishlist, isWishlisted } = useContext(WishlistContext);
   let [quantity, setQuantity] = useState(0); //STATE TO HANDLE QUANTITY
+  const [prodLoading, setProdLoading] = useState(true);
 
   //ON CLICK TO PLUS ICON
   const addQuantity = () => {
@@ -43,6 +44,9 @@ const ProductDetails = () => {
         }
         const data = await response.json();
         setProduct(data);
+        setTimeout(() => {
+          setProdLoading(false);
+        }, 1000);
       } catch (error) {
         setError(error.message);
       }
@@ -52,7 +56,7 @@ const ProductDetails = () => {
   }, []);
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
