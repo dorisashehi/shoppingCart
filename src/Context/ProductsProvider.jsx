@@ -55,38 +55,32 @@ const ProductsProvider = ({ children }) => {
 
   const fetchAllData = async () => {
     try {
-      //const categories = await fetchCategories();
-
       const allData = await Promise.all(
         //RETURN RESULT WHEN DATA FETCHED FROM ALL CATEGORIES
         categories.map((cat) => fetchUrlData(getUrl(cat)))
       );
-      return allData;
+      return allData.flat(); //RETURN AN ARRAY OF OBJ NOT ARRAY OF ARRAYS
     } catch (error) {
       throw error;
     }
   };
 
-  const getProducts = async () => {
-    fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
-      .then((data) => {
-        const allProducts = [].concat(...data); //DESTRUCTOR THE ARRAY OF ARRAYS WITH DATA FROM EACH PROMISE AND CONCAT THEM INTO ONE ARRAY ([{…}, {…}, {…}, {…}, {…}] (5) [{…}, {…}, {…}, {…}, {…}])
-        setTimeout(() => {
+  useEffect(() => {
+    //START HERE
+    if (categories.length > 0) {
+      console.log("heyyyyy");
+      fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
+        .then((products) => {
           setProducts({
-            //SET PRODCUTS TO THE STATE AFTER A SMALL DELAY OF LOADING
-            data: allProducts, //AN ARRAY WITH PRODUCTS OBJECTS
+            //SET PRODCUTS TO THE STATE
+            data: products, //AN ARRAY WITH PRODUCTS OBJECTS
           });
           setLoading(false);
-        }, 1000);
-      })
-      .catch((error) => {
-        setErrorMsg(error.message);
-      });
-  };
-
-  useEffect(() => {
-    //IF FILTERS DATA CHANGED
-    getProducts(); //START HERE
+        })
+        .catch((error) => {
+          setErrorMsg(error.message);
+        });
+    }
   }, [categories]); //EXECUTED ONLY ON CATEGORIES OR FILTERS CHANGE
 
   const getProd = (proID) => {
