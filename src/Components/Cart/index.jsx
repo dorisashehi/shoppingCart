@@ -1,13 +1,39 @@
 import Banner from "../Banner";
 import Button from "../Elements/buttons";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
+import PlusMinus from "../Elements/PlusMinus";
 import OrderSidebar from "../Elements/OrderSidebar";
 
 const Cart = () => {
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const { card, deleteAddedPro, calculateRealPrice } = useContext(CartContext);
+  const {
+    card,
+    deleteAddedPro,
+    calculateRealPrice,
+    addToCard,
+    removeFromCart,
+  } = useContext(CartContext);
+
+  //ON CLICK TO PLUS ICON
+  const addQuantity = (proID, quantity) => {
+    //ADD QUANTITY FOR THE PRODUCT
+    addToCard({
+      id: proID,
+      quantity: quantity + 1,
+    });
+  };
+
+  //ON CLICK TO MINUS ICON
+  const removeQuantity = (proID, quantity) => {
+    //REMOVE QUANTITY - 1 FOR THE REMOVED PROD
+    if (quantity - 1 === 0) {
+      deleteAddedPro(proID);
+      return;
+    }
+    removeFromCart(proID);
+  };
 
   return (
     <>
@@ -89,7 +115,15 @@ const Cart = () => {
                             ${realPrice}
                           </td>
                           <td className="px-6 py-4 hidden md:table-cell">
-                            {product.quantity}
+                            <PlusMinus
+                              addQuantity={() =>
+                                addQuantity(product.id, product.quantity)
+                              }
+                              removeQuantity={() =>
+                                removeQuantity(product.id, product.quantity)
+                              }
+                              quantity={product.quantity}
+                            />
                           </td>
                           <td className="px-6 py-4">
                             ${realPrice * product.quantity}
