@@ -3,8 +3,11 @@ import Button from "../Elements/buttons";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
-const CartSummary = () => {
+import { useNavigate } from "react-router-dom";
+const CartSummary = ({ handleOpenSidebar }) => {
   //CART SUMMARY SHOWN IN SIDEBAR
+
+  const navigate = useNavigate();
 
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
   const {
@@ -14,6 +17,15 @@ const CartSummary = () => {
     countCartItems,
     calculateRealPrice,
   } = useContext(CartContext);
+
+  const navigateTo = (event, location) => {
+    //NAVIGATE TO CHECKOUT LINK ACTION
+    event.preventDefault();
+    setTimeout(() => {
+      handleOpenSidebar("card");
+      navigate("/" + location);
+    }, 600);
+  };
 
   return (
     <div>
@@ -83,9 +95,12 @@ const CartSummary = () => {
               src="/checkout"
               classN="cart-btn justify-center text-[0.9rem] md:text-[1rem] mb-5"
               text="Checkout"
+              clickAction={(event) => navigateTo(event, "checkout")}
             ></Button>
             <div className="underline cursor-pointer sort-text md:self-end text-center">
-              <Link to="/cart">View Card</Link>
+              <Link to="/cart" onClick={(event) => navigateTo(event, "cart")}>
+                View Card
+              </Link>
             </div>
           </div>
         </>

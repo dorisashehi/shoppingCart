@@ -183,7 +183,7 @@ const Navigation = () => {
         handleOpenSidebar={() => handleOpenSidebar("card")}
       >
         <ProductsProvider>
-          <CartSummary />
+          <CartSummary handleOpenSidebar={handleOpenSidebar} />
         </ProductsProvider>
       </Sidebar>
 
