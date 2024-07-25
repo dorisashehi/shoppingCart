@@ -25,7 +25,7 @@ const InputItem = ({
       } else {
         if (callback) callback(true);
       }
-    }, 1000);
+    }, 600);
   };
 
   const handleChange = (event) => {
