@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Button from "../Elements/buttons";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";

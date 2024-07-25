@@ -7,13 +7,7 @@ import OrderSidebar from "../Elements/OrderSidebar";
 
 const Cart = () => {
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
-  const {
-    card,
-    deleteAddedPro,
-    findTotal,
-    countCartItems,
-    calculateRealPrice,
-  } = useContext(CartContext);
+  const { card, deleteAddedPro, calculateRealPrice } = useContext(CartContext);
 
   return (
     <>
@@ -95,7 +89,7 @@ const Cart = () => {
                             ${realPrice}
                           </td>
                           <td className="px-6 py-4 hidden md:table-cell">
-                            {product.quantity} {product.quantity}
+                            {product.quantity}
                           </td>
                           <td className="px-6 py-4">
                             ${realPrice * product.quantity}

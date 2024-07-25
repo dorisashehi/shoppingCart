@@ -6,6 +6,7 @@ import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 import Button from "../Elements/buttons";
 import Spinner from "../Spinner";
+import PlusMinus from "../Elements/PlusMinus";
 const ProductDetails = () => {
   const { proID } = useParams();
   const [error, setError] = useState("");
@@ -117,45 +118,12 @@ const ProductDetails = () => {
                       </span>
                     </div>
                     <div className="pt-4 flex gap-5">
-                      <div className="flex flex-row items-center">
-                        <svg
-                          data-slot="icon"
-                          className="plusMinus hover:bg-yellow"
-                          fill="none"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                          onClick={removeQuantity}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          ></path>
-                        </svg>
+                      <PlusMinus
+                        addQuantity={() => addQuantity()}
+                        removeQuantity={() => removeQuantity()}
+                        quantity={quantity}
+                      />
 
-                        <span className="plusMinus">{quantity}</span>
-
-                        <svg
-                          data-slot="icon"
-                          className="plusMinus hover:bg-yellow"
-                          fill="none"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                          onClick={addQuantity}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          ></path>
-                        </svg>
-                      </div>
                       <Button
                         classN="text-[0.9rem]"
                         text="Add To Card"
@@ -170,7 +138,7 @@ const ProductDetails = () => {
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
-                        className={`plusMinus ${
+                        className={`plusMinus border-2 ${
                           isWishlisted(product.id) && "wishlisted"
                         }`}
                         onClick={() => toggleWishlist({ id: product.id })}
