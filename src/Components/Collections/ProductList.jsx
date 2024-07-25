@@ -84,7 +84,7 @@ const ProductList = () => {
     //REMOVE LOADING APPLIED ON FILTER CHANGE
     setTimeout(() => {
       setLoading(false);
-    }, 900);
+    }, 400);
   }, [filters]);
 
   let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT

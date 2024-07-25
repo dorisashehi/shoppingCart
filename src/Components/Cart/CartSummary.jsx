@@ -3,6 +3,7 @@ import Button from "../Elements/buttons";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
+import ClearLink from "../Elements/ClearLink";
 import { useNavigate } from "react-router-dom";
 const CartSummary = ({ handleOpenSidebar }) => {
   //CART SUMMARY SHOWN IN SIDEBAR
@@ -97,11 +98,10 @@ const CartSummary = ({ handleOpenSidebar }) => {
               text="Checkout"
               clickAction={(event) => navigateTo(event, "checkout")}
             ></Button>
-            <div className="underline cursor-pointer sort-text md:self-end text-center">
-              <Link to="/cart" onClick={(event) => navigateTo(event, "cart")}>
-                View Card
-              </Link>
-            </div>
+
+            <ClearLink clickAction={(event) => navigateTo(event, "cart")}>
+              View Card
+            </ClearLink>
           </div>
         </>
       )}

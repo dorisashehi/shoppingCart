@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { FilterContext } from "../../Context/FilterContext";
 import { ProductsContext } from "../../Context/ProductsContext";
+import ClearLink from "../Elements/ClearLink";
 const ActiveFilters = () => {
   const { filters, setFilters } = useContext(FilterContext);
   const { setLoading } = useContext(ProductsContext);
@@ -49,12 +50,7 @@ const ActiveFilters = () => {
           </div>
         ))}
         {categories.length !== 0 && (
-          <div
-            className="underline cursor-pointer sort-text md:self-end"
-            onClick={resetFilters}
-          >
-            Clear All
-          </div>
+          <ClearLink clickAction={() => resetFilters()}>Clear All</ClearLink>
         )}
       </div>
     </div>
