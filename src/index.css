@@ -78,6 +78,14 @@
 .plusMinus {
   @apply text-[0.7rem] lg:font-[1rem] w-[30px] md:w-[45px] lg:w-[49px] h-[30px] md:h-[45px] lg:h-[49px] p-[5px] md:p-[14px] lg:p-[15px] border-borderColor text-center font-epilogue cursor-pointer;
 }
+
+.table-item {
+  @apply px-4 md:px-6 py-2 md:py-4;
+}
+
+.table-head {
+  @apply px-4 md:px-6 py-2 md:py-3;
+}
 /*FILTER STYLE*/
 .filter-item,
 .cart-item {
