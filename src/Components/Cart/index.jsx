@@ -50,31 +50,28 @@ const Cart = () => {
                 <div className="flex-1">
                   <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left text-primary cursor-pointer">
-                      <thead className="text-xs text-primary uppercase bg-yellow">
+                      <thead className="text-[0.7rem] md:text-xs text-primary uppercase bg-yellow">
                         <tr>
                           <th></th>
                           <th
                             scope="col"
-                            className="px-6 py-3 hidden md:table-cell"
+                            className="px-4 md:px-6 py-2 md:py-3 hidden md:table-cell"
                           >
                             Product
                           </th>
-                          <th scope="col" className="px-6 py-3">
+                          <th scope="col" className="px-4 md:px-6 py-2 md:py-3">
                             Name
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3  hidden md:table-cell"
+                            className="px-4 md:px-6 py-2 md:py-3 hidden md:table-cell"
                           >
                             Price
                           </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3  hidden md:table-cell"
-                          >
+                          <th scope="col" className="px-4 md:px-6 py-2 md:py-3">
                             Quantity
                           </th>
-                          <th scope="col" className="px-6 py-3">
+                          <th scope="col" className="px-4 md:px-6 py-2 md:py-3">
                             Subtotal
                           </th>
                         </tr>
@@ -116,11 +113,14 @@ const Cart = () => {
                                   className="w-[100px] h-[100px] object-cover"
                                 />
                               </td>
-                              <td className="px-6 py-4">{title}</td>
-                              <td className="px-6 py-4 hidden md:table-cell">
+                              <td className="px-4 md:px-6 py-2 md:py-4">
+                                {title}{" "}
+                                <b className="md:hidden mt-4">${realPrice}</b>
+                              </td>
+                              <td className="px-4 md:px-6 py-2 md:py-4 hidden md:table-cell">
                                 ${realPrice}
                               </td>
-                              <td className="px-6 py-4 hidden md:table-cell">
+                              <td className="px-4 md:px-6 py-2 md:py-4">
                                 <PlusMinus
                                   addQuantity={() =>
                                     addQuantity(product.id, product.quantity)
@@ -131,7 +131,7 @@ const Cart = () => {
                                   quantity={product.quantity}
                                 />
                               </td>
-                              <td className="px-6 py-4">
+                              <td className="px-4 md:px-6 py-2 md:py-4">
                                 ${realPrice * product.quantity}
                               </td>
                             </tr>

@@ -76,7 +76,7 @@
 }
 
 .plusMinus {
-  @apply font-[0.8rem] lg:font-[1rem] w-[45px] lg:w-[49px] h-[45px] lg:h-[49px] p-[14px] lg:p-[15px] border-borderColor text-center font-epilogue cursor-pointer;
+  @apply text-[0.7rem] lg:font-[1rem] w-[30px] md:w-[45px] lg:w-[49px] h-[30px] md:h-[45px] lg:h-[49px] p-[5px] md:p-[14px] lg:p-[15px] border-borderColor text-center font-epilogue cursor-pointer;
 }
 /*FILTER STYLE*/
 .filter-item,
