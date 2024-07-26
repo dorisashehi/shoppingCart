@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const ImageCard = ({
   id,
   imgSrc,
+  secondImg,
   proName,
   price,
   classN,
@@ -14,6 +15,12 @@ const ImageCard = ({
   inCard,
 }) => {
   let [quantity, setQuantity] = useState(inCard); //STATE TO HANDLE QUANTITY
+  const [hidden, setHidden] = useState(false);
+
+  const handleOverEffect = (value) => {
+    //HANDLE OVER EFFECT
+    setHidden(value);
+  };
 
   useEffect(() => {
     if (quantity !== inCard) {
@@ -58,12 +65,16 @@ const ImageCard = ({
   };
 
   return (
-    <div className={`card ${classN}`}>
+    <div
+      className={`card ${classN}`}
+      onMouseEnter={() => handleOverEffect(true)}
+      onMouseLeave={() => handleOverEffect(false)}
+    >
       <div className="relative">
         <Link to={`/product-details/${id}`} className={`card ${classN}`}>
           <img
-            src={imgSrc}
-            className="w-full object-cover h-[300px] bg-[#f5f5f5]"
+            src={!hidden ? secondImg : imgSrc}
+            className="w-full object-cover h-[300px] bg-[#f5f5f5] transition duration-75"
           />
         </Link>
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
@@ -71,7 +82,7 @@ const ImageCard = ({
             className={`slider-icon ${wishlist && "wishlisted"}`}
             data-slot="icon"
             fill="none"
-            strokeWidth="1.5"
+            strokeWidth="2.5"
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -86,11 +97,15 @@ const ImageCard = ({
           </svg>
         </div>
 
-        <div className="icons absolute p-3  bottom-0 left-0 flex flex-row w-full justify-center text-center opacity-[0.8] gap-3">
-          <div className="flex flex-row gap-5 items-center">
+        <div
+          className={`bg-yellow transition-all duration-75 transform opacity-100  ${
+            hidden ? `xl:opacity-100 xl:translate-y-[-7px]` : `xl:opacity-0`
+          } icons absolute p-3  bottom-0 left-0 flex flex-row w-full justify-center text-center gap-3`}
+        >
+          <div className="flex flex-row items-center bg-yellow gap-2">
             <svg
               data-slot="icon"
-              className="slider-icon"
+              className="text-[0.7rem] lg:font-[1rem] w-[30px] md:w-[40px] lg:w-[40px] h-[30px] md:h-[40px] lg:h-[40px] p-[7px] border-borderColor text-center font-epilogue cursor-pointer hover:bg-yellow border-2"
               fill="none"
               strokeWidth="1.5"
               stroke="currentColor"
@@ -106,11 +121,13 @@ const ImageCard = ({
               ></path>
             </svg>
 
-            <span className="slider-icon">{quantity}</span>
+            <span className="text-[0.9rem] lg:font-[1rem] w-[30px] md:w-[40px] lg:w-[40px] h-[30px] md:h-[40px] lg:h-[40px] p-[5px] md:p-[9px] border-borderColor text-center font-epilogue cursor-pointer border-2 font-bold">
+              {quantity}
+            </span>
 
             <svg
               data-slot="icon"
-              className="slider-icon"
+              className="text-[0.7rem] lg:font-[1rem] w-[30px] md:w-[40px] lg:w-[40px] h-[30px] md:h-[40px] lg:h-[40px] p-[7px] border-borderColor text-center font-epilogue cursor-pointer hover:bg-yellow border-2"
               fill="none"
               strokeWidth="1.5"
               stroke="currentColor"

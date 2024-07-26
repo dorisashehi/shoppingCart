@@ -102,6 +102,9 @@ const ProductList = () => {
             id={product.id}
             key={index}
             imgSrc={product.thumbnail}
+            secondImg={
+              product.images[1] ? product.images[1] : product.thumbnail
+            }
             category={product.category}
             discountPercentage={product.discountPercentage}
             proName={product.title}

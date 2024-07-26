@@ -61,6 +61,9 @@ const ProductsSlider = () => {
                 id={product.id}
                 key={index}
                 imgSrc={product.thumbnail}
+                secondImg={
+                  product.images[1] ? product.images[1] : product.thumbnail
+                }
                 proName={product.title}
                 lowPrice="34"
                 price={product.price}
