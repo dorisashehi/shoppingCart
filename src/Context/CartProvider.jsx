@@ -80,6 +80,12 @@ const CartProvider = ({ children }) => {
 
       return updatedCart;
     }
+    if (action.type === "clearAll") {
+      //CLEAR ALL ITEMS IN CARD
+      const updatedCart = [];
+      return updatedCart;
+    }
+
     return card; //NOT TYPE, JUST RETURN ITS INITIAL VALUE
   };
   const [card, dispatch] = useReducer(reducer, initialCard);
@@ -103,6 +109,10 @@ const CartProvider = ({ children }) => {
     //DELETE PROJECT FROM CART SIDEBAR
     setCardLoading(true);
     dispatch({ type: "addMore", payload: newProd });
+  };
+
+  const clearCard = () => {
+    dispatch({ type: "clearAll" });
   };
 
   const calculateRealPrice = (price, percentage) => {
@@ -145,7 +155,6 @@ const CartProvider = ({ children }) => {
     const product = card?.find((item) => item.id === id);
     return product?.quantity || 0;
   };
-
   return (
     <CartContext.Provider
       value={{
@@ -160,6 +169,7 @@ const CartProvider = ({ children }) => {
         addMoreProd,
         cardLoading,
         setCardLoading,
+        clearCard,
       }}
     >
       {children}

@@ -9,6 +9,7 @@ const InputItem = ({
   inputError,
   removeError,
   setError,
+  value,
 }) => {
   const testField = (regEX, input, value, errMsg, callback) => {
     //VALIDATE INPUT BASED ON REGEX
@@ -80,6 +81,7 @@ const InputItem = ({
         name={name}
         type={type}
         placeholder={placeholder}
+        value={value}
         onChange={(event) => handleChange(event)}
       />
       {inputError && (

@@ -1,58 +1,58 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Banner from "../Banner";
 import Button from "../Elements/buttons";
 import InputItem from "../Elements/InputItem";
 import OrderSidebar from "../Elements/OrderSidebar";
+import { UserContext } from "../../Context/UserContext";
+import { CartContext } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const [inputError, setInputError] = useState({});
-  const [formData, setFormData] = useState({
-    name: "",
-    lastname: "",
-    country: "",
-    street: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: "",
-    email: "",
-  });
+  const { user, createUser } = useContext(UserContext);
+  const [formData, setFormData] = useState(user);
+  const { clearCard } = useContext(CartContext);
 
   const navigate = useNavigate();
   const changeFormData = ({ name, value }) => {
     //SET THE INPUT CHANGED VALUE TO THE formData state
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    createUser(name, value); //SAVE FORM DATA USING CONTEXT
   };
 
   const validateInput = () => {
+    let isValid = true;
     //ON FORM SUBMIT
-    Object.entries(formData).map((input) => {
+    Object.entries(formData).forEach((input) => {
       //VALIDATE IF FIELD IS EMPTY, SET ERROR
       if (input[1] === "") {
         setInputError((prevErrors) => ({
           ...prevErrors,
           [input[0]]: "That is a required field",
         }));
+        isValid = false;
+        return;
       } else {
-        setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: null }));
+        setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: "" }));
       }
     });
+    return isValid;
   };
   const removeError = (name) => {
     //REMOVE ERROR FROM ERROR OBJ
-    setInputError((prevErrors) => ({ ...prevErrors, [name]: null }));
+    setInputError((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
   const setError = (name, errorMsg) => {
     //SET ERROR TO ERROR OBJ
     setInputError((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
   };
+
   const handleSubmit = (event) => {
     //HANDLE FORM SUBMIT
     event.preventDefault();
-    validateInput(); //VALIDATE FORM INPUTS
-    console.log(inputError.length);
-    if (inputError.length > 0) {
+    const isValid = validateInput(); //VALIDATE FORM INPUTS
+    if (isValid) {
+      clearCard();
       navigate("/order");
     }
   };
@@ -80,6 +80,7 @@ const Checkout = () => {
                       inputError={inputError.name}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.name}
                     />
                   </div>
                   <div className="w-full md:w-1/2 px-3">
@@ -93,6 +94,7 @@ const Checkout = () => {
                       inputError={inputError.lastname}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.lastname}
                     />
                   </div>
                 </div>
@@ -107,6 +109,7 @@ const Checkout = () => {
                       changeFormData={changeFormData}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.company}
                     />
                   </div>
                 </div>
@@ -122,6 +125,7 @@ const Checkout = () => {
                       inputError={inputError.country}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.country}
                     />
                   </div>
                 </div>
@@ -137,6 +141,7 @@ const Checkout = () => {
                       inputError={inputError.street}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.street}
                     />
                   </div>
                 </div>
@@ -152,6 +157,7 @@ const Checkout = () => {
                       inputError={inputError.city}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.city}
                     />
                   </div>
                 </div>
@@ -167,6 +173,7 @@ const Checkout = () => {
                       inputError={inputError.state}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.state}
                     />
                   </div>
                 </div>
@@ -182,6 +189,7 @@ const Checkout = () => {
                       inputError={inputError.zip}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.zip}
                     />
                   </div>
                 </div>
@@ -197,6 +205,7 @@ const Checkout = () => {
                       inputError={inputError.phone}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.phone}
                     />
                   </div>
                 </div>
@@ -212,6 +221,7 @@ const Checkout = () => {
                       inputError={inputError.email}
                       removeError={removeError}
                       setError={setError}
+                      value={formData.email}
                     />
                   </div>
                 </div>

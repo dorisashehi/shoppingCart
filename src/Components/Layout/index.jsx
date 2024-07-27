@@ -5,6 +5,7 @@ import CartProvider from "../../Context/CartProvider";
 import ProductsProvider from "../../Context/ProductsProvider";
 import WishlistProvider from "../../Context/WishlistProvider";
 import FilterProvider from "../../Context/FilterProvider";
+import UserProvider from "../../Context/UserProvider";
 
 const Layout = () => {
   return (
@@ -14,7 +15,9 @@ const Layout = () => {
           <Navigation />
           <ProductsProvider>
             <FilterProvider>
-              <Outlet />
+              <UserProvider>
+                <Outlet />
+              </UserProvider>
             </FilterProvider>
           </ProductsProvider>
           <Footer />

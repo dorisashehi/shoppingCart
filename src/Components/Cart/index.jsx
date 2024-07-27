@@ -146,6 +146,7 @@ const Cart = () => {
                     <Button
                       classN="cart-btn justify-center text-[0.9rem] md:text-sm"
                       text="Proceed To Checkout"
+                      src="/checkout"
                     ></Button>
                   </OrderSidebar>
                 </div>
