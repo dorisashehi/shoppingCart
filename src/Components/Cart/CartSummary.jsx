@@ -54,7 +54,7 @@ const CartSummary = ({ handleOpenSidebar }) => {
                   />
                   <div className="flex flex-col relative flex-1">
                     <svg
-                      className="cart-icons ml-1 absolute top-0 right-0 cursor-pointer text-secondary"
+                      className="cart-icons ml-1 absolute top-0 right-[20px] cursor-pointer text-secondary"
                       data-slot="icon"
                       fill="none"
                       strokeWidth="2"

@@ -55,7 +55,7 @@
 }
 
 .content {
-  @apply max-w-screen-xl mx-auto px-5;
+  @apply max-w-screen-xl mx-auto px-0;
 }
 
 .card {
@@ -101,7 +101,7 @@
 }
 .filter-header,
 .cart-header {
-  @apply font-epilogue text-[0.8rem] lg:text-[0.9rem] font-semibold mb-[1rem];
+  @apply font-epilogue text-[0.8rem] lg:text-[0.9rem] font-semibold mb-[1rem] w-[70%];
 }
 /* .cart-sidebar {
   @layer h-[calc(100vh - 30%)];
@@ -115,7 +115,7 @@
 }
 
 .selected-filter {
-  @apply flex bg-yellow py-1 px-4  hover:opacity-[0.8] cursor-pointer text-[0.8rem];
+  @apply flex bg-yellow py-2 px-4  hover:opacity-[0.8] cursor-pointer text-[0.9rem];
 }
 
 .sort svg {
@@ -212,7 +212,7 @@
 
 /*CHECKOUT STYLE*/
 .input-label {
-  @apply block tracking-wide text-primary text-xs font-bold mb-2 font-epilogue;
+  @apply block tracking-wide text-primary text-[1rem] font-[600] mb-2 font-epilogue;
 }
 
 .input-style {

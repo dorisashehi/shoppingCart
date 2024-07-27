@@ -4,6 +4,7 @@ import Collections from "../Components/Collections";
 import Cart from "../Components/Cart";
 import ProductDetails from "../Components/Collections/ProductDetails";
 import Checkout from "../Components/Checkout";
+import Order from "../Components/Order";
 const routes = [
   {
     path: "/",
@@ -25,6 +26,10 @@ const routes = [
       {
         path: "checkout",
         element: <Checkout />,
+      },
+      {
+        path: "Order",
+        element: <Order />,
       },
     ],
   },

@@ -76,7 +76,7 @@ const Navigation = () => {
 
           <div className="flex justify-end items-center lg:order-2 w-2/5 lg:w-1/5">
             <ul className="flex">
-              <li>
+              {/* <li>
                 <svg
                   className="menu-icon"
                   data-slot="icon"
@@ -93,7 +93,7 @@ const Navigation = () => {
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
                   ></path>
                 </svg>
-              </li>
+              </li> */}
               <li className="relative px-4">
                 {countWishlistItems > 0 && (
                   <span className="cardCount right-[4px]">
@@ -168,11 +168,6 @@ const Navigation = () => {
             <li>
               <Link to="/shop" className="menu-item">
                 Shop
-              </Link>
-            </li>
-            <li>
-              <Link to="/contacts" className="menu-item">
-                Contact
               </Link>
             </li>
           </ul>

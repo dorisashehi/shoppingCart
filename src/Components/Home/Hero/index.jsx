@@ -15,7 +15,7 @@ const Hero = () => {
               eiusmod tempor incididunt labore et dolore.
             </div>
             <div className="flex mt-[20px] md:mt-[50px] flex-row justify-center md:justify-start">
-              <Button text="Shop Now">
+              <Button src="/shop" text="Shop Now">
                 <svg
                   className="menu-icon ml-2 transform hover:translate-x-1 transition ease-out duration-300"
                   data-slot="icon"

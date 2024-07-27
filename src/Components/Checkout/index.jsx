@@ -3,6 +3,7 @@ import Banner from "../Banner";
 import Button from "../Elements/buttons";
 import InputItem from "../Elements/InputItem";
 import OrderSidebar from "../Elements/OrderSidebar";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const [inputError, setInputError] = useState({});
@@ -18,6 +19,7 @@ const Checkout = () => {
     email: "",
   });
 
+  const navigate = useNavigate();
   const changeFormData = ({ name, value }) => {
     //SET THE INPUT CHANGED VALUE TO THE formData state
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -49,6 +51,10 @@ const Checkout = () => {
     //HANDLE FORM SUBMIT
     event.preventDefault();
     validateInput(); //VALIDATE FORM INPUTS
+    console.log(inputError.length);
+    if (inputError.length > 0) {
+      navigate("/order");
+    }
   };
   return (
     <>
@@ -216,7 +222,7 @@ const Checkout = () => {
               <OrderSidebar>
                 <Button
                   classN="cart-btn justify-center text-[0.9rem] md:text-sm"
-                  text="Continue To Payment"
+                  text="Order"
                   clickAction={(event) => handleSubmit(event)}
                 ></Button>
               </OrderSidebar>
