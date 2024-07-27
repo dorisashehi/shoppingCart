@@ -80,14 +80,14 @@
 }
 
 .table-item {
-  @apply px-4 md:px-6 py-2 md:py-4;
+  @apply font-epilogue px-4 md:px-6 py-2 md:py-4;
 }
 
 .table-head {
-  @apply px-4 md:px-6 py-2 md:py-3;
+  @apply font-epilogue px-4 md:px-6 py-2 md:py-3;
 }
 .order-table-head {
-  @apply px-0 font-semibold;
+  @apply px-0 font-medium;
 }
 /*FILTER STYLE*/
 .filter-item,
