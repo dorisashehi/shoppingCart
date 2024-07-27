@@ -20,13 +20,20 @@ const UserProvider = ({ children }) => {
       };
       return updatedUser;
     }
+    if (action.type === "clearData") {
+      return initialUser;
+    }
+  };
+
+  const clearUserData = () => {
+    dispatch({ type: "clearData" });
   };
   const createUser = (name, value) => {
     dispatch({ type: "addUser", payload: { name, value } });
   };
   const [user, dispatch] = useReducer(reducer, initialUser);
   return (
-    <UserContext.Provider value={{ user, createUser }}>
+    <UserContext.Provider value={{ user, createUser, clearUserData }}>
       {children}
     </UserContext.Provider>
   );

@@ -11,7 +11,6 @@ const Checkout = () => {
   const [inputError, setInputError] = useState({});
   const { user, createUser } = useContext(UserContext);
   const [formData, setFormData] = useState(user);
-  const { clearCard } = useContext(CartContext);
 
   const navigate = useNavigate();
   const changeFormData = ({ name, value }) => {
@@ -31,7 +30,6 @@ const Checkout = () => {
           [input[0]]: "That is a required field",
         }));
         isValid = false;
-        return;
       } else {
         setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: "" }));
       }
@@ -52,7 +50,6 @@ const Checkout = () => {
     event.preventDefault();
     const isValid = validateInput(); //VALIDATE FORM INPUTS
     if (isValid) {
-      clearCard();
       navigate("/order");
     }
   };
