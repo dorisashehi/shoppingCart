@@ -50,7 +50,7 @@ const Checkout = () => {
     event.preventDefault();
     const isValid = validateInput(); //VALIDATE FORM INPUTS
     if (isValid) {
-      navigate("/order");
+      navigate("/order-confirmation");
     }
   };
   return (

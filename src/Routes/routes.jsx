@@ -5,6 +5,7 @@ import Cart from "../Components/Cart";
 import ProductDetails from "../Components/Collections/ProductDetails";
 import Checkout from "../Components/Checkout";
 import Order from "../Components/Order";
+import OrderConfirmation from "../Components/Order/OrderConfirmation";
 const routes = [
   {
     path: "/",
@@ -28,7 +29,11 @@ const routes = [
         element: <Checkout />,
       },
       {
-        path: "Order",
+        path: "order-confirmation",
+        element: <OrderConfirmation />,
+      },
+      {
+        path: "Ordered",
         element: <Order />,
       },
     ],

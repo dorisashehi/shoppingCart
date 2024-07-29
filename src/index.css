@@ -219,7 +219,7 @@
 }
 
 .input-style {
-  @apply appearance-none block w-full text-primary border rounded py-3 px-4 mb-3 border-borderColor leading-tight focus:outline-none focus:bg-white font-epilogue;
+  @apply appearance-none block w-full text-[0.8rem] text-primary border rounded py-3 px-4 mb-3 border-borderColor leading-tight focus:outline-none focus:bg-white font-epilogue;
 }
 
 input.error {
