@@ -66,7 +66,7 @@ const ProductDetails = () => {
   return (
     <>
       <Banner title="Shopping Cart" path="Home / Shop / Product Details" />
-      <div className="w-full py-20">
+      <div className="full-screen">
         {!error ? (
           <div className="content justify-center flex flex-col lg:flex-row gap-[30px] md:gap-3">
             {prodLoading ? (
