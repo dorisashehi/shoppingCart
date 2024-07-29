@@ -225,3 +225,7 @@
 input.error {
   @apply border-red-500;
 }
+
+.full-screen {
+  @apply w-full py-20 flex-grow;
+}

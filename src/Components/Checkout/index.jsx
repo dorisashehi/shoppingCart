@@ -56,7 +56,7 @@ const Checkout = () => {
   return (
     <>
       <Banner title="Checkout" path="Home / Shopping Card / Checkout" />
-      <div className="w-full py-20">
+      <div className="full-screen">
         <div className="content">
           <div className="flex gap-10 flex-col lg:flex-row  max-w-5xl">
             <div className="flex-1">

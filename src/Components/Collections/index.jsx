@@ -8,7 +8,7 @@ const Collections = () => {
   return (
     <>
       <Banner title="Shop" path="Home / Collections" />
-      <div className="w-full py-20">
+      <div className="full-screen">
         <div className="content">
           <div className="flex gap-10">
             <div className="w-[250px] pr-5 hidden lg:block">

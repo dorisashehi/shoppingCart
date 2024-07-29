@@ -43,7 +43,7 @@ const ProductsSlider = () => {
   let { isWishlisted } = useContext(WishlistContext); //GET WISHLIST FROM CONTEXT
 
   return (
-    <div className="w-full py-20">
+    <div className="full-screen">
       <div className="content">
         <div className="pb-10 text-center md:text-left">
           <h3 className="font-epilogue text-[1rem] font-normal">

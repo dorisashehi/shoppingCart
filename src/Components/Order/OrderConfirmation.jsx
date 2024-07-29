@@ -41,7 +41,7 @@ const OrderConfirmation = () => {
         title="Order Confirmation"
         path="Home / Order / Order Confirmation"
       />
-      <div className="w-full py-20">
+      <div className="full-screen">
         <div className="content">
           <div className="flex-1 mt-20">
             <div className="py-10 px-8 border-2 border-borderColor">

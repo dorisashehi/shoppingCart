@@ -9,7 +9,7 @@ import UserProvider from "../../Context/UserProvider";
 
 const Layout = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-[100vh]">
       <CartProvider>
         <WishlistProvider>
           <Navigation />
