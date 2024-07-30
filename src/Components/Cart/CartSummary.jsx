@@ -35,7 +35,7 @@ const CartSummary = ({ handleOpenSidebar }) => {
 
       {card.length > 0 && (
         <>
-          <div className="flex flex-col h-[calc(100vh-31%)] xl:h-[calc(100vh-15%)] overflow-y-auto">
+          <div className="flex flex-col h-[calc(100vh-31%)] xl:h-[calc(100vh-20%)] overflow-y-auto">
             {card.map((product) => {
               let { title, thumbnail, price, discountPercentage } = getProd(
                 product.id
@@ -90,7 +90,7 @@ const CartSummary = ({ handleOpenSidebar }) => {
             </span>
           </div>
 
-          <div className="absolute bottom-0 w-[100%] pr-[20px] bg-white pb-10 pt-5 md:pt-4 xl:pb-10 h-[20%] xl:h-[10%]">
+          <div className="absolute bottom-0 w-[100%] pr-[20px] bg-white pb-10 pt-5 md:pt-4 xl:pb-10 h-[20%] xl:h-[15%]">
             <Button
               src="/checkout"
               classN="cart-btn justify-center text-[0.9rem] md:text-[1rem] mb-5"
