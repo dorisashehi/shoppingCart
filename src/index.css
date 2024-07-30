@@ -67,7 +67,7 @@
 }
 /*Icons*/
 .social-media-icons {
-  @apply p-[7px] outline outline-8 outline-[#573621] w-[27px] hover:opacity-[0.8];
+  @apply p-[2px] outline outline-8 outline-[#573621] w-[27px] hover:opacity-[0.8];
 }
 
 .filter-icons,

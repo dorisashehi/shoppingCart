@@ -1,5 +1,6 @@
 import logoBottom from "../../assets/images/logo-bottom.png";
 import Logo from "../Elements/Logo";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,54 +14,37 @@ const Footer = () => {
             incididnt abor dolore magna aliqua.Ut enim ad minim veniam
           </div>
           <div className="flex flex-row gap-6 mt-6">
-            <svg
-              className="slider-icon social-media-icons"
-              data-slot="icon"
-              fill="none"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
-              ></path>
-            </svg>
-            <svg
-              className="slider-icon social-media-icons"
-              data-slot="icon"
-              fill="none"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
-              ></path>
-            </svg>
-            <svg
-              className="slider-icon social-media-icons"
-              data-slot="icon"
-              fill="none"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
-              ></path>
-            </svg>
+            <Link to="/">
+              <svg
+                baseProfile="tiny"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="slider-icon social-media-icons"
+              >
+                <path d="M13 10h3v3h-3v7h-3v-7H7v-3h3V8.745c0-1.189.374-2.691 1.118-3.512C11.862 4.41 12.791 4 13.904 4H16v3h-2.1c-.498 0-.9.402-.9.899V10z" />
+              </svg>
+            </Link>
+            <Link to="/">
+              <svg
+                className="slider-icon social-media-icons"
+                baseProfile="tiny"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M8 19H5V9h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165V19h-3s.04-9 0-10h2.368l.183 2h.062c.615-1 1.598-1.678 2.946-1.678 1.025 0 1.854.285 2.487 1.001.637.717.954 1.679.954 3.03V19z" />
+                <path d="M8.05 6.5 A1.55 1.5 0 0 1 6.5 8 A1.55 1.5 0 0 1 4.95 6.5 A1.55 1.5 0 0 1 8.05 6.5 z" />
+              </svg>
+            </Link>
+            <Link to="/">
+              <svg
+                baseProfile="tiny"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="slider-icon social-media-icons"
+              >
+                <path d="M15.527 17.921v-2.066c-.669.448-1.32.67-1.952.67-.298 0-.631-.094-1.004-.277-.223-.151-.354-.317-.393-.503-.11-.224-.178-.708-.178-1.454V11h3V9h-3V5.644h-1.772c-.149.782-.298 1.338-.448 1.673-.184.41-.482.782-.891 1.116a4 4 0 01-1.285.725V11H9v4.521c0 .52.073.964.223 1.337.111.298.334.595.671.893.259.262.631.484 1.115.67.595.15 1.114.223 1.562.223.52 0 1.004-.056 1.45-.167a5.75 5.75 0 001.506-.556" />
+              </svg>
+            </Link>
           </div>
         </div>
 
