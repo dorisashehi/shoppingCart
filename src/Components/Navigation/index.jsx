@@ -54,7 +54,7 @@ const Navigation = () => {
     <>
       <nav className="bg-white fixed w-full z-10">
         <div className="content p-5 flex flex-wrap">
-          <Logo logoImg={logoTop} className="w-3/5 lg:w-1/5">
+          <div className="w-3/5 lg:w-1/5 flex">
             <svg
               onClick={toggleMenu}
               className="hamburger-menu"
@@ -72,7 +72,8 @@ const Navigation = () => {
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               ></path>
             </svg>
-          </Logo>
+            <Logo logoImg={logoTop}></Logo>
+          </div>
 
           <div className="flex justify-end items-center lg:order-2 w-2/5 lg:w-1/5">
             <ul className="flex">
@@ -155,17 +156,17 @@ const Navigation = () => {
           </div>
 
           <ul
-            className={`flex-col lg:flex-row lg:flex w-full lg:items-center justify-start lg:w-3/5 mt-xs border-t-2 border-b-4 px-3 lg:px-0 border-b-yellow border-x-2 border-x-gray lg:border-t-0 lg:border-b-0 lg:border-x-0 border-t-gray lg:border-none  pt-4 lg:pt-0 mt-3 lg:mt-0 ${
+            className={`flex-col lg:flex-row lg:flex w-full lg:items-center justify-start lg:w-3/5 mt-xs border-t-2 border-b-4 px-5 lg:px-0 border-b-yellow border-x-2 border-x-gray lg:border-t-0 lg:border-b-0 lg:border-x-0 border-t-gray lg:border-none  pt-4 lg:pt-0 mt-3 lg:mt-0 duration-100 transition-all ease-out ${
               !toggle ? "hidden" : ""
             }`}
             id="navbar-sticky"
           >
-            <li>
+            <li className="pb-5">
               <Link to="/" className="menu-item" aria-current="page">
                 Home
               </Link>
             </li>
-            <li>
+            <li className="pb-5">
               <Link to="/shop" className="menu-item">
                 Shop
               </Link>

@@ -22,7 +22,7 @@
 
 /*Menu style*/
 .menu-item {
-  @apply text-primary font-medium text-xs lg:text-base lg:px-4 font-inter hover:opacity-80 cursor-pointer;
+  @apply text-primary text-[0.9rem] lg:text-base lg:px-4 font-inter hover:opacity-80 cursor-pointer font-[600];
 }
 
 .menu-icon {
@@ -55,7 +55,7 @@
 }
 
 .content {
-  @apply max-w-screen-xl mx-auto px-0;
+  @apply max-w-screen-xl mx-auto px-5;
 }
 
 .card {
@@ -75,6 +75,18 @@
   @apply w-[1rem];
 }
 
+.yellow-rounded {
+  @apply w-[35px] h-[35px] bg-yellow rounded-full absolute right-[-8px] z-[-1] bottom-0;
+}
+.two-cols {
+  @apply relative h-[40px];
+}
+.less-section-space {
+  @apply pb-0 !important;
+}
+.info-icon {
+  @apply h-[35px] w-[35px] md:h-[45px] md:w-[45px];
+}
 .plusMinus {
   @apply text-[0.7rem] lg:font-[1rem] w-[30px] md:w-[45px] lg:w-[49px] h-[30px] md:h-[45px] lg:h-[49px] p-[5px] md:p-[14px] lg:p-[15px] border-borderColor text-center font-epilogue cursor-pointer;
 }
