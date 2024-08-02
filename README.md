@@ -29,3 +29,5 @@ Clothing is a frontennd demo of an e-commerce website that sells women clothers.
 - Show clothes also for mens.
 
 The UI is based from -> https://dribbble.com/shots/23723732-Fashion-Ecommerce-Website-Clothing-Store-Website-Figma-Design?fbclid=IwZXh0bgNhZW0CMTEAAR1ze8ob7RqyKoBUdBX13-DYO_IaM_tfkC-jCajJMSiYlrfYbMeXNv-l94U_aem_OZcGo9WIjXaeQnEo50WWSg
+
+![alt text](https://github.com/dorisashehi/shoppingCart/blob/main/src/assets/images/photo1.png?raw=true)
