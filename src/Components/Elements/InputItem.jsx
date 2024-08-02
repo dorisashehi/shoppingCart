@@ -76,7 +76,7 @@ const InputItem = ({
         {label}
       </label>
       <input
-        className={`input-style ${inputError && "error"} ${classN}`}
+        className={`input-style ${inputError ? "error" : ""} ${classN}`}
         id={id}
         name={name}
         type={type}

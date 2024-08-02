@@ -68,7 +68,6 @@ const ProductsProvider = ({ children }) => {
   useEffect(() => {
     //START HERE
     if (categories.length > 0) {
-      console.log("heyyyyy");
       fetchAllData() //GET ALL TYPE OF PRODUCTS RELATED TO A CATEGORY
         .then((products) => {
           setProducts({
