@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import logoTop from "../../assets/images/navigation/logoTop.png";
-import Logo from "../Elements/Logo";
-import Sidebar from "../Elements/Sidebar";
+import Logo from "../../Components/Logo";
+import Sidebar from "../../Components/Sidebar";
 import CartSummary from "../Cart/CartSummary";
 import WishlistSummary from "../Wishlist/WishlistSummary";
 import ProductsProvider from "../../Context/ProductsProvider";

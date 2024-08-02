@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import Banner from "../Banner";
-import Button from "../Elements/buttons";
-import InputItem from "../Elements/InputItem";
-import OrderSidebar from "../Elements/OrderSidebar";
+import Button from "../../Components/buttons";
+import InputItem from "../../Components/InputItem";
+import OrderSidebar from "../../Components/OrderSidebar";
 import { UserContext } from "../../Context/UserContext";
 import { CartContext } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";

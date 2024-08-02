@@ -1,6 +1,6 @@
 import Hero from "./Hero";
 import ProductsSlider from "../ProductsSlider";
-import InfoSection from "../Elements/InfoSection";
+import InfoSection from "../../Components/InfoSection";
 
 const Home = () => {
   return (

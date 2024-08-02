@@ -1,4 +1,4 @@
-import ImageCard from "../Elements/ImageCard";
+import ImageCard from "../../Components/ImageCard";
 import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";

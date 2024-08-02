@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
-import Button from "../Elements/buttons";
+import Button from "../../Components/buttons";
 import Spinner from "../Spinner";
-import PlusMinus from "../Elements/PlusMinus";
-import InfoSection from "../Elements/InfoSection";
+import PlusMinus from "../../Components/PlusMinus";
+import InfoSection from "../../Components/InfoSection";
 const ProductDetails = () => {
   const { proID } = useParams();
   const [error, setError] = useState("");

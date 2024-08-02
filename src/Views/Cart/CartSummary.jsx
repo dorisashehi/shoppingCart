@@ -1,8 +1,8 @@
-import Button from "../Elements/buttons";
+import Button from "../../Components/buttons";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
-import ClearLink from "../Elements/ClearLink";
+import ClearLink from "../../Components/ClearLink";
 import { useNavigate } from "react-router-dom";
 const CartSummary = ({ handleOpenSidebar }) => {
   //CART SUMMARY SHOWN IN SIDEBAR

@@ -1,11 +1,11 @@
-import Home from "../Components/Home";
-import Layout from "../Components/Layout";
-import Collections from "../Components/Collections";
-import Cart from "../Components/Cart";
-import ProductDetails from "../Components/Collections/ProductDetails";
-import Checkout from "../Components/Checkout";
-import Order from "../Components/Order";
-import OrderConfirmation from "../Components/Order/OrderConfirmation";
+import Home from "../Views/Home";
+import Layout from "../Views/Layout";
+import Collections from "../Views/Collections";
+import Cart from "../Views/Cart";
+import ProductDetails from "../Views/Collections/ProductDetails";
+import Checkout from "../Views/Checkout";
+import Order from "../Views/Order";
+import OrderConfirmation from "../Views/Order/OrderConfirmation";
 const routes = [
   {
     path: "/",

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CostumCheckbox from "../Elements/CostumCheckbox";
+import CostumCheckbox from "../../Components/CostumCheckbox";
 import PriceRange from "./PriceRange";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { FilterContext } from "../../Context/FilterContext";

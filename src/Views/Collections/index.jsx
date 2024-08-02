@@ -3,7 +3,7 @@ import FilterOptions from "./FilterOptions";
 import ProductList from "./ProductList";
 import SortFilter from "./SortFilter";
 import ActiveFilters from "./ActiveFilters";
-import FilterBy from "../../Components/Collections/FilterBy";
+import FilterBy from "./FilterBy";
 const Collections = () => {
   return (
     <>

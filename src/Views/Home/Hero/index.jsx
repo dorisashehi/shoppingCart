@@ -1,5 +1,5 @@
 import bannerRight from "../../../assets/images/banner/banner-right.png";
-import Button from "../../Elements/buttons";
+import Button from "../../../Components/buttons";
 
 const Hero = () => {
   return (

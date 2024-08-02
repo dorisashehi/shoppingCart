@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import { CartContext } from "../../Context/CartContext";
-import { WishlistContext } from "../../Context/WishlistContext";
+import { CartContext } from "../Context/CartContext";
+import { WishlistContext } from "../Context/WishlistContext";
 import { Link } from "react-router-dom";
 
 const ImageCard = ({

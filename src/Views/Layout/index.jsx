@@ -1,5 +1,5 @@
 import Footer from "../Footer";
-import Navigation from "../Navigation";
+import Navigation from "../../Views/Navigation";
 import { Outlet } from "react-router-dom";
 import CartProvider from "../../Context/CartProvider";
 import ProductsProvider from "../../Context/ProductsProvider";

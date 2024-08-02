@@ -1,4 +1,4 @@
-import Sidebar from "../Elements/Sidebar";
+import Sidebar from "../../Components/Sidebar";
 import FilterOptions from "./FilterOptions";
 import { useState } from "react";
 

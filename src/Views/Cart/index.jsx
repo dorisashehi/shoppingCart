@@ -1,11 +1,11 @@
 import Banner from "../Banner";
-import Button from "../Elements/buttons";
+import Button from "../../Components/buttons";
 import { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ProductsContext } from "../../Context/ProductsContext";
-import PlusMinus from "../Elements/PlusMinus";
-import OrderSidebar from "../Elements/OrderSidebar";
-import ClearLink from "../Elements/ClearLink";
+import PlusMinus from "../../Components/PlusMinus";
+import OrderSidebar from "../../Components/OrderSidebar";
+import ClearLink from "../../Components/ClearLink";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {

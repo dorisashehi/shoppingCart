@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
-import { ProductsContext } from "../../Context/ProductsContext";
+import { CartContext } from "../Context/CartContext";
+import { ProductsContext } from "../Context/ProductsContext";
 
 const OrderSidebar = ({ children }) => {
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP

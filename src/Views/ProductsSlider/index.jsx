@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import ImageCard from "../Elements/ImageCard";
+import ImageCard from "../../Components/ImageCard";
 import { useContext } from "react";
 import { ProductsContext } from "../../Context/ProductsContext";
 import { WishlistContext } from "../../Context/WishlistContext";

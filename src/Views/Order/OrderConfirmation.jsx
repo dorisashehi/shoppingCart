@@ -3,7 +3,7 @@ import { ProductsContext } from "../../Context/ProductsContext";
 import { CartContext } from "../../Context/CartContext";
 import { UserContext } from "../../Context/UserContext";
 import Banner from "../Banner";
-import Button from "../Elements/buttons";
+import Button from "../../Components/buttons";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 

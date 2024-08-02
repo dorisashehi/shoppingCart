@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { FilterContext } from "../../Context/FilterContext";
 import { ProductsContext } from "../../Context/ProductsContext";
-import ClearLink from "../Elements/ClearLink";
+import ClearLink from "../../Components/ClearLink";
 const ActiveFilters = () => {
   const { filters, setFilters } = useContext(FilterContext);
   const { setLoading } = useContext(ProductsContext);
