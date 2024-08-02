@@ -34,4 +34,6 @@ The UI is based from -> https://dribbble.com/shots/23723732-Fashion-Ecommerce-We
 
 ![alt text](https://github.com/dorisashehi/shoppingCart/blob/main/src/assets/images/photo2.png?raw=true)
 
-![alt text](https://github.com/dorisashehi/shoppingCart/blob/main/src/assets/images/photo3.png?raw=true)
+![alt text](https://github.com/dorisashehi/shoppingCart/blob/main/src/assets/images/photo4.png?raw=true)
+
+![alt text](https://github.com/dorisashehi/shoppingCart/blob/main/src/assets/images/photo5.png?raw=true)
