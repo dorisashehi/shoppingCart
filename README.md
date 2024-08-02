@@ -1,4 +1,4 @@
-# E-commerce Demo Website
+# [E-commerce Demo Website](https://online-store24.netlify.app/)
 
 Clothing is a frontennd demo of an e-commerce website that sells women clothers. The website offers a range of clothes, including clothes, dresses, jewellery, shoes and watches. This project was created as a practice on using React.
 
