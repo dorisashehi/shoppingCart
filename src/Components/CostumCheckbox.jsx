@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const CostumCheckbox = ({ label, handleSelected, checked }) => {
   const [isChecked, setIsChecked] = useState(checked);
@@ -27,15 +28,17 @@ const CostumCheckbox = ({ label, handleSelected, checked }) => {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m4.5 12.75 6 6 9-13.5"
-        ></path>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
       </svg>
       <span className="ml-2">{label}</span>
     </label>
   );
+};
+
+CostumCheckbox.propTypes = {
+  label: PropTypes.string,
+  handleSelected: PropTypes.func,
+  checked: PropTypes.bool,
 };
 
 export default CostumCheckbox;

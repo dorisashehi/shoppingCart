@@ -1,10 +1,13 @@
+import PropTypes from 'prop-types';
+import ImageCard from './ImageCard';
+
 const InputItem = ({
   id,
   name,
   type,
   label,
   placeholder,
-  classN = "",
+  classN = '',
   changeFormData,
   inputError,
   removeError,
@@ -33,38 +36,32 @@ const InputItem = ({
     //ON CHENGE INPUT VALUE
     const { name, value } = event.target; //GET NAME AND VALUE OF INPUT
 
-    if (name.value !== "") {
+    if (name.value !== '') {
       //TEST IF REQUIRED FIELD
       //REMOVE ERROR REQUIRED IF THE INPUT GETS FILLED
       removeError(name);
     }
 
-    if (name === "email") {
+    if (name === 'email') {
       //TEST EMAIL INPUT
       let regEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      testField(regEX, name, value, "Email not valid"); //TEST EMAIL FIELD BASED ON REGEX
+      testField(regEX, name, value, 'Email not valid'); //TEST EMAIL FIELD BASED ON REGEX
     }
 
-    if (name === "zip") {
+    if (name === 'zip') {
       //TEST ZIP CODE FOR LENGTH AND CONTENT
       let regEX = /^[0-9]*$/;
-      testField(
-        regEX,
-        name,
-        value,
-        "Zip Should contains numbers not charaacters",
-        (isValid) => {
-          if (isValid && value.length > 5) {
-            setError(name, "Zip code not more than 5 numbers"); //SET ERROR
-          }
+      testField(regEX, name, value, 'Zip Should contains numbers not charaacters', (isValid) => {
+        if (isValid && value.length > 5) {
+          setError(name, 'Zip code not more than 5 numbers'); //SET ERROR
         }
-      ); //TEST EMAIL FIELD BASED ON REGEX
+      }); //TEST EMAIL FIELD BASED ON REGEX
     }
 
-    if (name === "phone") {
+    if (name === 'phone') {
       //TEST PHONE CONTENT
       let regEX = /^[0-9]*$/;
-      testField(regEX, name, value, "Phone number should contain numbers"); //TEST EMAIL FIELD BASED ON REGEX
+      testField(regEX, name, value, 'Phone number should contain numbers'); //TEST EMAIL FIELD BASED ON REGEX
     }
 
     changeFormData({ name, value }); //SAVE INPUT DATA TO FORM DATA
@@ -76,7 +73,7 @@ const InputItem = ({
         {label}
       </label>
       <input
-        className={`input-style ${inputError ? "error" : ""} ${classN}`}
+        className={`input-style ${inputError ? 'error' : ''} ${classN}`}
         id={id}
         name={name}
         type={type}
@@ -84,11 +81,23 @@ const InputItem = ({
         value={value}
         onChange={(event) => handleChange(event)}
       />
-      {inputError && (
-        <p className="text-red-500 text-xs italic">{inputError}</p>
-      )}
+      {inputError && <p className="text-red-500 text-xs italic">{inputError}</p>}
     </>
   );
+};
+
+ImageCard.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  classN: PropTypes.string,
+  changeFormData: PropTypes.func,
+  inputError: PropTypes.string,
+  removeError: PropTypes.func,
+  setError: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default InputItem;

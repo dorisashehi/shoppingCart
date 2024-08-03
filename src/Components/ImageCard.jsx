@@ -1,19 +1,10 @@
-import { useState, useContext, useEffect } from "react";
-import { CartContext } from "../Context/CartContext";
-import { WishlistContext } from "../Context/WishlistContext";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from 'react';
+import { CartContext } from '../Context/CartContext';
+import { WishlistContext } from '../Context/WishlistContext';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const ImageCard = ({
-  id,
-  imgSrc,
-  secondImg,
-  proName,
-  price,
-  classN,
-  wishlisted,
-  discountPercentage,
-  inCard,
-}) => {
+const ImageCard = ({ id, imgSrc, secondImg, proName, price, classN, wishlisted, discountPercentage, inCard }) => {
   let [quantity, setQuantity] = useState(inCard); //STATE TO HANDLE QUANTITY
   const [hidden, setHidden] = useState(false);
 
@@ -28,8 +19,7 @@ const ImageCard = ({
     }
   }, [inCard]);
 
-  let { addToCard, removeFromCart, calculateRealPrice } =
-    useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
+  let { addToCard, removeFromCart, calculateRealPrice } = useContext(CartContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
 
   let { toggleWishlist } = useContext(WishlistContext); //FUNCTIONS DESTRUCTORING FROM CONTEXT
   const [wishlist, setWishlist] = useState(wishlisted); //STATE HANDLE ADD REMOVE TO WISHLIST
@@ -79,7 +69,7 @@ const ImageCard = ({
         </Link>
         <div className="icons absolute top-[20px] right-[10px] w-fit flex flex-col gap-3">
           <svg
-            className={`slider-icon ${wishlist && "wishlisted"}`}
+            className={`slider-icon ${wishlist && 'wishlisted'}`}
             data-slot="icon"
             fill="none"
             strokeWidth="2.5"
@@ -114,11 +104,7 @@ const ImageCard = ({
               aria-hidden="true"
               onClick={removeQuantity}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 12h14"
-              ></path>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14"></path>
             </svg>
 
             <span className="text-[0.9rem] lg:font-[1rem] w-[30px] md:w-[40px] lg:w-[40px] h-[30px] md:h-[40px] lg:h-[40px] p-[5px] md:p-[9px] border-borderColor text-center font-epilogue cursor-pointer border-2 font-bold">
@@ -136,32 +122,41 @@ const ImageCard = ({
               aria-hidden="true"
               onClick={addQuantity}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              ></path>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
             </svg>
           </div>
         </div>
       </div>
       <div className="content py-5">
-        <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">
-          {proName}
-        </h5>
+        <h5 className="font-epilogue font-semibold text-[0.9rem] lg:text-base text-primary pb-3">{proName}</h5>
         <div className="price flex gap-3">
           <div className="low-price font-epilogue text-primary font-semibold text-[1.1rem]">
-            {discountPercentage
-              ? calculateRealPrice(price, discountPercentage)
-              : price}
+            {discountPercentage ? calculateRealPrice(price, discountPercentage) : price}
           </div>
-          <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem]">
-            ${price}
-          </div>
+          <div className="price font-epilogue text-secondary line-through font-normal text-[1.1rem]">${price}</div>
         </div>
       </div>
     </div>
   );
 };
+function validateURL(url) {
+  //check if its passed URL as paramenter
+  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return regex.test(url);
+}
 
+ImageCard.propTypes = {
+  id: PropTypes.number,
+  imgSrc: function (props, propName, componentName) {
+    if (validateURL(props[propName])) {
+      return new Error(`Invalid prop ${propName} supplied to ${componentName}. Validation failed.`);
+    }
+  },
+  proName: PropTypes.string,
+  price: PropTypes.number,
+  classN: PropTypes.string,
+  wishlisted: PropTypes.bool,
+  discountPercentage: PropTypes.number,
+  inCard: PropTypes.number,
+};
 export default ImageCard;

@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
-import Banner from "../Banner";
-import Button from "../../Components/buttons";
-import InputItem from "../../Components/InputItem";
-import OrderSidebar from "../../Components/OrderSidebar";
-import { UserContext } from "../../Context/UserContext";
-import { CartContext } from "../../Context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react';
+import Banner from '../Banner';
+import Button from '../../Components/buttons';
+import InputItem from '../../Components/InputItem';
+import OrderSidebar from '../../Components/OrderSidebar';
+import { UserContext } from '../../Context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
   const [inputError, setInputError] = useState({});
@@ -24,21 +23,21 @@ const Checkout = () => {
     //ON FORM SUBMIT
     Object.entries(formData).forEach((input) => {
       //VALIDATE IF FIELD IS EMPTY, SET ERROR
-      if (input[1] === "") {
+      if (input[1] === '') {
         setInputError((prevErrors) => ({
           ...prevErrors,
-          [input[0]]: "That is a required field",
+          [input[0]]: 'That is a required field',
         }));
         isValid = false;
       } else {
-        setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: "" }));
+        setInputError((prevErrors) => ({ ...prevErrors, [input[0]]: '' }));
       }
     });
     return isValid;
   };
   const removeError = (name) => {
     //REMOVE ERROR FROM ERROR OBJ
-    setInputError((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    setInputError((prevErrors) => ({ ...prevErrors, [name]: '' }));
   };
   const setError = (name, errorMsg) => {
     //SET ERROR TO ERROR OBJ
@@ -50,7 +49,7 @@ const Checkout = () => {
     event.preventDefault();
     const isValid = validateInput(); //VALIDATE FORM INPUTS
     if (isValid) {
-      navigate("/order-confirmation");
+      navigate('/order-confirmation');
     }
   };
   return (
@@ -60,9 +59,7 @@ const Checkout = () => {
         <div className="content">
           <div className="flex gap-10 flex-col lg:flex-row  max-w-5xl">
             <div className="flex-1">
-              <h1 className="font-epilogue text-[1.7rem] font-medium mt-3 mb-9">
-                Shipping Address
-              </h1>
+              <h1 className="font-epilogue text-[1.7rem] font-medium mt-3 mb-9">Shipping Address</h1>
               <form className="w-full max-w-xl" method="POST">
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

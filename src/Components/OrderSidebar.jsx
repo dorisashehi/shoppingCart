@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
-import { ProductsContext } from "../Context/ProductsContext";
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
+import { ProductsContext } from '../Context/ProductsContext';
+import PropTypes from 'prop-types';
 
 const OrderSidebar = ({ children }) => {
   const { getProd } = useContext(ProductsContext); //TAKE THAT FUNCTION PASTED TO OUTLET AS PROP
@@ -17,9 +18,7 @@ const OrderSidebar = ({ children }) => {
         </li>
         <li className="flex justify-between mb-2 text-sm">
           <span>Subtotal</span>
-          <span className="text-primary font-medium">
-            ${findTotal(getProd)}
-          </span>
+          <span className="text-primary font-medium">${findTotal(getProd)}</span>
         </li>
         <li className="flex justify-between  mb-2 text-sm pb-2">
           <span>Shipping</span>
@@ -27,9 +26,7 @@ const OrderSidebar = ({ children }) => {
         </li>
         <li className="flex justify-between mb-2 text-sm border-t-2 border-borderColor py-2">
           <span>Total</span>
-          <span className="text-primary font-medium">
-            ${findTotal(getProd)}
-          </span>
+          <span className="text-primary font-medium">${findTotal(getProd)}</span>
         </li>
       </ul>
       <div className=" w-[100%] bg-white mt-3">{children}</div>
@@ -37,4 +34,7 @@ const OrderSidebar = ({ children }) => {
   );
 };
 
+OrderSidebar.propTypes = {
+  children: PropTypes.node,
+};
 export default OrderSidebar;

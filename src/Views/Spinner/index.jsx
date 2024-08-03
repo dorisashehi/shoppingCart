@@ -1,4 +1,5 @@
-import Loading from "../../assets/images/loading.gif";
+import Loading from '../../assets/images/loading.gif';
+import PropTypes from 'prop-types';
 
 const Spinner = ({ classN }) => {
   return (
@@ -6,6 +7,10 @@ const Spinner = ({ classN }) => {
       <img src={Loading} className={`${classN} m-auto`} />
     </div>
   );
+};
+
+Spinner.propTypes = {
+  classN: PropTypes.string,
 };
 
 export default Spinner;

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Sidebar = ({ sidebarOpened, handleOpenSidebar, children }) => {
   const [sidebar, setClose] = useState(false);
@@ -19,12 +20,12 @@ const Sidebar = ({ sidebarOpened, handleOpenSidebar, children }) => {
     <>
       <div
         className={`fixed top-0 bg-backdrop left-0 w-[100%] z-40 p-5 h-[100%] ${
-          sidebar ? "flex md:hidden" : "hidden"
+          sidebar ? 'flex md:hidden' : 'hidden'
         } flex-col`}
       ></div>
       <div
         className={`fixed top-0 bg-white right-0 w-[80%] md:w-[350px] shadow-lg shadow-neutral-400 z-50 p-5 h-[100%] duration-500 flex transition-all ease-out  ${
-          sidebar ? "mr-0" : "mr-[-100%]"
+          sidebar ? 'mr-0' : 'mr-[-100%]'
         } flex-col`}
       >
         {children}
@@ -39,15 +40,17 @@ const Sidebar = ({ sidebarOpened, handleOpenSidebar, children }) => {
           aria-hidden="true"
           onClick={handleCloseSidebar}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18 18 6M6 6l12 12"
-          ></path>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
         </svg>
       </div>
     </>
   );
+};
+
+Sidebar.propTypes = {
+  sidebarOpened: PropTypes.bool,
+  handleOpenSidebar: PropTypes.func,
+  children: PropTypes.node,
 };
 
 export default Sidebar;
